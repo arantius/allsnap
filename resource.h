@@ -46,7 +46,6 @@
 #define IDS_STRING132                   132
 #define IDR_SYSMENU                     133
 #define IDS_CROP_RGN                    133
-#define IDS_AUTOLINEUP                  134
 #define IDS_CHECK_HORIZONTAL            135
 #define IDI_DISABLED                    136
 #define IDS_CHECK_VERTICAL              136
@@ -170,7 +169,6 @@
 #define IDC_KEPT                        1083
 #define IDC_MSGLIST                     1084
 #define IDC_CROP_RGN                    1085
-#define IDC_AUTOLINEUP                  1088
 #define IDC_CHECK_HORIZONTAL            1089
 #define IDC_CHECK_VERTICAL              1090
 #define IDC_RADIO_H_EVEN                1091

@@ -26,7 +26,6 @@ Source: "Debug\snapToA.exe"; DestDir: "{app}"; DestName: "allSnap.exe"; MinVersi
 Source: "Debug\snap_libA.dll"; DestDir: "{app}"; MinVersion: 1, 0; Flags: restartreplace
 Source: "Debug_UNICODE\snapToW.exe"; DestDir: "{app}"; DestName: "allSnap.exe"; MinVersion: 0, 1
 Source: "Debug_UNICODE\snap_libW.dll"; DestDir: "{app}"; MinVersion: 0, 1; Flags: restartreplace
-Source: "auto_lineup\Debug\auto_lineup.dll"; DestDir: "{app}"; Flags: restartreplace
 Source: "snap.wav"; DestDir: "{app}"
 Source: "unsnap.wav"; DestDir: "{app}"
 Source: "allSnap.chm"; DestDir: "{app}"

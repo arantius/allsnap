@@ -8,7 +8,6 @@
 #include "snap_lib.h"
 #include "snap_sounds.h"
 #include "snap_taskbar.h"
-#include "snap_lineup.h"
 #include "snap_grid.h"
 
 TCHAR INI_NAME[] = _T("allsnap.ini");

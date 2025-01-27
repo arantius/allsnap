@@ -142,7 +142,6 @@ BEGIN
     CONTROL         "Constrain windows to the screen",IDC_KEPT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,100,118,10,0,HIDC_KEPT
     GROUPBOX        "Advanced Settings",IDC_ADVL,7,7,198,129
     CONTROL         "Ignore window clipping regions ",IDC_CROP_RGN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,113,115,10,0,HIDC_CROP_RGN
-    CONTROL         "Desktop icons 'Align to Grid'",IDC_AUTOLINEUP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,22,104,10
 END
 
 IDD_DEBUG DIALOGEX 0, 0, 254, 268
@@ -489,7 +488,6 @@ BEGIN
     IDS_KEPT                "Prevents windows from moving off the sides of the screen."
     IDS_STRING132           "moving"
     IDS_CROP_RGN            "Crops a window to its visible region before performing snapping"
-    IDS_AUTOLINEUP          "Automatically line up desktop icons. (not needed in XP)"
     IDS_CHECK_HORIZONTAL    "snap to horizontal grid lines"
     IDS_CHECK_VERTICAL      "snap to vertical grid lines"
     IDS_H_NUM_EVEN          "use X evenly separated lines"

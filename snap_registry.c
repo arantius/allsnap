@@ -10,7 +10,6 @@
 #include "snap_lib.h"
 #include "snap_sounds.h"
 #include "snap_taskbar.h"
-#include "snap_lineup.h"
 #include "snap_grid.h"
 
 #ifdef IH_USE_REGISTRY
@@ -85,7 +84,6 @@ BEGIN_SREG_MAP()
 	SREG_ENTRY(REGT_BOOL,	setVGridVal,			getVGridVal,		"vgridval")
 END_SREG_MAP()
 
-//	SREG_ENTRY(REGT_BOOL,	setIsAutolineupOn,		IsAutolineupOn,		"auto_lineup")
 BOOL getVal(HKEY myKey,
 			LPCTSTR value_name,
 			LPBYTE p_data,

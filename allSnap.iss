@@ -25,7 +25,6 @@ Source: "Release\snapToA.exe"; DestDir: "{app}"; DestName: "allSnap.exe"; MinVer
 Source: "Release\snap_libA.dll"; DestDir: "{app}"; MinVersion: 1, 0
 Source: "Release_UNICODE\snapToW.exe"; DestDir: "{app}"; DestName: "allSnap.exe"; MinVersion: 0, 1
 Source: "Release_UNICODE\snap_libW.dll"; DestDir: "{app}"; MinVersion: 0, 1
-Source: "Release\auto_lineup.dll"; DestDir: "{app}";
 Source: "snap.wav"; DestDir: "{app}"
 Source: "unsnap.wav"; DestDir: "{app}"
 Source: "allSnap.chm"; DestDir: "{app}"

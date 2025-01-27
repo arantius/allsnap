@@ -17,7 +17,6 @@
 #include "snap_sounds.h"
 #include "snap_taskbar.h"
 #include "snap_debug.h"
-#include "snap_lineup.h"
 
 /**************************************************************************
    Global Variables
@@ -171,9 +170,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	UnloadMyStuff();
 	//SaveSettingsToINI();
 	SnapUnHookAll();
-#ifdef ASNAP_AUTO_LINEUP
-	LINEUP_Cleanup();
-#endif
 	/*	let OS remove mutex
 	if (g_hMutex != NULL){
 		ReleaseMutex(g_hMutex);

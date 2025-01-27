@@ -22,7 +22,6 @@
 #include "snap_App.h"
 #include "ctxhelp.h"
 #include "snap_ini.h"
-//#include "snap_lineup.h"
 
 /*====================================================================
 Globals
@@ -466,15 +465,6 @@ void ValidatePrefs(HWND hDlg){
 LRESULT Adv_OnInitDialog(HWND hDlg, HWND hwndFocus, LPARAM lParam){
 	BOOL cropping_top = isCroppingTop();
 
-#ifdef ASNAP_AUTO_LINEUP
-	Set_Checked(hDlg,IDC_AUTOLINEUP,IsAutolineupOn());
-
-	EnableWindow(GetDlgItem(hDlg,IDC_AUTOLINEUP),!g_isXP);
-
-#else
-	ShowWindow(GetDlgItem(hDlg,IDC_AUTOLINEUP),SW_HIDE);
-#endif
-
 	Set_Checked(hDlg,IDC_INVTOGGLE,!isDisableToggle());
 	Set_Checked(hDlg,IDC_SNAPMDI,isSnapMdi());
 	Set_Checked(hDlg,IDC_INSIDES,!isSnappingInsides());
@@ -740,7 +730,6 @@ BOOL Adv_OnCommand(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify){
 		case IDC_QUIETFAST:
 		case IDC_INVTOGGLE:
 		case IDC_INSIDES:
-		case IDC_AUTOLINEUP:
 		case IDC_HIDEICON:
 		case IDC_KEPT:
 		case IDC_CROP_RGN:
@@ -915,7 +904,6 @@ INLINE void ApplyAdv(HWND hDlg){
 	setCroppingTop		( Is_Checked(hDlg,IDC_CROPTOPC) && (new_crop_val != 0) );
 	setKeptToScreen		( Is_Checked(hDlg,IDC_KEPT));
 	setCroppingRgn			( !Is_Checked(hDlg,IDC_CROP_RGN));
-	//setIsAutolineupOn	( Is_Checked(hDlg,IDC_AUTOLINEUP));
 
 	EnableWindow(
 		GetDlgItem(hDlg,IDC_CROPTOP), 
