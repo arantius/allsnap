@@ -613,7 +613,7 @@
     <None Include="about.html" />
     <None Include="allSnap.iss" />
     <None Include="allSnapDebug.iss" />
-    <None Include="arrow.cur" />
+    <None Include="hand.cur" />
     <None Include="help.html" />
     <None Include="introducing.html" />
     <None Include="knownproblems.html" />
@@ -623,17 +623,16 @@
     <None Include="settings.html" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="disabled_64.ico" />
+    <Image Include="enabled_move.ico" />
     <Image Include="disabled.ico" />
+    <Image Include="snap_tos.ico" />
+    <Image Include="xptray_enabled_nosizing.ico" />
+    <Image Include="snapit_64.ico" />
+    <Image Include="enabled_64.ico" />
+    <Image Include="speaker.ico" />
     <Image Include="enabled.ico" />
-    <Image Include="ico00001.ico" />
-    <Image Include="ico00003.ico" />
-    <Image Include="ico00005.ico" />
-    <Image Include="ico00007.ico" />
-    <Image Include="ico00008.ico" />
-    <Image Include="ico00009.ico" />
-    <Image Include="icon1.ico" />
-    <Image Include="icon2.ico" />
-    <Image Include="Icon5.ico" />
+    <Image Include="play.ico" />
     <Image Include="snapit.ico" />
     <Image Include="x-click-but21 copy.bmp" />
     <Image Include="xpenable.ico" />

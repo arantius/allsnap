@@ -96,7 +96,7 @@ BOOL ResetTaskbarIcon(void)
 		tip_id	= IDS_ENABLED_TIP;
 		icon_id	= 
 #ifdef DBG_NO_SIZING
-			IDI_XPENABLED1;
+			IDI_XPENABLED_NOSIZING;
 #else
 			(g_isXP)?IDI_XPENABLED:IDI_ENABLED;
 #endif

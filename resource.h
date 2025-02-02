@@ -67,7 +67,7 @@
 #define IDI_ICON1                       217
 #define IDI_XPENABLED                   217
 #define IDM_DEBUG                       218
-#define IDI_XPENABLED1                  218
+#define IDI_XPENABLED_NOSIZING          218
 #define IDD_DEBUG                       219
 #define ID_NOTIFY_ADD                   220
 #define IDD_GRID                        220

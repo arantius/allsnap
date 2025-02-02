@@ -103,7 +103,7 @@
     <None Include="allSnapDebug.iss">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="arrow.cur">
+    <None Include="hand.cur">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="help.html">
@@ -126,37 +126,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="disabled_64.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="enabled_move.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="disabled.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="xptray_enabled_nosizing.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="snapit_64.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="enabled_64.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="speaker.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="enabled.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="ico00001.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="ico00003.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="ico00005.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="ico00007.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="ico00008.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="ico00009.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="icon1.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="icon2.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Icon5.ico">
+    <Image Include="play.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="snapit.ico">
@@ -172,6 +166,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="xptray_enabled.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="snap_tos.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

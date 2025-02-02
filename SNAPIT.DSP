@@ -274,19 +274,19 @@ SOURCE=.\arrow.cur
 # End Source File
 # Begin Source File
 
+SOURCE=.\disabled_64.ico
+# End Source File
+# Begin Source File
+
+SOURCE=.\enabled_move.ico
+# End Source File
+# Begin Source File
+
 SOURCE=.\disabled.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\enabled.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\ico00001.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\ico00003.ico
+SOURCE=.\snap_tos.ico
 # End Source File
 # Begin Source File
 
@@ -294,7 +294,7 @@ SOURCE=.\ico00004.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\ico00005.ico
+SOURCE=xptray_enabled_nosizing.ico
 # End Source File
 # Begin Source File
 
@@ -306,7 +306,7 @@ SOURCE=.\icon1.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\icon2.ico
+SOURCE=.\enabled.ico
 # End Source File
 # Begin Source File
 

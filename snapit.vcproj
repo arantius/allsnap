@@ -1316,11 +1316,11 @@
 				>
 			</File>
 			<File
-				RelativePath="disabled.ico"
+				RelativePath="disabled_64.ico"
 				>
 			</File>
 			<File
-				RelativePath="enabled.ico"
+				RelativePath="enabled_move.ico"
 				>
 			</File>
 			<File
@@ -1328,11 +1328,11 @@
 				>
 			</File>
 			<File
-				RelativePath="ico00001.ico"
+				RelativePath="disabled.ico"
 				>
 			</File>
 			<File
-				RelativePath="ico00003.ico"
+				RelativePath="snap_tos.ico"
 				>
 			</File>
 			<File
@@ -1340,7 +1340,7 @@
 				>
 			</File>
 			<File
-				RelativePath="ico00005.ico"
+				RelativePath="xptray_enabled_nosizing.ico"
 				>
 			</File>
 			<File
@@ -1348,27 +1348,23 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ico00007.ico"
+				RelativePath="snapit_64.ico"
 				>
 			</File>
 			<File
-				RelativePath=".\ico00008.ico"
+				RelativePath="enabled_64.ico"
 				>
 			</File>
 			<File
-				RelativePath=".\ico00009.ico"
+				RelativePath="speaker.ico"
 				>
 			</File>
 			<File
-				RelativePath="icon1.ico"
+				RelativePath="enabled.ico"
 				>
 			</File>
 			<File
-				RelativePath="icon2.ico"
-				>
-			</File>
-			<File
-				RelativePath=".\Icon5.ico"
+				RelativePath="play.ico"
 				>
 			</File>
 			<File
