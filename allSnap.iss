@@ -15,7 +15,7 @@ AppVersion=1.31.4
 DefaultDirName={pf}\allSnap
 DefaultGroupName=allSnap
 UninstallDisplayIcon={app}\allSnap.exe
-LicenseFile=EULA.txt
+LicenseFile=LICENSE
 AllowNoIcons=yes
 ; uncomment the following line if you want your installation to run on NT 3.51 too.
 ; MinVersion=4,3.51

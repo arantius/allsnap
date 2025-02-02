@@ -15,7 +15,7 @@ AppVersion=1.32
 DefaultDirName={pf}\allSnapBeta
 DefaultGroupName=allSnapBeta
 UninstallDisplayIcon={app}\allSnap.exe
-LicenseFile=EULA.txt
+LicenseFile=LICENSE
 AllowNoIcons=yes
 PrivilegesRequired=admin
 ; uncomment the following line if you want your installation to run on NT 3.51 too.
