@@ -106,12 +106,6 @@
     <None Include="arrow.cur">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="cursor1.cur">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="cursor2.cur">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="help.html">
       <Filter>Resource Files</Filter>
     </None>
@@ -132,49 +126,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bitmap1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="bmp00001.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="desktop_.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="disabled.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="disabled3.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="disabled5.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="enabled.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="enabled3.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="enabled5.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="ico00001.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="ico00002.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="ico00003.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="ico00004.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="ico00005.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="ico00006.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="ico00007.ico">
@@ -192,37 +156,10 @@
     <Image Include="icon2.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="icon3.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Icon5.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="others.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="others_d.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="self_dis.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="small.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="snapit.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="snapitold.ICO">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="snapto.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="snaptoA.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="snaptoW.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="x-click-but21 copy.bmp">

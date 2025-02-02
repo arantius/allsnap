@@ -274,35 +274,7 @@ SOURCE=.\arrow.cur
 # End Source File
 # Begin Source File
 
-SOURCE=.\bitmap1.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\bmp00001.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\cursor1.cur
-# End Source File
-# Begin Source File
-
-SOURCE=.\cursor2.cur
-# End Source File
-# Begin Source File
-
-SOURCE=.\desktop_.ico
-# End Source File
-# Begin Source File
-
 SOURCE=.\disabled.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\disabled3.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\disabled5.ico
 # End Source File
 # Begin Source File
 
@@ -310,19 +282,7 @@ SOURCE=.\enabled.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\enabled3.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\enabled5.ico
-# End Source File
-# Begin Source File
-
 SOURCE=.\ico00001.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\ico00002.ico
 # End Source File
 # Begin Source File
 
@@ -354,47 +314,11 @@ SOURCE=.\icon256_7.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\icon3.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\others.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=.\others_d.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\self_dis.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\small.ico
-# End Source File
-# Begin Source File
-
 SOURCE=.\snapit.ico
 # End Source File
 # Begin Source File
 
 SOURCE=.\snapit.rc
-# End Source File
-# Begin Source File
-
-SOURCE=.\snapitold.ICO
-# End Source File
-# Begin Source File
-
-SOURCE=.\snapto.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\snaptoA.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\snaptoW.ico
 # End Source File
 # End Group
 # Begin Source File

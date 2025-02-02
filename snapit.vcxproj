@@ -614,8 +614,6 @@
     <None Include="allSnap.iss" />
     <None Include="allSnapDebug.iss" />
     <None Include="arrow.cur" />
-    <None Include="cursor1.cur" />
-    <None Include="cursor2.cur" />
     <None Include="help.html" />
     <None Include="introducing.html" />
     <None Include="knownproblems.html" />
@@ -625,37 +623,18 @@
     <None Include="settings.html" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="bitmap1.bmp" />
-    <Image Include="bmp00001.bmp" />
-    <Image Include="desktop_.ico" />
     <Image Include="disabled.ico" />
-    <Image Include="disabled3.ico" />
-    <Image Include="disabled5.ico" />
     <Image Include="enabled.ico" />
-    <Image Include="enabled3.ico" />
-    <Image Include="enabled5.ico" />
     <Image Include="ico00001.ico" />
-    <Image Include="ico00002.ico" />
     <Image Include="ico00003.ico" />
-    <Image Include="ico00004.ico" />
     <Image Include="ico00005.ico" />
-    <Image Include="ico00006.ico" />
     <Image Include="ico00007.ico" />
     <Image Include="ico00008.ico" />
     <Image Include="ico00009.ico" />
     <Image Include="icon1.ico" />
     <Image Include="icon2.ico" />
-    <Image Include="icon3.ico" />
     <Image Include="Icon5.ico" />
-    <Image Include="others.bmp" />
-    <Image Include="others_d.ico" />
-    <Image Include="self_dis.ico" />
-    <Image Include="small.ico" />
     <Image Include="snapit.ico" />
-    <Image Include="snapitold.ICO" />
-    <Image Include="snapto.ico" />
-    <Image Include="snaptoA.ico" />
-    <Image Include="snaptoW.ico" />
     <Image Include="x-click-but21 copy.bmp" />
     <Image Include="xpenable.ico" />
     <Image Include="xptray_disabled.ico" />

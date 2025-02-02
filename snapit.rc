@@ -339,66 +339,84 @@ END
 // remains consistent on all systems.
 #if defined(APSTUDIO_INVOKED) || !defined(_WIN64)
 IDI_SNAPIT              ICON                    "snapit.ico"
+
 #endif
-IDI_ARROWSLOGO          ICON                    "ico00002.ico"
 #if defined(APSTUDIO_INVOKED) || \
     !(defined(JUST_MOVING) || defined(_WIN64))
 IDI_ENABLED             ICON                    "icon2.ico"
+
 #endif
 IDI_SNAP_TOS            ICON                    "ico00003.ico"
+
 #if defined(APSTUDIO_INVOKED) || !defined(_WIN64)
 IDI_DISABLED            ICON                    "ico00001.ico"
+
 #endif
 IDI_SPEAKER             ICON                    "icon1.ico"
+
 IDI_PLAY                ICON                    "icon5.ico"
-IDI_STOP                ICON                    "ico00004.ico"
+
 IDI_XPDISABLED          ICON                    "xptray_disabled.ico"
+
 #if defined(APSTUDIO_INVOKED) || \
     !(defined(JUST_MOVING) || defined(_WIN64))
 IDI_XPENABLED           ICON                    "xptray_enabled.ico"
+
 #endif
 #if defined(APSTUDIO_INVOKED) || defined(JUST_MOVING)
 #if defined(APSTUDIO_INVOKED)
 IDI_XPENABLED$(JUST_MOVING) ICON                    "xpenable.ico"
+
 #else
 IDI_XPENABLED           ICON                    "xpenable.ico"
+
 #endif
 #endif
 #if defined(APSTUDIO_INVOKED) || defined(JUST_MOVING)
 #if defined(APSTUDIO_INVOKED)
 IDI_ENABLED$(JUST_MOVING) ICON                    "enabled.ico"
+
 #else
 IDI_ENABLED             ICON                    "enabled.ico"
+
 #endif
 #endif
 IDI_XPENABLED1          ICON                    "ico00005.ico"
+
 #if defined(APSTUDIO_INVOKED) || defined(_WIN64)
 #if defined(APSTUDIO_INVOKED)
 IDI_XPENABLED$(_WIN64)  ICON                    "ico00007.ico"
+
 #else
 IDI_XPENABLED           ICON                    "ico00007.ico"
+
 #endif
 #endif
-IDI_ICON2               ICON                    "ico00006.ico"
 #if defined(APSTUDIO_INVOKED) || defined(_WIN64)
 #if defined(APSTUDIO_INVOKED)
 IDI_SNAPIT$(_WIN64)     ICON                    "ico00008.ico"
+
 #else
 IDI_SNAPIT              ICON                    "ico00008.ico"
+
 #endif
 #endif
 #if defined(APSTUDIO_INVOKED) || defined(_WIN64)
 #if defined(APSTUDIO_INVOKED)
 IDI_ENABLED$(_WIN64)    ICON                    "ico00009.ico"
+
 #else
 IDI_ENABLED             ICON                    "ico00009.ico"
+
 #endif
 #endif
 #if defined(APSTUDIO_INVOKED) || defined(_WIN64)
 #if defined(APSTUDIO_INVOKED)
 IDI_DISABLED$(_WIN64)   ICON                    "disabled.ico"
+
 #else
 IDI_DISABLED            ICON                    "disabled.ico"
+
 #endif
 #endif
 
@@ -409,6 +427,7 @@ IDI_DISABLED            ICON                    "disabled.ico"
 
 IDC_MYHAND              CURSOR                  "arrow.cur"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
@@ -416,12 +435,6 @@ IDC_MYHAND              CURSOR                  "arrow.cur"
 
 IDB_PAYPAL              BITMAP                  "x-click-but21 copy.bmp"
 
-/////////////////////////////////////////////////////////////////////////////
-//
-// RT_MANIFEST
-//
-
-//1                       RT_MANIFEST             "allSnap.exe.manifest"
 
 /////////////////////////////////////////////////////////////////////////////
 //

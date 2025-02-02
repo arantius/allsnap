@@ -951,8 +951,6 @@ void TestSound(HWND hDlg,HWND hwndCtrl,enum SNAP_SOUND which_sound){
 			IDC_UNSNAP_FILE),
 		file_name,
 		MAX_PATH);
-//	SendMessage(hwndCtrl,BM_SETIMAGE,
-//			(WPARAM)IMAGE_ICON,(LPARAM)g_hiStop);
 	SnapSounds_Test(file_name);
 }
 

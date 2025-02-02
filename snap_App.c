@@ -33,7 +33,6 @@ HANDLE			g_hiPaypal;
 //HANDLE		g_htSnapSounds;
 
 HICON			g_hiPlay;
-HICON			g_hiStop;
 
 UINT			g_sounds_thread_id;
 
@@ -356,7 +355,6 @@ BOOL InitMyStuff(HINSTANCE hInstance){
 		IMAGE_BITMAP,110,23,LR_LOADTRANSPARENT|LR_LOADMAP3DCOLORS);
 	
 	g_hiPlay = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_PLAY));
-	g_hiStop =LoadIcon(hInstance,MAKEINTRESOURCE(IDI_STOP));
 
 	LoadSettingsFromINI();
 
@@ -374,7 +372,6 @@ BOOL UnloadMyStuff(void){
 	DeleteObject(g_hcHand);
 	DeleteObject(g_hiPaypal);
 	DestroyIcon(g_hiPlay);
-	DestroyIcon(g_hiStop);
 	//SaveSettingsToINI();
 /*
 	if (!SaveSettingsToRegistry()){

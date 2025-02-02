@@ -24,6 +24,5 @@ extern BOOL g_isXP;
 void InitCmnCtls(void);
 
 extern HICON	g_hiPlay;
-extern HICON	g_hiStop;
 
 #endif // !defined(AFX_SNAPIT_H__70813C66_3FFA_11D6_8738_444553540000__INCLUDED_)

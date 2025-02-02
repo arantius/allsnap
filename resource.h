@@ -57,13 +57,11 @@
 #define IDD_GENERAL                     168
 #define IDD_SOUNDS                      169
 #define IDI_ENABLED                     170
-#define IDI_ARROWSLOGO                  178
 #define IDR_WHAT                        200
 #define IDM_WHAT                        201
 #define IDR_WHAT3                       201
 #define IDB_PAYPAL                      204
 #define IDI_PLAY                        208
-#define IDI_STOP                        209
 #define IDD_ADVANCED                    211
 #define IDI_XPDISABLED                  215
 #define IDI_ICON1                       217
@@ -82,7 +80,6 @@
 #define ID_NOTIFY_COPY                  227
 #define IDR_MENU1                       228
 #define IDR_COPY                        228
-#define IDI_ICON2                       231
 #define IDS_DEBUG_MSG                   500
 #define IDS_STRING501                   501
 #define IDS_STRING502                   502

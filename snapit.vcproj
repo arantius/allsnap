@@ -1316,47 +1316,11 @@
 				>
 			</File>
 			<File
-				RelativePath="bitmap1.bmp"
-				>
-			</File>
-			<File
-				RelativePath="bmp00001.bmp"
-				>
-			</File>
-			<File
-				RelativePath="cursor1.cur"
-				>
-			</File>
-			<File
-				RelativePath="cursor2.cur"
-				>
-			</File>
-			<File
-				RelativePath="desktop_.ico"
-				>
-			</File>
-			<File
 				RelativePath="disabled.ico"
 				>
 			</File>
 			<File
-				RelativePath="disabled3.ico"
-				>
-			</File>
-			<File
-				RelativePath="disabled5.ico"
-				>
-			</File>
-			<File
 				RelativePath="enabled.ico"
-				>
-			</File>
-			<File
-				RelativePath="enabled3.ico"
-				>
-			</File>
-			<File
-				RelativePath="enabled5.ico"
 				>
 			</File>
 			<File
@@ -1365,10 +1329,6 @@
 			</File>
 			<File
 				RelativePath="ico00001.ico"
-				>
-			</File>
-			<File
-				RelativePath="ico00002.ico"
 				>
 			</File>
 			<File
@@ -1408,10 +1368,6 @@
 				>
 			</File>
 			<File
-				RelativePath="icon3.ico"
-				>
-			</File>
-			<File
 				RelativePath=".\Icon5.ico"
 				>
 			</File>
@@ -1424,14 +1380,6 @@
 				>
 			</File>
 			<File
-				RelativePath="others.bmp"
-				>
-			</File>
-			<File
-				RelativePath="others_d.ico"
-				>
-			</File>
-			<File
 				RelativePath=".\performance.html"
 				>
 			</File>
@@ -1440,15 +1388,7 @@
 				>
 			</File>
 			<File
-				RelativePath="self_dis.ico"
-				>
-			</File>
-			<File
 				RelativePath=".\settings.html"
-				>
-			</File>
-			<File
-				RelativePath="small.ico"
 				>
 			</File>
 			<File
@@ -1474,22 +1414,6 @@
 						PreprocessorDefinitions="_DEBUG;UNICODE;$(NoInherit)"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="snapitold.ICO"
-				>
-			</File>
-			<File
-				RelativePath="snapto.ico"
-				>
-			</File>
-			<File
-				RelativePath="snaptoA.ico"
-				>
-			</File>
-			<File
-				RelativePath="snaptoW.ico"
-				>
 			</File>
 			<File
 				RelativePath=".\x-click-but21 copy.bmp"
