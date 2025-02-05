@@ -366,7 +366,7 @@
     <Image Include="enabled.ico" />
     <Image Include="play.ico" />
     <Image Include="snapit.ico" />
-    <Image Include="x-click-but21 copy.bmp" />
+    <Image Include="x-click-but21.bmp" />
     <Image Include="xpenable.ico" />
     <Image Include="xptray_disabled.ico" />
     <Image Include="xptray_enabled.ico" />

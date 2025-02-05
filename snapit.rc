@@ -433,7 +433,7 @@ IDC_MYHAND              CURSOR                  "hand.cur"
 // Bitmap
 //
 
-IDB_PAYPAL              BITMAP                  "x-click-but21 copy.bmp"
+IDB_PAYPAL              BITMAP                  "x-click-but21.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////
