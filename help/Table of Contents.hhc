@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="Auto Generated" value="Yes">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Settings">
+		<param name="Local" value="settings.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Introducing allSnap">
+		<param name="Local" value="introducing.html">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Running">
+			<param name="Local" value="running.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="About allSnap">
+			<param name="Local" value="about.html">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Contact">
+				<param name="Local" value="about.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Support">
+				<param name="Local" value="about.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Copyright">
+				<param name="Local" value="about.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Known Problems">
+			<param name="Local" value="knownproblems.html">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Performance/Stability">
+				<param name="Local" value="knownproblems.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Cannot delete snap_libX.dll">
+				<param name="Local" value="knownproblems.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Window doesn't snap">
+				<param name="Local" value="knownproblems.html">
+				</OBJECT>
+		</UL>
+	</UL>
+</UL>
+</BODY></HTML>

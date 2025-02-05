@@ -343,17 +343,10 @@
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="about.html" />
     <None Include="allSnap.iss" />
     <None Include="allSnapDebug.iss" />
     <None Include="hand.cur" />
-    <None Include="help.html" />
-    <None Include="introducing.html" />
-    <None Include="knownproblems.html" />
-    <None Include="performance.html" />
     <None Include="Resource.hm" />
-    <None Include="running.html" />
-    <None Include="settings.html" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="disabled_64.ico" />
