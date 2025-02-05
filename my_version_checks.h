@@ -1,1 +1,0 @@
-#define IS_WIN95(os) (os.dwMajorVersion==4)

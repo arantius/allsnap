@@ -388,13 +388,16 @@
     <ClInclude Include="snap_InTests.h" />
     <ClInclude Include="snap_KeepToScreen.h" />
     <ClInclude Include="snap_lib.h" />
+    <ClInclude Include="snap_lib_internal.h" />
     <ClInclude Include="snap_MouseSpeed.h" />
     <ClInclude Include="snap_MultiSz.h" />
     <ClInclude Include="snap_registry.h" />
     <ClInclude Include="snap_results.h" />
     <ClInclude Include="snap_ResultStack.h" />
     <ClInclude Include="snap_testers.h" />
+    <ClInclude Include="snap_testinfo.h" />
     <ClInclude Include="snap_TrackResults.h" />
+    <ClInclude Include="snap_types.h" />
     <ClInclude Include="snap_WinRects.h" />
   </ItemGroup>
   <ItemGroup>

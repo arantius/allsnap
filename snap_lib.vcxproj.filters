@@ -122,6 +122,15 @@
     <ClInclude Include="snapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="snap_lib_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="snap_testinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="snap_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="snap_lib1.rc">
