@@ -44,8 +44,6 @@
 #define IDI_DISABLED                    136
 #define IDS_CHECK_VERTICAL              136
 #define IDD_ABOUT                       137
-#define IDS_H_NUM_EVEN                  137
-#define IDS_H_PIXELS_BTWN               138
 #define IDI_SPEAKER                     143
 #define IDI_SNAP_TOS                    144
 #define IDD_GENERAL                     168

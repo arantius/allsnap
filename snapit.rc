@@ -491,8 +491,6 @@ BEGIN
     IDS_CROP_RGN            "Crops a window to its visible region before performing snapping"
     IDS_CHECK_HORIZONTAL    "snap to horizontal grid lines"
     IDS_CHECK_VERTICAL      "snap to vertical grid lines"
-    IDS_H_NUM_EVEN          "use X evenly separated lines"
-    IDS_H_PIXELS_BTWN       "use horizontal grid with X pixels between lines"
 END
 
 STRINGTABLE
