@@ -367,9 +367,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="snap_lib.vcxproj">
       <Project>{01723dec-96cd-490c-905e-e96b08685a52}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
