@@ -35,21 +35,41 @@ LPCRECT Crop_GetPUncroppedRect(PCROP_INFO p_crop){
 
 
 void CropRect(HWND hWnd,PCROP_INFO p_crop,LPRECT pTempRect){
-	int cropAmount = getCropTop();
+	p_crop->cropping_active = FALSE;
+	if (!isWindowCroppable(hWnd)) return;
+	if (!isCroppingEnabled()) return;
 
-	if (p_crop->has_rgn){
-        cropAmount -= p_crop->rcRgn.top;
-	}
-	if (isWindowCroppable(hWnd)){
-		if (cropAmount > 0){
+	if (getCropTop()) {
+		int amount = getCropTop();
+		if (p_crop->has_rgn) amount -= p_crop->rcRgn.top;
+		if (amount > 0) {
 			p_crop->cropping_active = TRUE;
-			pTempRect->top += cropAmount;
+			pTempRect->top += amount;
 		}
-		else{
-			p_crop->cropping_active = FALSE;
+	}
+	if (getCropBottom()) {
+		int amount = getCropBottom();
+		if (p_crop->has_rgn) amount -= p_crop->rcRgn.bottom;
+		if (amount > 0) {
+			p_crop->cropping_active = TRUE;
+			pTempRect->bottom -= amount;
 		}
-	}else{
-		p_crop->cropping_active = FALSE;
+	}
+	if (getCropLeft()) {
+		int amount = getCropLeft();
+		if (p_crop->has_rgn) amount -= p_crop->rcRgn.left;
+		if (amount > 0) {
+			p_crop->cropping_active = TRUE;
+			pTempRect->left += amount;
+		}
+	}
+	if (getCropRight()) {
+		int amount = getCropRight();
+		if (p_crop->has_rgn) amount -= p_crop->rcRgn.right;
+		if (amount > 0) {
+			p_crop->cropping_active = TRUE;
+			pTempRect->right -= amount;
+		}
 	}
 }
 

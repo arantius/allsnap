@@ -921,22 +921,20 @@ INLINE void ApplyThresh(HWND hDlg){
 }
 
 INLINE void ApplyAdv(HWND hDlg){
-	int new_crop_val = GetDlgItemInt(hDlg,IDC_CROPTOP,NULL,FALSE); 
-	setSnapMdi			( Is_Checked(hDlg,IDC_SNAPMDI));
-	setDisableToggle	(!Is_Checked(hDlg,IDC_INVTOGGLE));
-	setSnappingInsides	(!Is_Checked(hDlg,IDC_INSIDES));
-	setCropTop			(new_crop_val);
-	setIconHidden		( Is_Checked(hDlg,IDC_HIDEICON));
-	setCroppingEnabled		( Is_Checked(hDlg,IDC_CROPTOPC) && (new_crop_val != 0) );
-	setKeptToScreen		( Is_Checked(hDlg,IDC_KEPT));
-	setCroppingRgn			( !Is_Checked(hDlg,IDC_CROP_RGN));
+	setSnapMdi        ( Is_Checked(hDlg,IDC_SNAPMDI));
+	setDisableToggle  (!Is_Checked(hDlg,IDC_INVTOGGLE));
+	setSnappingInsides(!Is_Checked(hDlg,IDC_INSIDES));
+	setIconHidden     ( Is_Checked(hDlg,IDC_HIDEICON));
+	setCroppingEnabled( Is_Checked(hDlg,IDC_CROPTOPC) );
+	setKeptToScreen   ( Is_Checked(hDlg,IDC_KEPT));
+	setCroppingRgn    (!Is_Checked(hDlg,IDC_CROP_RGN));
 
-	EnableWindow(
-		GetDlgItem(hDlg,IDC_CROPTOP), 
-		(getCropTop()!=0) && Is_Checked(hDlg,IDC_CROPTOPC)
-	);
+	setCropTop(GetDlgItemInt(hDlg, IDC_CROP_TOP, NULL, FALSE));
+	setCropBottom(GetDlgItemInt(hDlg, IDC_CROP_BOT, NULL, FALSE));
+	setCropLeft(GetDlgItemInt(hDlg, IDC_CROP_LEFT, NULL, FALSE));
+	setCropRight(GetDlgItemInt(hDlg, IDC_CROP_RIGHT, NULL, FALSE));
 
-	Set_Checked(hDlg,IDC_CROPTOPC,isCroppingEnabled());
+	Adv_EnableCropValues(hDlg);
 }
 
 INLINE void ApplyToggleKey(HWND hDlg){
