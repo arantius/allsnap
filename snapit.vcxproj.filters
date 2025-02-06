@@ -27,9 +27,6 @@
     <ClCompile Include="snap_grid.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="snap_ini.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="snap_registry.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="snap_App.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="snap_ini.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="snap_lib.h">

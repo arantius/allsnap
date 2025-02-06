@@ -12,8 +12,6 @@
 #include "snap_taskbar.h"
 #include "snap_grid.h"
 
-#ifdef IH_USE_REGISTRY
-
 TCHAR szSubKey[]				= _T("Software\\IvanHeckman\\allSnap\\Settings");
 
 #define MAX_STRING_SIZE 8000
@@ -100,7 +98,6 @@ BOOL setVal(HKEY myKey,
 BOOL setStringVal(HKEY myKey,LPCTSTR value_name,LPCTSTR szFilePath);
 
 BOOL getStringVal(HKEY myKey,LPCTSTR value_name,TCHAR * string,int * p_ret_len,int max_len);
-BOOL getMultiStringVal(HKEY myKey,LPCTSTR value_name,TCHAR * string,int max_len);
 
 
 BOOL getVal(HKEY myKey,LPCTSTR value_name,LPBYTE p_data,DWORD * pdwSize){
@@ -172,7 +169,7 @@ BOOL setVal(HKEY myKey,LPCTSTR value_name, DWORD dwValType,LPBYTE lpbData,DWORD 
 	return (keyResult==ERROR_SUCCESS);
 }
 
-BOOL	LoadSettingsFromRegistry (void){
+BOOL LoadSettingsFromRegistry (void){
 	HKEY	myKey = 0;
 	DWORD	Data = 0;
 	DWORD	dwSize=sizeof(DWORD);
@@ -330,194 +327,3 @@ SSTR_ERROR:
     RegCloseKey(myKey);
 	return fOK;
 }
-
-/*
-BOOL	LoadSettingsFromRegistryOld (void){
-	HKEY	myKey;
-	DWORD  Data;
-	DWORD dwSize=sizeof(DWORD);
-	LRESULT keyResult;
-	TCHAR	path_buffer[MAX_PATH];
-	DWORD	getdir_result;
-
-
-	keyResult = RegOpenKeyEx(
-					HKEY_CURRENT_USER,  // handle to open key
-					(LPCTSTR)szSubKey,  // subkey name
-					0,					// reserved
-					KEY_READ,			// security access mask
-					&myKey				// handle to open key
-					);
-
-	if (keyResult!=ERROR_SUCCESS || myKey == NULL){//no key exists yet.
-		return FALSE;
-	}
-
-	if (getVal(myKey,szSnapTypeValueName,(LPBYTE)&Data,&dwSize)){
-		setSnapType(Data);
-		setEnabled((Data != SNAPT_NONE));
-	}
-
-	if (getVal(myKey,szThreshValueName,(LPBYTE)&Data,&dwSize)){
-        setThresh((int)Data);
-	}
-
-	if (getVal(myKey,szCropTopValueName,(LPBYTE)&Data,&dwSize)){
-        setCropTop((int)Data);
-	}
-
-	if (getVal(myKey,szPlaySoundsValueName,(LPBYTE)&Data,&dwSize)){
-		setNoisy((BOOL)Data);
-	}
-
-	if (getVal(myKey,szIsCroppingTopValueName,(LPBYTE)&Data,&dwSize)){
-		setCroppingTop((BOOL)Data);
-	}
-
-	if (getVal(myKey,szIsHiddenValueName,(LPBYTE)&Data,&dwSize)){
-		setIconHidden((BOOL)Data);
-	}
-
-	if (getVal(myKey,szDisableToggleValueName,(LPBYTE)&Data,&dwSize)){
-		setDisableToggle((BOOL)Data);
-	}
-
-	if (getVal(myKey,szSnapMdiKeyValueName,(LPBYTE)&Data,&dwSize)){
-		setSnapMdi((BOOL)Data);
-	}
-	if (getVal(myKey,szSnappingInsidesValueName,(LPBYTE)&Data,&dwSize)){
-		setSnappingInsides((BOOL)Data);
-	}
-
-	if (getVal(myKey,szToggleKeyValueName,(LPBYTE)&Data,&dwSize)){
-		setToggleKey((UINT)Data);
-	}
-
-	if (!getStringVal(myKey,szSnapSoundValueName,path_buffer,MAX_PATH)){
-		getdir_result = 
-			GetCurrentDirectory(
-				MAX_PATH,
-				path_buffer
-			);
-
-		if (getdir_result!=0){
-            wsprintf(path_buffer,_T("%s\\%s"),path_buffer,aszDefaultSoundFiles[0]);
-		}
-	}
-	SnapSounds_setPath(SOUND_SNAP,path_buffer);
-
-	if (!getStringVal(myKey,szUnsnapSoundValueName,path_buffer,MAX_PATH)){
-		getdir_result = 
-			GetCurrentDirectory(
-				MAX_PATH,
-				path_buffer
-			);
-
-		if (getdir_result!=0){
-            wsprintf(path_buffer,_T("%s\\%s"),path_buffer,aszDefaultSoundFiles[1]);
-		}
-	}
-	SnapSounds_setPath(SOUND_UNSNAP,path_buffer);
-
-
-	RegCloseKey(myKey);
-	return TRUE;
-}*/
-
-/*
-BOOL SaveSettingsToRegistryOld (void){
-	HKEY	myKey;
-	DWORD	dwData;
-	LRESULT keyResult;
-	BOOL fOK=FALSE;
-
-	keyResult = RegCreateKeyEx(
-					HKEY_CURRENT_USER,  
-					(LPCTSTR)szSubKey,  
-					0,
-					NULL,			
-					REG_OPTION_NON_VOLATILE,
-					KEY_WRITE,
-					NULL,
-					&myKey,
-					NULL
-					);
-
-	if (keyResult!=ERROR_SUCCESS || myKey == NULL){//weird stuff yo
-
-		return FALSE;
-	}
-
-	dwData = getSnapType();
-	
-	if (!setVal(myKey,szSnapTypeValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-	dwData = (DWORD)getThresh();
-
-	if (!setVal(myKey,szThreshValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-	dwData = (DWORD)getCropTop();
-
-	if (!setVal(myKey,szCropTopValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-	dwData = (DWORD)getToggleKey();
-	if (!setVal(myKey,szToggleKeyValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-	dwData = (DWORD)isNoisy();
-	if (!setVal(myKey,szPlaySoundsValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-	dwData = (DWORD)isCroppingTop();
-	if (!setVal(myKey,szIsCroppingTopValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-
-	dwData = (DWORD)isTaskbarIconHidden();
-	if (!setVal(myKey,szIsHiddenValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-	dwData = (DWORD)isDisableToggle();
-	if (!setVal(myKey,szDisableToggleValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-	dwData = (DWORD)isSnappingInsides();
-	if (!setVal(myKey,szSnappingInsidesValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-
-
-	dwData = (DWORD)isSnapMdi();
-	if (!setVal(myKey,szSnapMdiKeyValueName,REG_DWORD,(LPBYTE)&dwData,sizeof(DWORD))){
-		goto SSTR_END;
-	}
-	
-
-	if (!setStringVal (myKey,szSnapSoundValueName,SnapSounds_getPath(SOUND_SNAP))){
-		goto SSTR_END;
-	}
-	
-	if (!setStringVal (myKey,szUnsnapSoundValueName,SnapSounds_getPath(SOUND_UNSNAP))){
-		goto SSTR_END;
-	}
-
-	fOK=TRUE;
-
-	SSTR_END:
-	
-	RegCloseKey(myKey);
-	return fOK;
-}*/
-
-#endif

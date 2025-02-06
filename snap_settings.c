@@ -21,7 +21,7 @@
 #include "snap_taskbar.h"
 #include "snap_App.h"
 #include "ctxhelp.h"
-#include "snap_ini.h"
+#include "snap_registry.h"
 
 /*====================================================================
 Globals
@@ -152,7 +152,7 @@ HWND DoPropertySheet(HWND hwndOwner)
     PROPSHEETHEADER psh;
 
 	InitCmnCtls();
-	LoadSettingsFromINI();
+	LoadSettingsFromRegistry();
 
     psp[0].dwSize = sizeof(PROPSHEETPAGE);
     psp[0].dwFlags = PSP_USETITLE;
@@ -294,7 +294,7 @@ LRESULT CALLBACK PrefsProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam
 				{
 				case PSN_APPLY:   //sent when OK or Apply button pressed
 					ApplyPrefs(hDlg);
-					SaveSettingsToINI();
+					SaveSettingsToRegistry();
 					break;
 
 				case PSN_RESET:   //sent when Cancel button pressed
@@ -335,7 +335,7 @@ LRESULT CALLBACK SoundsProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 				case PSN_APPLY:   //sent when OK or Apply button pressed
 					SnapSounds_StopTest();
 					ApplySounds(hDlg);
-					SaveSettingsToINI();
+					SaveSettingsToRegistry();
 					break;
 				case PSN_RESET:   //sent when Cancel button pressed
 					SnapSounds_StopTest();
@@ -373,7 +373,7 @@ LRESULT CALLBACK AdvProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 				{
 				case PSN_APPLY:   //sent when OK or Apply button pressed
 					ApplyAdv(hDlg);
-					SaveSettingsToINI();
+					SaveSettingsToRegistry();
 					break;
 				case PSN_RESET: 
 					break;
@@ -411,7 +411,7 @@ LRESULT CALLBACK GridProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 				{
 				case PSN_APPLY:   //sent when OK or Apply button pressed
 					ApplyGrid(hDlg);
-					SaveSettingsToINI();
+					SaveSettingsToRegistry();
 					break;
 				case PSN_RESET: 
 					break;

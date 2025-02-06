@@ -12,7 +12,7 @@
 
 #include "snap_App.h"
 #include "snap_settings.h"
-#include "snap_ini.h"
+#include "snap_registry.h"
 #include "snap_mywm_msg.h"
 #include "snap_sounds.h"
 #include "snap_taskbar.h"
@@ -167,7 +167,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	PostThreadMessage(g_sounds_thread_id,MYWM_CLOSETHREAD,0,0);
 
 	UnloadMyStuff();
-	//SaveSettingsToINI();
+	//SaveSettingsToRegistry();
 	SnapUnHookAll();
 	/*	let OS remove mutex
 	if (g_hMutex != NULL){
@@ -356,7 +356,7 @@ BOOL InitMyStuff(HINSTANCE hInstance){
 	
 	g_hiPlay = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_PLAY));
 
-	LoadSettingsFromINI();
+	LoadSettingsFromRegistry();
 
 	//setEnabled(getSnapType() != SNAPT_NONE);
 
@@ -372,7 +372,7 @@ BOOL UnloadMyStuff(void){
 	DeleteObject(g_hcHand);
 	DeleteObject(g_hiPaypal);
 	DestroyIcon(g_hiPlay);
-	//SaveSettingsToINI();
+	//SaveSettingsToRegistry();
 /*
 	if (!SaveSettingsToRegistry()){
 			MY_MB(_T("Didn't Save Settings"));
@@ -518,11 +518,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 		case WM_QUERYENDSESSION:
 		case WM_ENDSESSION:
-			//SaveSettingsToINI();
+			//SaveSettingsToRegistry();
 			return 1;
 
 		case WM_CLOSE:
-			//SaveSettingsToINI();
+			//SaveSettingsToRegistry();
 			return 0;
 
 

@@ -276,10 +276,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug UNICODE|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="snap_ini.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug UNICODE|Win32'">
-      </PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="snap_registry.c">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug UNICODE|Win32'">Disabled</Optimization>
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug UNICODE|Win32'">EnableFastChecks</BasicRuntimeChecks>
@@ -332,7 +328,6 @@
     <ClInclude Include="snapper.h" />
     <ClInclude Include="snap_App.h" />
     <ClInclude Include="snap_debug.h" />
-    <ClInclude Include="snap_ini.h" />
     <ClInclude Include="snap_lib.h" />
     <ClInclude Include="snap_mywm_msg.h" />
     <ClInclude Include="snap_registry.h" />
