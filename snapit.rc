@@ -132,16 +132,23 @@ IDD_ADVANCED DIALOGEX 0, 0, 212, 188
 STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
-    CONTROL         "Snap MDI windows",IDC_SNAPMDI,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,34,77,9,0,HIDC_SNAPMDI
-    CONTROL         "Invert toggle key",IDC_INVTOGGLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,47,69,10,0,HIDC_INVTOGGLE
-    CONTROL         "Don't snap to inside edges",IDC_INSIDES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,60,99,10,0,HIDC_INSIDES
-    CONTROL         "Hide icon  (run again to unhide)",IDC_HIDEICON,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,73,115,10,0,HIDC_HIDEICON
-    CONTROL         "Crop top of windows by",IDC_CROPTOPC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,86,86,11,0,HIDC_CROPTOPC
-    EDITTEXT        IDC_CROPTOP,120,86,10,12,ES_RIGHT | ES_NUMBER,0,HIDC_CROPTOP
-    LTEXT           "pixels",IDC_CROPTOPL,132,88,18,10,SS_NOTIFY,0,HIDC_CROPTOPL
-    CONTROL         "Constrain windows to the screen",IDC_KEPT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,100,118,10,0,HIDC_KEPT
-    GROUPBOX        "Advanced Settings",IDC_ADVL,7,7,198,129
-    CONTROL         "Ignore window clipping regions ",IDC_CROP_RGN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,113,115,10,0,HIDC_CROP_RGN
+    GROUPBOX        "Advanced Settings",IDC_ADVL,7,7,198,93
+    CONTROL         "Snap MDI windows",IDC_SNAPMDI,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,19,77,9,0,HIDC_SNAPMDI
+    CONTROL         "Invert toggle key",IDC_INVTOGGLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,31,69,10,0,HIDC_INVTOGGLE
+    CONTROL         "Don't snap to inside edges",IDC_INSIDES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,44,99,10,0,HIDC_INSIDES
+    CONTROL         "Hide icon  (run again to unhide)",IDC_HIDEICON,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,57,115,10,0,HIDC_HIDEICON
+    CONTROL         "Constrain windows to the screen",IDC_KEPT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,70,118,10,0,HIDC_KEPT
+    CONTROL         "Ignore window clipping regions ",IDC_CROP_RGN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,32,83,115,10,0,HIDC_CROP_RGN
+    GROUPBOX        "Crop window edges",IDC_GROUP_CROP,7,105,198,76
+    CONTROL         "Enabled",IDC_CROP_ENABLED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,85,141,40,11,0,HIDC_CROP_ENABLED
+    EDITTEXT        IDC_CROP_TOP,94,116,23,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "",IDC_CROP_TOP_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,107,117,10,11
+    EDITTEXT        IDC_CROP_BOT,94,162,23,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "",IDC_CROP_BOT_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,107,163,10,11
+    EDITTEXT        IDC_CROP_LEFT,14,140,23,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "",IDC_CROP_LEFT_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,27,140,10,11
+    EDITTEXT        IDC_CROP_RIGHT,175,140,23,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "",IDC_CROP_RIGHT_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,188,140,10,11
 END
 
 IDD_DEBUG DIALOGEX 0, 0, 254, 268
@@ -477,7 +484,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_CROPTOP             "Used to fix XP styles in which the windows are taller than they appear."
+    IDS_CROP_HINT           "Fix styles in which the windows exceed their borders (e.g. with drop shadows)."
     IDC_SNAPIT              "allSnap"
     IDS_HIDEICON            "Hides the system tray icon.\nRun allSnap.exe again to un-hide the icon."
     IDS_KEPT                "Prevents windows from moving off the sides of the screen."

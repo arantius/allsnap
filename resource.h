@@ -38,7 +38,7 @@
 #define IDS_INVTOGGLE                   125
 #define IDS_ADVL                        126
 #define IDS_PLAY                        127
-#define IDS_CROPTOP                     128
+#define IDS_CROP_HINT                   128
 #define IDC_SNAPIT                      129
 #define IDS_HIDEICON                    130
 #define IDS_KEPT                        131
@@ -159,10 +159,15 @@
 #define IDC_INVTOGGLE                   1075
 #define IDC_ADVL                        1076
 #define IDC_CROPTOP                     1077
+#define IDC_CROP_TOP                    1077
 #define IDC_CROPTOPL                    1078
+#define IDC_CROP_BOT                    1078
 #define IDC_CROPTOP2L                   1079
+#define IDC_CROP_LEFT                   1079
 #define IDC_HIDEICON                    1080
 #define IDC_CROPTOPC                    1081
+#define IDC_CROP_ENABLED                1081
+#define IDC_CROP_RIGHT                  1082
 #define IDC_KEPT                        1083
 #define IDC_MSGLIST                     1084
 #define IDC_CROP_RGN                    1085
@@ -182,7 +187,12 @@
 #define IDC_V_NUM_EVEN                  1101
 #define IDC_CHECK2                      1101
 #define IDC_V_PIXELS_BTWN               1102
+#define IDC_GROUP_CROP                  1102
 #define IDC_V_PIXELS_FROM_LEFT          1103
+#define IDC_CROP_TOP_SPIN               1104
+#define IDC_CROP_BOT_SPIN               1105
+#define IDC_CROP_LEFT_SPIN              1106
+#define IDC_CROP_RIGHT_SPIN             1107
 #define IDM_SETTINGS                    32772
 #define Enabled                         32773
 #define IDS_ENABLED_TIP                 32774
@@ -200,7 +210,7 @@
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        232
 #define _APS_NEXT_COMMAND_VALUE         32788
-#define _APS_NEXT_CONTROL_VALUE         1102
+#define _APS_NEXT_CONTROL_VALUE         1105
 #define _APS_NEXT_SYMED_VALUE           111
 #endif
 #endif

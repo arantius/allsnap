@@ -56,8 +56,11 @@ int		g_screen_thresh			= 10;
 UINT	g_toggle_key			= VK_MENU;
 UINT    g_center_key            = VK_CONTROL;
 UINT    g_equal_key             = VK_SHIFT;
-UINT	g_crop_top				= 3;
-BOOL	g_is_cropping_enabled		= FALSE;
+UINT	g_crop_top				= 0;
+UINT	g_crop_bottom			= 7;
+UINT	g_crop_left				= 7;
+UINT	g_crop_right			= 7;
+BOOL	g_is_cropping_enabled	= FALSE;
 BOOL	g_enabled				= TRUE;
 UINT	g_snap_type				= SNAPT_OTHERS | SNAPT_DESKTOP;
 BOOL	g_is_noisy				= FALSE;
@@ -496,10 +499,31 @@ int  WINAPI getScreenThresh(void){
 void WINAPI setCropTop(int crop_top){
 	g_crop_top = crop_top;
 }
-
 int  WINAPI getCropTop(void){
 	return g_crop_top;
 }
+
+void WINAPI setCropBottom(int crop_bottom){
+	g_crop_bottom = crop_bottom;
+}
+int  WINAPI getCropBottom(void){
+	return g_crop_bottom;
+}
+
+void WINAPI setCropLeft(int crop_left){
+	g_crop_left = crop_left;
+}
+int  WINAPI getCropLeft(void){
+	return g_crop_left;
+}
+
+void WINAPI setCropRight(int crop_right){
+	g_crop_right = crop_right;
+}
+int  WINAPI getCropRight(void){
+	return g_crop_right;
+}
+
 
 UINT WINAPI getSnapType(void){
 	return g_snap_type;

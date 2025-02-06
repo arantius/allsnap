@@ -462,6 +462,15 @@ void ValidatePrefs(HWND hDlg){
 /*******************************************************************************************
 	INIT functions
 *******************************************************************************************/
+void Adv_SetUpCropValue(
+		HWND hDlg, int idc, int idc_spin, int value, int enabled) {
+	SetDlgItemInt(hDlg, idc, value, FALSE);
+	Edit_SetSel(GetDlgItem(hDlg, idc), 0, -1);
+	EnableWindow(GetDlgItem(hDlg, idc), enabled);
+	SendMessage(
+		GetDlgItem(hDlg, idc_spin), UDM_SETRANGE, 0, MAKELPARAM(99, 0));
+}
+
 LRESULT Adv_OnInitDialog(HWND hDlg, HWND hwndFocus, LPARAM lParam){
 	BOOL cropping_enabled = isCroppingEnabled();
 
@@ -469,14 +478,18 @@ LRESULT Adv_OnInitDialog(HWND hDlg, HWND hwndFocus, LPARAM lParam){
 	Set_Checked(hDlg,IDC_SNAPMDI,isSnapMdi());
 	Set_Checked(hDlg,IDC_INSIDES,!isSnappingInsides());
 	Set_Checked(hDlg,IDC_HIDEICON,isIconHidden());
-	
-	SetDlgItemInt(hDlg,IDC_CROPTOP,getCropTop(),FALSE);
-	Edit_SetSel(GetDlgItem(hDlg,IDC_CROPTOP),0,-1);
-	EnableWindow(GetDlgItem(hDlg,IDC_CROPTOP),cropping_enabled);
-	Set_Checked(hDlg,IDC_CROPTOPC,cropping_enabled);
+	Set_Checked(hDlg,IDC_CROP_ENABLED,cropping_enabled);
 	Set_Checked(hDlg,IDC_CROP_RGN,!isCroppingRgn());
-
 	Set_Checked(hDlg,IDC_KEPT,isKeptToScreen());
+
+	Adv_SetUpCropValue(
+		hDlg, IDC_CROP_TOP, IDC_CROP_TOP_SPIN, getCropTop(), cropping_enabled);
+	Adv_SetUpCropValue(
+		hDlg, IDC_CROP_BOT, IDC_CROP_BOT_SPIN, getCropBottom(), cropping_enabled);
+	Adv_SetUpCropValue(
+		hDlg, IDC_CROP_LEFT, IDC_CROP_LEFT_SPIN, getCropLeft(), cropping_enabled);
+	Adv_SetUpCropValue(
+		hDlg, IDC_CROP_RIGHT, IDC_CROP_RIGHT_SPIN, getCropRight(), cropping_enabled);
 
 	return TRUE;
 	
@@ -718,14 +731,27 @@ BOOL Sounds_OnCommand(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify){
 	return FALSE;
 }
 
+
+static void Adv_EnableCropValues(HWND hDlg) {
+	BOOL enabled = Is_Checked(hDlg, IDC_CROP_ENABLED);
+	EnableWindow(GetDlgItem(hDlg, IDC_CROP_TOP), enabled);
+	EnableWindow(GetDlgItem(hDlg, IDC_CROP_BOT), enabled);
+	EnableWindow(GetDlgItem(hDlg, IDC_CROP_LEFT), enabled);
+	EnableWindow(GetDlgItem(hDlg, IDC_CROP_RIGHT), enabled);
+}
+
+
 BOOL Adv_OnCommand(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify){
 	BOOL changed = FALSE;
 	switch(id){
-		case IDC_CROPTOP:
+		case IDC_CROP_TOP:
+		case IDC_CROP_BOT:
+		case IDC_CROP_LEFT:
+		case IDC_CROP_RIGHT:
 			changed = (codeNotify == EN_UPDATE);
 			break;
-		case IDC_CROPTOPC:
-			EnableWindow (GetDlgItem(hDlg,IDC_CROPTOP),Is_Checked(hDlg,IDC_CROPTOPC));
+		case IDC_CROP_ENABLED:
+			Adv_EnableCropValues(hDlg);
 		case IDC_SNAPMDI:
 		case IDC_QUIETFAST:
 		case IDC_INVTOGGLE:
