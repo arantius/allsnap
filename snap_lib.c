@@ -57,7 +57,7 @@ UINT	g_toggle_key			= VK_MENU;
 UINT    g_center_key            = VK_CONTROL;
 UINT    g_equal_key             = VK_SHIFT;
 UINT	g_crop_top				= 3;
-BOOL	g_is_cropping_top		= FALSE;
+BOOL	g_is_cropping_enabled		= FALSE;
 BOOL	g_enabled				= TRUE;
 UINT	g_snap_type				= SNAPT_OTHERS | SNAPT_DESKTOP;
 BOOL	g_is_noisy				= FALSE;
@@ -452,12 +452,12 @@ void WINAPI setNoisy(BOOL is_noisy){
 	g_is_noisy = is_noisy;
 }
 
-BOOL WINAPI isCroppingTop(void){
-	return	g_is_cropping_top;
+BOOL WINAPI isCroppingEnabled(void){
+	return	g_is_cropping_enabled;
 }
 
-void WINAPI setCroppingTop(BOOL is_cropping_top){
-	g_is_cropping_top = is_cropping_top;
+void WINAPI setCroppingEnabled(BOOL is_cropping_enabled){
+	g_is_cropping_enabled = is_cropping_enabled;
 }
 
 BOOL WINAPI isSnapMdi(void){

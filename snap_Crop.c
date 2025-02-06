@@ -19,11 +19,11 @@ CROP_SIZING_INFO g_sizing_crop_info = {0};
 BOOL IsSkinnedAppClass(HWND our_hWnd);
 void CropToRgn( LPCRECT pRgnBox, LPRECT pRect);
 void UnCropSideResults(PCROP_INFO p_crop,SIDE_SNAP_RESULTS * p_ssnap);
-void CropTop(HWND hwnd,PCROP_INFO p_crop,LPRECT pTempRect);
+void CropRect(HWND hwnd,PCROP_INFO p_crop,LPRECT pTempRect);
 void CropRgn(HWND hwnd,PCROP_INFO p_crop,LPRECT pTempRect);
 
-isTopCroppable(HWND hwnd){
-	return (!IsSkinnedAppClass(hwnd) && isCroppingTop());
+isWindowCroppable(HWND hwnd){
+	return (!IsSkinnedAppClass(hwnd) && isCroppingEnabled());
 }
 
 LPCRECT Crop_GetPCroppedRect(PCROP_INFO p_crop){
@@ -34,22 +34,22 @@ LPCRECT Crop_GetPUncroppedRect(PCROP_INFO p_crop){
 }
 
 
-void CropTop(HWND hWnd,PCROP_INFO p_crop,LPRECT pTempRect){
+void CropRect(HWND hWnd,PCROP_INFO p_crop,LPRECT pTempRect){
 	int cropAmount = getCropTop();
 
 	if (p_crop->has_rgn){
         cropAmount -= p_crop->rcRgn.top;
 	}
-	if (isTopCroppable(hWnd)){
+	if (isWindowCroppable(hWnd)){
 		if (cropAmount > 0){
-			p_crop->cropping_top = TRUE;
+			p_crop->cropping_active = TRUE;
 			pTempRect->top += cropAmount;
 		}
 		else{
-			p_crop->cropping_top = FALSE;
+			p_crop->cropping_active = FALSE;
 		}
 	}else{
-		p_crop->cropping_top = FALSE;
+		p_crop->cropping_active = FALSE;
 	}
 }
 
@@ -81,7 +81,7 @@ void InitializeCropInfo(PCROP_INFO p_crop,LPCRECT pRect){
 	p_crop->uncropped_rect = *pRect;
 	p_crop->has_rgn = FALSE;
 	p_crop->rcRgn = blank_rgn;
-	p_crop->cropping_top = FALSE;
+	p_crop->cropping_active = FALSE;
 }
 
 void Crop_LoadMovingCropInfo(PCROP_INFO p_crop,HWND hWnd,LPCRECT pRect){
@@ -91,7 +91,7 @@ void Crop_LoadMovingCropInfo(PCROP_INFO p_crop,HWND hWnd,LPCRECT pRect){
 
 	//THIS MUST HAPPEN FIRST (maybe only/all windows with rgns don't need croptop)
 	CropRgn(hWnd,p_crop,&temp_rect);
-	CropTop(hWnd,p_crop,&temp_rect);
+	CropRect(hWnd,p_crop,&temp_rect);
 
 	p_crop->cropped_rect = temp_rect;
 }
@@ -188,7 +188,7 @@ void UnCropSideResults(PCROP_INFO p_crop,SIDE_SNAP_RESULTS * p_ssnap){
 
 
 void Crop_UnCropMovingResults(PCROP_INFO p_crop,SNAP_RESULTS * p_snap){
-	if ((p_crop->cropping_top) || p_crop->has_rgn){
+	if ((p_crop->cropping_active) || p_crop->has_rgn){
         UnCropSideResults(p_crop,&(p_snap->h));
 		UnCropSideResults(p_crop,&(p_snap->v));
 	}

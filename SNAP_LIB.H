@@ -24,7 +24,7 @@ SNAPLIBAPI BOOL WINAPI SnapUnHookAll(void);
 
 SNAPLIBAPI void WINAPI setGridSnap(gridsnap_settings_t const * p_grid_settings);
 SNAPLIBAPI void WINAPI setEnabled(BOOL enabled);
-SNAPLIBAPI void WINAPI setCroppingTop(BOOL enabled);
+SNAPLIBAPI void WINAPI setCroppingEnabled(BOOL enabled);
 SNAPLIBAPI void WINAPI setNoisy(BOOL noisy);
 SNAPLIBAPI void WINAPI setSnapMdi(BOOL snap_mdi);
 SNAPLIBAPI void WINAPI setDisableToggle(BOOL is_disable_toggle);
@@ -48,7 +48,7 @@ SNAPLIBAPI TCHAR * getSkinnedClasses(void);
 SNAPLIBAPI TCHAR * getIgnoredClasses(void);
 
 SNAPLIBAPI BOOL WINAPI isEnabled(void);
-SNAPLIBAPI BOOL WINAPI isCroppingTop(void);
+SNAPLIBAPI BOOL WINAPI isCroppingEnabled(void);
 SNAPLIBAPI BOOL WINAPI isNoisy(void);
 SNAPLIBAPI BOOL WINAPI isSnapMdi(void);
 SNAPLIBAPI BOOL WINAPI isDisableToggle(void);

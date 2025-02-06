@@ -1,7 +1,7 @@
 #include "snap_results.h"
 
 typedef struct CROP_INFO_TAG{
-	BOOL cropping_top;
+	BOOL cropping_active;
 	BOOL has_rgn;
 
 	RECT rcRgn;
