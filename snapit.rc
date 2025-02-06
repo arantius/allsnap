@@ -498,7 +498,6 @@ END
 
 STRINGTABLE
 BEGIN
-    Enabled                 "Enable window snapping"
     IDS_ENABLED_TIP         "allSnap - Enabled"
     IDS_DISABLED_TIP        "allSnap - Disabled"
 END

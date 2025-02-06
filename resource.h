@@ -2,9 +2,7 @@
 // Microsoft Visual C++ generated include file.
 // Used by snapit.rc
 //
-#define IDAPPLY                         2
 #define IDC_CLEAR                       3
-#define IDC_APPLY                       4
 #define IDC_SAVE                        4
 #define IDS_APP_TITLE                   103
 #define IDM_ABOUT                       104
@@ -12,12 +10,10 @@
 #define IDS_THRESHOLD_ERROR             104
 #define IDM_EXIT                        105
 #define IDS_SELF                        105
-#define IDS_HELLO                       106
 #define IDS_OTHERS                      106
 #define IDS_DESKTOP                     107
 #define IDS_VCENTER                     108
 #define IDI_SNAPIT                      109
-#define IDS_STRING109                   109
 #define IDS_HCENTER                     109
 #define IDT_MYTRAY                      110
 #define IDS_ENABLED                     110
@@ -42,7 +38,6 @@
 #define IDC_SNAPIT                      129
 #define IDS_HIDEICON                    130
 #define IDS_KEPT                        131
-#define IDS_CENTERED                    132
 #define IDS_STRING132                   132
 #define IDR_SYSMENU                     133
 #define IDS_CROP_RGN                    133
@@ -64,21 +59,11 @@
 #define IDI_PLAY                        208
 #define IDD_ADVANCED                    211
 #define IDI_XPDISABLED                  215
-#define IDI_ICON1                       217
 #define IDI_XPENABLED                   217
 #define IDM_DEBUG                       218
 #define IDI_XPENABLED_NOSIZING          218
 #define IDD_DEBUG                       219
-#define ID_NOTIFY_ADD                   220
 #define IDD_GRID                        220
-#define ID_ADD_ALARMMESSAGE             221
-#define ID_ADD_BEACONMESSAGE            222
-#define ID_ADDMESSAGE_TELEMETRYMESSAGE  223
-#define ID_ADDMESSAGE_TRACKING          224
-#define ID_Menu                         225
-#define ID_NOTIFY_CUT                   226
-#define ID_NOTIFY_COPY                  227
-#define IDR_MENU1                       228
 #define IDR_COPY                        228
 #define IDS_DEBUG_MSG                   500
 #define IDS_STRING501                   501
@@ -117,7 +102,6 @@
 #define IDS_STRING135                   534
 #define IDS_STRING535                   535
 #define IDS_STRING136                   536
-#define IDC_THRESH                      1001
 #define IDC_WIN_THRESH                  1001
 #define IDC_SCREEN_THRESH               1002
 #define IDC_DESKTOP                     1013
@@ -126,8 +110,6 @@
 #define IDC_ENABLED                     1016
 #define IDC_HCENTER                     1017
 #define IDC_VCENTER                     1018
-#define IDC_HCENTER2                    1019
-#define IDC_CENTERED                    1019
 #define IDC_PLAYSOUNDS                  1026
 #define IDC_UNSNAP_FILE                 1029
 #define IDC_BROWSE_UNSNAP               1030
@@ -135,7 +117,6 @@
 #define IDC_BROWSE_SNAP                 1032
 #define IDC_TOGGLEKEYS                  1039
 #define IDC_LINK                        1041
-#define IDC_THRESH_SPIN                 1047
 #define IDC_WIN_THRESH_SPIN             1047
 #define IDC_SCREEN_THRESH_SPIN          1048
 #define IDC_SNAPATL                     1049
@@ -151,18 +132,12 @@
 #define IDC_EMAIL                       1063
 #define IDC_PIXELSL2                    1064
 #define IDC_SNAPMDI                     1069
-#define IDC_TESTSNAPSOUND               1070
-#define IDC_TESTSNAPSOUND2              1070
-#define IDC_TESTUNSNAPSOUND             1071
 #define IDC_QUIETFAST                   1072
 #define IDC_INSIDES                     1074
 #define IDC_INVTOGGLE                   1075
 #define IDC_ADVL                        1076
-#define IDC_CROPTOP                     1077
 #define IDC_CROP_TOP                    1077
-#define IDC_CROPTOPL                    1078
 #define IDC_CROP_BOT                    1078
-#define IDC_CROPTOP2L                   1079
 #define IDC_CROP_LEFT                   1079
 #define IDC_HIDEICON                    1080
 #define IDC_CROPTOPC                    1081
@@ -185,7 +160,6 @@
 #define IDC_H_PIXELS_FROM_TOP           1100
 #define IDC_PLAY_UNSNAP                 1100
 #define IDC_V_NUM_EVEN                  1101
-#define IDC_CHECK2                      1101
 #define IDC_V_PIXELS_BTWN               1102
 #define IDC_GROUP_CROP                  1102
 #define IDC_V_PIXELS_FROM_LEFT          1103
@@ -194,7 +168,6 @@
 #define IDC_CROP_LEFT_SPIN              1106
 #define IDC_CROP_RIGHT_SPIN             1107
 #define IDM_SETTINGS                    32772
-#define Enabled                         32773
 #define IDS_ENABLED_TIP                 32774
 #define IDS_DISABLED_TIP                32775
 #define ID_ENABLEWINDOWSNAPPING         32776
