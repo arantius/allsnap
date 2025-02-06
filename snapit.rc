@@ -488,7 +488,6 @@ BEGIN
     IDC_SNAPIT              "allSnap"
     IDS_HIDEICON            "Hides the system tray icon.\nRun allSnap.exe again to un-hide the icon."
     IDS_KEPT                "Prevents windows from moving off the sides of the screen."
-    IDS_STRING132           "moving"
     IDS_CROP_RGN            "Crops a window to its visible region before performing snapping"
     IDS_CHECK_HORIZONTAL    "snap to horizontal grid lines"
     IDS_CHECK_VERTICAL      "snap to vertical grid lines"
@@ -531,55 +530,6 @@ BEGIN
     IDS_INVTOGGLE           "Inverts the toggle key.\n(holding key enables snapping)"
     IDS_ADVL                "Advanced settings"
     IDS_PLAY                "Plays the selected sound."
-END
-
-STRINGTABLE
-BEGIN
-    IDS_DEBUG_MSG           "load snapping"
-    IDS_STRING501           "unload snapping"
-    IDS_STRING502           "outside corner found"
-    IDS_STRING503           "closer side disqualifies outside corner snap"
-    IDS_STRING504           "kept side - top/bottom"
-    IDS_STRING505           "kept side - left/right"
-    IDS_STRING506           "kept corner"
-    IDS_STRING507           "kept - nudged to keep top left corner inside."
-    IDS_STRING508           "moving"
-    IDS_STRING509           "sizing"
-    IDS_STRING134           "unsnapping position"
-    IDS_STRING511           "resizing"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_STRING512           "unsnap side"
-    IDS_STRING513           "repositioning"
-    IDS_STRING514           "found a closer vertical side"
-    IDS_STRING515           "found a closer horizontal side"
-    IDS_STRING520           "INSIDECORNERREMOVED"
-    IDS_STRING521           "NONSIZINGSIDEREMOVED"
-    IDS_STRING530           "snap found"
-    IDS_STRING531           "SIZING_TOGGLEDOFF"
-    IDS_STRING532           "MOVING_TOGGLEDOFF"
-    IDS_STRING533           "OSSREJECTED"
-    IDS_STRING133           "cropping"
-    IDS_STRING517           "cropping top"
-    IDS_STRING518           "cropping hregion"
-    IDS_STRING519           "HRGEION TOP"
-    IDS_STRING522           "HREGION LEFT"
-    IDS_STRING523           "HREGION BOTTOM"
-END
-
-STRINGTABLE
-BEGIN
-    IDS_STRING524           "HREGION RIGHT"
-    IDS_STRING525           "Uncropping"
-    IDS_STRING526           "before constr."
-    IDS_STRING527           "after constr."
-    IDS_STRING528           "before uncrop"
-    IDS_STRING529           "after uncrop"
-    IDS_STRING135           "found clipping rgn"
-    IDS_STRING535           "adjusting result for rgn"
-    IDS_STRING136           "Load Sizing Crop Info..."
 END
 
 #endif    // English (Canada) resources
