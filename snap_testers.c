@@ -65,13 +65,6 @@ void moving_test_all
 
 	clear_snap_results(p_snap_results);
 	
-	if ((snap_type & SNAPT_ANY_SCREEN) != 0){
-		test_info.threshold = screen_threshold;
-		test_info.side_threshold = 0;
-		test_screens(ptest_rects,&test_info,p_snap_results);
-	}
-	
-	
 	if ((snap_type & SNAPT_OTHERS) != 0){
 		ResultStack rs_v,rs_h;
 		ResultStack_Init(&rs_v);
@@ -86,14 +79,19 @@ void moving_test_all
 
 		for (rect_index = 0 ; rect_index< ptest_rects->num_win_rects; ++rect_index){
 			test_info.yours = &(ptest_rects->win_rects[rect_index]);
-			test_rect (&test_info,p_snap_results);
+			test_rect(&test_info,p_snap_results);
 		}
+	}
+
+	if ((snap_type & SNAPT_ANY_SCREEN) != 0) {
+		test_info.threshold = screen_threshold;
+		test_info.side_threshold = 0;
+		test_screens(ptest_rects, &test_info, p_snap_results);
 	}
 
     if (isKeptToScreen()){
 		KeepToScreen(&test_info,p_snap_results);
 	}
-
 }
 
 void sizing_test_all
