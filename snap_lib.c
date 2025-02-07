@@ -51,31 +51,30 @@ gridsnap_settings_t g_gridsnap = {
 	{0,0,1}
 };
 
-int		g_win_thresh			= 10;
-int		g_screen_thresh			= 10;
-UINT	g_toggle_key			= VK_MENU;
-UINT    g_center_key            = VK_CONTROL;
-UINT    g_equal_key             = VK_SHIFT;
-UINT	g_crop_top				= 0;
-UINT	g_crop_bottom			= 7;
-UINT	g_crop_left				= 7;
-UINT	g_crop_right			= 7;
-BOOL	g_is_cropping_enabled	= FALSE;
-BOOL	g_enabled				= TRUE;
-UINT	g_snap_type				= SNAPT_OTHERS | SNAPT_DESKTOP;
-BOOL	g_is_noisy				= FALSE;
-BOOL	g_snap_mdi				= FALSE;
-BOOL	g_is_disable_toggled	= TRUE;
-BOOL	g_snap_insides 			= TRUE;
-BOOL	g_kept_to_screen		= FALSE;
-BOOL	g_cropping_rgn			= TRUE;
-OSVERSIONINFO		g_os;
+UINT g_win_thresh = 10;
+UINT g_screen_thresh = 15;
+UINT g_toggle_key = VK_MENU;
+UINT g_center_key = VK_CONTROL;
+UINT g_equal_key = VK_SHIFT;
+UINT g_crop_top = 0;
+UINT g_crop_bottom = 7;
+UINT g_crop_left = 7;
+UINT g_crop_right = 7;
+BOOL g_is_cropping_enabled = FALSE;
+BOOL g_enabled = TRUE;
+UINT g_snap_type = SNAPT_OTHERS | SNAPT_DESKTOP;
+BOOL g_is_noisy = FALSE;
+BOOL g_snap_mdi = FALSE;
+BOOL g_is_disable_toggled = TRUE;
+BOOL g_snap_insides = TRUE;
+BOOL g_kept_to_screen = FALSE;
+BOOL g_cropping_rgn = TRUE;
+BOOL g_subclassing = FALSE;
+OSVERSIONINFO g_os;
 
-BOOL	g_subclassing			= FALSE;
-
-TCHAR	g_skinned_classes[MAX_CLASSNAME_LENGTH * MAX_NUM_CLASS_NAMES] =
+TCHAR g_skinned_classes[MAX_CLASSNAME_LENGTH * MAX_NUM_CLASS_NAMES] =
   _T("icoCTactTrilly;Winamp v1.x;ConsoleWindowClass;Winamp PE;Winamp EQ;Winamp MB;BaseWindow_RootWnd");	
-TCHAR	g_ignored_classes[MAX_CLASSNAME_LENGTH * MAX_NUM_CLASS_NAMES] =
+TCHAR g_ignored_classes[MAX_CLASSNAME_LENGTH * MAX_NUM_CLASS_NAMES] =
   _T("Progman;IDEOwner;NeilShadow");
 #pragma data_seg()
 
@@ -84,15 +83,12 @@ HWND	g_subclassed_window = NULL;
 WNDPROC g_original_proc = NULL; 
 
 
-// Instruct the linker to make the Shared section
-// readable
+// Instruct the linker to make the Shared section readable
 #pragma comment(linker, SHARECMD)
 
  
 //Nonshared variables
 HINSTANCE	g_hinstDll	= NULL;
-//WNDPROC 	g_wpOrigWndProc;
-
 
 BOOL		g_moved_or_sized =FALSE;
 BOOL		g_was_zoomed=FALSE;
