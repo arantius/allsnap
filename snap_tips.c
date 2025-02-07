@@ -89,13 +89,11 @@ DWORD mapID(DWORD ctrlid){
 	hPop.rcMargins.right = 8;
 	hPop.rcMargins.bottom = 8;
 	hPop.rcMargins.top = 8;
-	hPop.idString = 0;//mapID(GetDlgCtrlID(hwndCtl));
+	hPop.idString = 0;
 	hPop.pszText=_T("No help for this item.");
-	//GetWindowRect(hwndCtl,&rect);
-	hPop.pt.x = -1;//rect.right;
-	hPop.pt.y = -1;//rect.bottom;
+	hPop.pt.x = -1;
+	hPop.pt.y = -1;
 
-	//InvalidateRect(g_hwndPropSheet,NULL,TRUE);
 	idString = mapID(GetDlgCtrlID(hwndCtl));
 	if (idString != 0){  //???? why -1 UINT is unsigned
 		LoadString(g_hInst,idString,HelpString,MAX_LOADSTRING);
@@ -103,9 +101,6 @@ DWORD mapID(DWORD ctrlid){
 	}
 
 
-	HtmlHelp(hwndCtl,
-			NULL,//_T("allSnap.chm::/ctxhelp.txt"),
-			HH_DISPLAY_TEXT_POPUP ,
-			(DWORD)&hPop) ;
+	HtmlHelp(hwndCtl, NULL, HH_DISPLAY_TEXT_POPUP, (DWORD)&hPop) ;
 #endif
- }
+}

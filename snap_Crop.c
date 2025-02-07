@@ -2,7 +2,6 @@
 //fix for certain XP styles that are taller than they look.
 
 #include "stdafx.h"
-//#include <uxtheme.h>
 #include "snap_Crop.h"
 #include "snap_lib_internal.h"
 #include "sides.h"
@@ -81,8 +80,6 @@ void CropRgn(HWND hWnd,PCROP_INFO p_crop,LPRECT pTempRect){
 
 		if (p_crop->has_rgn){
 			p_crop->rcRgn = rcRgn;
-				
-			//DBG_MSG_PRECT(g_hWnd_app,DBGMSG_FOUND_HRGN,(&rcRgn));
 			CropToRgn(&rcRgn,pTempRect);
 		}
 	}
@@ -238,11 +235,4 @@ BOOL IsSkinnedAppClass(HWND our_hWnd){
 	GetClassName(our_hWnd,pszClassName,MAX_CLASSNAME_LENGTH);
 
 	return is_name_in_classlist(pszClassName,getSkinnedClasses());	
-	/*for (i=0;i<num_skinnedAppClasses;i++){
-		if (lstrcmp(pszClassName,skinnedClassList[i])==0){
-			return TRUE;
-		}
-	}
-	
-	return FALSE; */
 }

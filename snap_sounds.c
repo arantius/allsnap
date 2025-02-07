@@ -34,23 +34,17 @@ LPTSTR WINAPI getUnsnapSound(){
 
 
 void SnapSounds_Play (enum SNAP_SOUNDS which_sound){
-//#ifndef NOHTMLHELP
-	if (isNoisy()){ 
-		//PlaySound(aszSoundPaths[which_sound],NULL,SND_FILENAME | SND_ASYNC);
+	if (isNoisy()) {
+		PlaySound(aszSoundPaths[which_sound],NULL,SND_FILENAME | SND_ASYNC);
 	}
-//#endif
 }
 
 void SnapSounds_Test(LPCTSTR file_path){
-//#ifndef NOHTMLHELP
 	PlaySound(file_path,NULL,SND_FILENAME | SND_ASYNC);
-//#endif
 }
 
 void SnapSounds_StopTest(void){
-//#ifndef NOHTMLHELP
 	PlaySound(NULL,NULL,SND_ASYNC);
-//#endif
 }
 
 DWORD WINAPI MessageLoop(void){
@@ -74,15 +68,12 @@ DWORD WINAPI MessageLoop(void){
 	}
 	return(0);
 }
+
+
 UINT SnapSounds_BeginThread(void){
 	UINT thread_id = 0;
-//#ifndef NOHTMLHELP
-
 	HANDLE hThread = chBEGINTHREADEX( NULL, 0, &MessageLoop, NULL, 0,
         &thread_id );
-	
 	CloseHandle(hThread);
-//#endif
-
 	return thread_id;
 }

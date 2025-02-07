@@ -1,5 +1,4 @@
 #ifndef SNAP_TYPES_INCLUDED
-
 #define SNAP_TYPES_INCLUDED
 
 #define SNAPT_DESKTOP  1

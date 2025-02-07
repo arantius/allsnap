@@ -40,5 +40,4 @@ typedef struct SNAP_RESULTS_TAG{
 #define NEW_UNSNAP(psr,last_psr)( NEW_SIDE_UNSNAP((psr)->h,(last_psr)->h) \
 							   || NEW_SIDE_UNSNAP((psr)->v,(last_psr)->v))
 
-
 #endif

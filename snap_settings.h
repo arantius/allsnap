@@ -1,4 +1,3 @@
-
 extern HWND		g_hwndPropSheet;					//PropertySheet Window
 
 HWND DoPropertySheet(HWND hwndOwner);
@@ -13,8 +12,8 @@ typedef struct SNAP_TYPE_BOX_TAG{
 	UINT	snap_type;	//corresponding snap type
 }SNAP_TYPE_BOX;
 
-#define MAX_THRESH 100
-#define MIN_THRESH  2
+#define MAX_THRESH 99
+#define MIN_THRESH 2
 
 #define Is_Checked(hDlg,id)(Button_GetCheck(GetDlgItem((hDlg),(id)))==BST_CHECKED)
 

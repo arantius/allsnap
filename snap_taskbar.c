@@ -126,15 +126,3 @@ BOOL ResetTaskbarIcon(void)
  
     return res; 
 } 
-
-//In my dialog-based application in the OnInitDialog() method, I have the
-//following code to properly set the two icon images (16x16 and 32x32):
-//
-//// Set the 32x32 icon
-//SetIcon(m_hIcon, TRUE);
-//
-// Set the 16x16 icon
-//SetIcon( 
-//
-//
-//

@@ -44,20 +44,8 @@ static BOOL g_isFirstTime_screens;
 static BOOL g_gotScreensAlready=FALSE;
 
 
-
 #define MAX_NAME_LENGTH 20
 
-/*
-#define NUM_SMALL_MAXIMIZED 2
-static TCHAR *g_small_maximized[] = { _T("ConsoleWindowClass"), //2k console
-									_T("tty")				  //9x console
-};
-#define NUM_IGNORED_CLASSES 3						
-static TCHAR *g_ignoredClasses[]={	_T("Progman"),			//entire screen (just want work area)
-									_T("Shell_TrayWnd"),	//task bar
-									_T("IDEOwner")};		//invisible window in VS.net that isWindowVisible
-															//there might be more like this one.
-*/
 
 typedef struct GETWINRECTS_STATE_TAG{
 	HWND	my_window;
@@ -83,7 +71,6 @@ void AddScreen(LPCRECT p_rc);
 
 
 void InitGetWinRectsState(getwinrects_state_t * p_state,DWORD get_which,HWND my_window);
-//BOOL isPtInMonitors(POINT pt);
 BOOL IsIgnoredClass(HWND our_hWnd);
 BOOL isIncludedWindow(HWND hWnd, HWND our_hwnd);
 BOOL isIncludedRect(HWND hWnd, CROP_INFO * pci);
@@ -94,12 +81,6 @@ BOOL isClassNameInArray(HWND hWnd,int array_length,LPCTSTR name_array[]);
 BOOL GetValidWinRect(HWND hWnd, LPRECT rect);
 void GetCenteredSlice(BOOL isVertical, LPCRECT centerer_rect, LPRECT centeree_rect);
 
-/*
-BOOL CALLBACK EnumWindowsProc(
-  HWND hWnd,      // handle to parent window
-  LPARAM lParam   // application-defined value
-  );
-*/
 BOOL CALLBACK EnumChildProc(
   HWND hWnd,      // handle to child window
   LPARAM lParam   // application-defined value
@@ -374,7 +355,6 @@ BOOL CALLBACK EnumChildProc(
 
 
 BOOL isIncludedWindow(HWND hWnd, HWND our_hwnd){
-	   
 	return(
 			(hWnd != our_hwnd)
 			&&  IsWindowVisible(hWnd)
@@ -409,11 +389,6 @@ BOOL isFullMaximized(HWND hwnd,CROP_INFO * pci){
 	return (	( (dl == dt) && (dt == dr) && (dr == db)) 
 			&& 	(dl>0)
 			&&	!pci->has_rgn);
-
-//	RECT place_holder;
-//	return isClassNameInArray(hwnd,NUM_SMALL_MAXIMIZED,g_small_maximized) ||
-//		WinRects_GetRgnBox(hwnd,&place_holder);
-			
 }
 
 BOOL isClassNameInArray(HWND hWnd,int array_length,LPCTSTR name_array[]){
@@ -498,7 +473,6 @@ BOOL CALLBACK EnumWindowsProc(
 			if (is_valid && !is_covered){
 				g_window_rects[g_num_rects++] = new_rect;
 			}
-			//return EnumChildWindows(hWnd,(WNDENUMPROC)EnumChildProc,lParam);
 		}
 		return TRUE;
 	}
@@ -533,10 +507,7 @@ void RefreshAllWindows(HWND our_hWnd,LPCRECT pcRect){
 	getwinrects_state_t getwinrect_state = {0};
 	
 	EnumDisplayMonitors(NULL,NULL,(MONITORENUMPROC)EnumMonitorsProc,(LPARAM)pcRect);
-	
-	
 	InitGetWinRectsState(&getwinrect_state,g_get_which,our_hWnd);
-    
 
 	if (	(g_get_which & SNAPT_OTHERS) != 0){
 		EnumWindows(
@@ -548,7 +519,6 @@ void RefreshAllWindows(HWND our_hWnd,LPCRECT pcRect){
 }
 void RefreshMdiWindows(HWND our_hWnd,LPCRECT pcRect)
 {
-	//if ((g_get_which & SNAPT_GETMDI) != 0){
 	HWND hMDIClient = GetParent(our_hWnd);
 	if (hMDIClient != NULL){
 		

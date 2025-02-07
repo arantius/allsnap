@@ -7,11 +7,7 @@
 #include <crtdbg.h>
 
 
-
-
 void testSingleCorner(SNAP_RESULTS * p_snap_results,enum SIDES h_side,enum SIDES v_side,enum SIDES ignored_side,LPCRECT pRect);
-
-//BOOL willKeepingPushOffScreen(enum SIDES k_side, LPCRECT pRect, LPCRECT pScreen);
 BOOL isWholeSideOut_Sizing(enum SIDES side,TEST_INFO * p_test_info, LPRECT pScreen, P_CORNER_INFO pci);
 BOOL isWholeSideOut_Moving(enum SIDES side,TEST_INFO * p_test_info, LPCRECT pRect,LPRECT pScreen,P_CORNER_INFO pci);
 BOOL isWholeSideOut(enum SIDES side,TEST_INFO * p_test_info, LPCRECT pRect,LPRECT pScreen,P_CORNER_INFO pci);
@@ -148,11 +144,7 @@ void KeepToScreen(
 				&keptRect);
 		}
 
-
 		KeepTopLeftOnScreen(p_snap_results,&keptRect);
-
-
-
 	}
 }
 
@@ -170,9 +162,6 @@ void testSingleCorner(SNAP_RESULTS * p_snap_results,enum SIDES h_side,enum SIDES
 
 		pt.x = GetSideOfRect(h_side,pRect);
 		pt.y = GetSideOfRect(v_side,pRect);
-		
-       
-		
 
 		if (h_side != ignored_side){
             has_h = InTests_GetClosestScreenToPt(pt,h_side,&h_dist,&h_screen);
@@ -230,137 +219,3 @@ void KeepTopLeftOnScreen(SNAP_RESULTS * p_sr, LPCRECT pRect){
 		}
 	}
 }
-
-
-/*	enum SIDES h_sides[] = {SIDE_LEFT,SIDE_RIGHT};
-	enum SIDES v_sides[] = {SIDE_TOP,SIDE_BOTTOM};
-	BOOL h_isIn[2][2];
-	BOOL v_isIn[2][2];
-
-#define IS_BOTH_OUT(isIn)(!(isIn)[0] && !(isIn)[1])
-#define IS_ONE_OUT(isIn)(  (!(isIn)[0] || !(isIn)[1]) && !IS_BOTH_OUT(isIn))
-	
-	WinRects_getCurrentScreen(&screen_rect);
-
-	for (i=0;i<2;i++){
-		WinRects_isSideInMonitors(h_sides[i],pRect,h_isIn[i]);
-		WinRects_isSideInMonitors(v_sides[i],pRect,v_isIn[i]);
-
-
-			if (	(pRect->top < screen_rect.top)
-		&& (	IS_BOTH_OUT(v_isIn[0])
-			 || 
-			 (	(!v_isIn[0][0] || !v_isIn[0][1])
-				&& IS_ONE_OUT(h_isIn[0])))
-		&& IS_SIZABLE_SIDE(SIDE_BOTTOM,p_test_info)
-			){
-		OverwriteResult(&p_snap_results->v,SIDE_TOP,&screen_rect);	
-	}
-	else if ( (pRect->bottom) > (screen_rect.bottom) 
-		&& (	IS_BOTH_OUT(v_isIn[1])
-			 || 
-			 (	(	!v_isIn[1][0] || !v_isIn[1][1])
-				&&	IS_ONE_OUT(h_isIn[1])))
-
-		&& ( (screen_rect.top + my_height) < screen_rect.bottom)
-		&& IS_SIZABLE_SIDE(SIDE_BOTTOM,p_test_info)
-		){
-			OverwriteResult(&p_snap_results->v,SIDE_BOTTOM,&screen_rect);		
-	}
-
-	
-
-	if (	(pRect->left < screen_rect.left)
-		&&  IS_BOTH_OUT(h_isIn[0])
-		&& IS_SIZABLE_SIDE(SIDE_LEFT,p_test_info)
-			){
-		OverwriteResult(&p_snap_results->h,SIDE_LEFT,&screen_rect);	
-	}
-	else  if ( (pRect->right) > (screen_rect.right) 
-		&& IS_BOTH_OUT(h_isIn[1])
-		&& IS_SIZABLE_SIDE(SIDE_RIGHT,p_test_info)
-		&& ( (screen_rect.left + my_width) < screen_rect.right)
-		){
-		OverwriteResult(&p_snap_results->h,SIDE_RIGHT,&screen_rect);	
-	}
-	}
-
-
-//	if (WinRects_isRectInMonitors(pRect)){
-//		return;
-//	}
-	
-	*/
-
-
-/*
-
-	if ( IS_SIZABLE_SIDE(SIDE_TOP,p_test_info)){
-
-		if ( (topLeft_out && topRight_out) 
-			&&(pRect->top < screen_rect.top))
-		{
-			OverwriteResult(&p_snap_results->v,SIDE_TOP,&screen_rect);
-		}
-
-		else if (topLeft_out && !bottomLeft_out){
-			RECT screen_to_test;
-			WinRects_getScreenToTest(pRect->top,pRect->left,&screen_to_test);
-	
-			if (pRect->top < screen_to_test.top){
-				OverwriteResult(&p_snap_results->v,SIDE_TOP,&screen_to_test);
-			}
-		}
-		else if (topRight_out && !bottomRight_out){
-			RECT screen_to_test;
-			WinRects_getScreenToTest(pRect->top,pRect->right,&screen_to_test);
-	
-			if (pRect->top < screen_to_test.top){
-				OverwriteResult(&p_snap_results->v,SIDE_TOP,&screen_to_test);
-			}
-		}
-	}
-
-	if ( IS_SIZABLE_SIDE(SIDE_BOTTOM,p_test_info)){
-
-		if ( (bottomLeft_out && bottomRight_out) 
-			&&(pRect->bottom > screen_rect.bottom))
-		{
-			OverwriteResult(&p_snap_results->v,SIDE_BOTTOM,&screen_rect);
-		}
-
-		else if (bottomLeft_out && !bottomLeft_out){
-			RECT screen_to_test;
-			WinRects_getScreenToTest(pRect->bottom,pRect->left,&screen_to_test);
-	
-			if (pRect->bottom > screen_to_test.bottom){
-				OverwriteResult(&p_snap_results->v,SIDE_BOTTOM,&screen_to_test);
-			}
-		}
-		else if (bottomRight_out && !bottomRight_out){
-			RECT screen_to_test;
-			WinRects_getScreenToTest(pRect->bottom,pRect->right,&screen_to_test);
-	
-			if (pRect->bottom > screen_to_test.bottom){
-				OverwriteResult(&p_snap_results->v,SIDE_BOTTOM,&screen_to_test);
-			}
-		}
-	}
-
-	
-
-	if (	(pRect->left < screen_rect.left)
-		&&  (topLeft_out && bottomLeft_out)
-		&& IS_SIZABLE_SIDE(SIDE_LEFT,p_test_info)
-			){
-		OverwriteResult(&p_snap_results->h,SIDE_LEFT,&screen_rect);	
-	}
-	else  if ( (pRect->right) > (screen_rect.right) 
-		&& (topRight_out && bottomRight_out)
-		&& IS_SIZABLE_SIDE(SIDE_RIGHT,p_test_info)
-		&& ( (screen_rect.left + my_width) < screen_rect.right)
-		){
-		OverwriteResult(&p_snap_results->h,SIDE_RIGHT,&screen_rect);	
-	}
-
-*/

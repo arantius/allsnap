@@ -11,8 +11,6 @@
 #define NOWHERE  -666;
 
 
-
-
 void moving_test_all
 (
 	LPCRECT p_my_rect,
@@ -37,7 +35,5 @@ void sizing_test_all
 void clear_snap_results (SNAP_RESULTS * p_snap_results);
 
 BOOL is_sizable_side(enum SIDE my_side,TEST_INFO * pTestInfo);
-
-
 
 #endif

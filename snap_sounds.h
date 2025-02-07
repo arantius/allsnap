@@ -1,4 +1,3 @@
-
 enum SNAP_SOUNDS {SOUND_SNAP, SOUND_UNSNAP};
 
 #define NUM_SOUNDS 2

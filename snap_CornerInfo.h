@@ -15,10 +15,6 @@ BOOL isCornerOut (P_CORNER_INFO pci, enum SIDES v_side, enum SIDES h_side);
 BOOL isSideOut	 (P_CORNER_INFO pci, enum SIDES side);
 BOOL isSideIn	 (P_CORNER_INFO pci, enum SIDES side);
 BOOL isOnlyOneCornerOfSideOut (P_CORNER_INFO pci, enum SIDES side);
-
-
 void updateCornerInfo(P_CORNER_INFO pci,LPCRECT pRect);
-
-
 
 #endif

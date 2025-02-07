@@ -177,24 +177,16 @@ void clear_snap_results (SNAP_RESULTS * p_snap_results){
 }
 
 INLINE void remove_non_sizing_sides(SNAP_RESULTS * pr,enum SIDES h_side,enum SIDES v_side){
-
-	//keep the snaps if we're at a corner.
-	/*if (	!(		BOTH_SNAP(*pr) 
-				&&	(		(pr->h.closeness == 0)
-						||	(pr->v.closeness == 0))
-			)
-		)
-	{*/
 	if ((pr->h.side != h_side) 
 		&& !((pr->h.closeness == 0) && (BOTH_SNAP(*pr)))
-		){
-			pr->h.side = SIDE_NONE;
+	) {
+		pr->h.side = SIDE_NONE;
 	}
 	
 	if ((pr->v.side != v_side) 
 		&& !((pr->v.closeness == 0) && (BOTH_SNAP(*pr)))
-		){
-			pr->v.side = SIDE_NONE;
+	) {
+		pr->v.side = SIDE_NONE;
 	}
 }
 
@@ -205,18 +197,16 @@ INLINE void remove_inside_snaps(SNAP_RESULTS * p_results){
 	
 	if (BOTH_SNAP(*p_results) &&
 		(  !INSIDE_SNAP(p_results->h) 
-		|| !INSIDE_SNAP(p_results->v) )){
-			return;
-			
+		|| !INSIDE_SNAP(p_results->v) )
+	) {
+		return;
 	}
 
 	if (p_results->v.side == p_results->v.to_side){
-		//MessageBeep(-1);
 		DBG_MSG_SIDE_VAL(g_hWnd_app,DBGMSG_NONSIZINGSIDEREMOVED,p_results->v.side,p_results->v.value);
 		p_results->v.side = SIDE_NONE;
 	}
 	if (p_results->h.side == p_results->h.to_side){
-		//MessageBeep(-1);
 		DBG_MSG_SIDE_VAL(g_hWnd_app,DBGMSG_NONSIZINGSIDEREMOVED,p_results->h.side,p_results->h.value);
 		p_results->h.side = SIDE_NONE;
 	}
@@ -287,8 +277,6 @@ INLINE void update_results(TEST_INFO * p_ti,SNAP_RESULTS * p_current_best,
 	got_new_h_snap = update_side(&(updated_best.h),&(p_new->h));
 	got_new_v_snap = update_side(&(updated_best.v),&(p_new->v));
 	
-	//p_current_best->is_outside_corner =
-	//	wants_outside_corner_snap && (got_new_h_snap && got_new_v_snap);
 	{
 		BOOL got_corner = (got_new_h_snap && got_new_v_snap);
 
@@ -579,20 +567,7 @@ INLINE BOOL is_it_closer(int new_closeness,TEST_INFO * p_test_info,SIDE_SNAP_RES
 
 INLINE void check_outside_snaps(TEST_INFO * pti,SNAP_RESULTS * psr,SNAP_RESULTS * last_psr,BOOL * p_oss_v, BOOL * p_oss_h){
 	TEST_INFO temp_test_info = *pti;
-//	RECT snapped_position = *(pti->mine);
-
-/*	if (last_psr->v.side != SIDE_NONE){
-		AlignToSide(&snapped_position,last_psr->v.side,psr->v.value);
-	}
-	if (last_psr->h.side != SIDE_NONE){
-		AlignToSide(&snapped_position,last_psr->h.side,psr->h.value);
-	}
-	temp_test_info.mine = &snapped_position;
-*/
 	temp_test_info.side_threshold = 1;
-
 	*p_oss_h =  ( !is_beside(&temp_test_info,SIDE_TOP,SIDE_BOTTOM) && (psr->h.side != SIDE_NONE));
 	*p_oss_v =  ( !is_beside(&temp_test_info,SIDE_LEFT,SIDE_RIGHT) && (psr->v.side != SIDE_NONE));
 }
-
-

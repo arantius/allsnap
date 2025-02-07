@@ -57,8 +57,7 @@ TCHAR * SideToString(enum SIDE which_side){
 	return g_side_names[(int)which_side];
 }
 
-//Set the given SIDE of a rect structure
-
+// Set the given SIDE of a rect structure
 void SetSideOfRect(enum SIDE what_side, int new_val, LPRECT pRect)
 {
 	switch(what_side)
@@ -134,6 +133,7 @@ void AlignToSide
 	SetSideOfRect(OppositeSide(align_side),	aligned_opp_side_val,my_rect);
 
 }
+
 //Align a SIDE of the Alignee rect with a SIDE of the Aligner rect
 //
 void AlignToRect 

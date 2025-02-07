@@ -1,5 +1,4 @@
 #ifndef SNAP_WINRECTS_INCLUDE
-
 #define SNAP_WINRECTS_INCLUDE
 
 #include "snap_testers.h"

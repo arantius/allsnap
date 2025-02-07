@@ -79,13 +79,8 @@ void calc_unsnapped_pos(LPCRECT pcurrent_rect,LPRECT pRect){
 }
 
 INLINE BOOL isToggled(void){
-//#ifdef ALLSNAP_TOGGLEMODE
 	return ( (GetAsyncKeyState(getToggleKey())==0) == isDisableToggle());
-//#else
-//	return ( GetAsyncKeyState(getToggleKey())==0);
-//#endif
 }
-
 
 
 void snapper_OnMoving(HWND hWnd, LPRECT pRect)
@@ -140,7 +135,6 @@ void snapper_OnSizing(HWND hWnd, WPARAM which_edge,LPRECT pRect){
 
 	if (isToggled()){
 		RECT cropped_rect;
-		//RECT alt_sizing_pos;
 
 		enum SIDE v_side = SIDE_NONE;
 		enum SIZE h_side = SIDE_NONE;
@@ -149,7 +143,6 @@ void snapper_OnSizing(HWND hWnd, WPARAM which_edge,LPRECT pRect){
 		WinRects_getRects(& test_rects);
 
 		Crop_CropSizingRect(pRect,v_side,h_side,&cropped_rect);
-		
 
 		if (was_equal_sizing){
 			EqualSize_Adjust(&cropped_rect,v_side,h_side);
@@ -157,7 +150,6 @@ void snapper_OnSizing(HWND hWnd, WPARAM which_edge,LPRECT pRect){
 		if (was_center_sizing){
 			CenterSize_Adjust(&cropped_rect,v_side,h_side);
 		}
-
 
 		sizing_test_all(
 			v_side,
@@ -204,7 +196,6 @@ void snapper_OnSizing(HWND hWnd, WPARAM which_edge,LPRECT pRect){
 
 void reposition_side(LPCRECT p_unsnapped, SIDE_SNAP_RESULTS * p_ssnap, 
 					 SIDE_SNAP_RESULTS * p_last_ssnap, LPRECT pRect){
-	
 	enum SIDES side			= p_ssnap->side;
 	enum SIDES last_side	= p_last_ssnap->side;  
 	
@@ -286,33 +277,3 @@ void snapper_OnEnterSizeMove(HWND hWnd){
 	MouseSpeed_Reset();
 	TrackRslts_Reset();
 }
-/*
-void snapper_OnWindowPosChanging(HWND hWnd, LPWINDOWPOS pWindowPos){
-	if (! (pWindowPos->flags & SWP_NOMOVE)){
-		RECT rc;
-		
-		int width  = rc.right  - rc.left;
-		int height = rc.bottom - rc.top;
-
-		rc.left  = pWindowPos->x;
-		rc.right = pWindowPos->x + width;
-
-		rc.top    = pWindowPos->y;
-		rc.bottom = pWindowPos->y + height; 
-
-		GetWindowRect(hWnd,&rc);    //does this have the current position?
-		snapper_OnMoving(hWnd,&rc);
-		
-		pWindowPos->x = rc.left;
-		pWindowPos->y = rc.top;
-	}
-	else if ( ! ( (pWindowPos->flags) & SWP_NOSIZE)){
-		RECT rc;
-		WPARAM allEdges = (WMSZ_TOPRIGHT | WMSZ_BOTTOMLEFT);
-		GetWindowRect(hWnd,&rc);
-		snapper_OnSizing(hWnd,allEdges,&rc);
-
-		pWindowPos->cx = rc.right - rc.left;
-		pWindowPos->cy = rc.bottom - rc.top;
-	}
-}*/

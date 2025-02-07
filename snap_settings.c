@@ -110,8 +110,7 @@ BOOL	Grid_OnCommand		(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify);
 void	Prefs_OnParentNotify(HWND hwnd, UINT msg, HWND hwndChild, int idChild);
 void	Sounds_OnParentNotify(HWND hwnd, UINT msg, HWND hwndChild, int idChild);
 
-
-void Grid_UpdateEnabledDim(	HWND hDlg,	int check_id,const int radios[],const int edits[]);
+void	Grid_UpdateEnabledDim(	HWND hDlg,	int check_id,const int radios[],const int edits[]);
 
 void	InitGeneral(HWND hDlg);
 void	InitSnapTo(HWND hDlg);
@@ -134,7 +133,6 @@ void	ApplyAdv(HWND hDlg);
 void	TestSound(HWND hDlg,HWND hwndCtrl, enum SNAP_SOUNDS which_sound);
 
 UINT	getSelectedToggleKey	(HWND hDlg);
-//void	EnableButtons			(HWND hDlg,BOOL is_enabled);
 BOOL	BrowseFile				(HWND hDlg,enum SNAP_SOUND which_sound);
 
 void CenterWindow(HWND hwnd);
@@ -144,8 +142,6 @@ void CenterWindow(HWND hwnd);
 //
 // Global variables
 //     g_hInst - instance handle
-
-
 HWND DoPropertySheet(HWND hwndOwner)
 {
     PROPSHEETPAGE psp[4];
@@ -205,15 +201,9 @@ HWND DoPropertySheet(HWND hwndOwner)
 }
  
 BOOL	OnContextMenu(HWND hWnd, HWND hwndCtl, UINT x, UINT y){
-//	TCHAR pszClassName[100];
 	DWORD  context_id;
 
-	
 	if ((hwndCtl!=NULL)){
-		//GetClassName(hwndCtl,pszClassName,100);
-		//MB(pszClassName);
-		//POINT pt;
-
 		context_id = GetWindowContextHelpId(hwndCtl);
 
 		if (context_id != 0){
@@ -223,22 +213,11 @@ BOOL	OnContextMenu(HWND hWnd, HWND hwndCtl, UINT x, UINT y){
 			// Display the menu
 			// GetCursorPos(&pt);
 
-			if (TrackPopupMenu(   hContextMenu,
+			if (TrackPopupMenu(hContextMenu,
 				TPM_LEFTALIGN | TPM_TOPALIGN | TPM_RETURNCMD,
-				x,
-				y,
-				0,
-				hWnd,
-				NULL)){
-					
-					tips_show(hwndCtl);
-
-					//POINT pt = {(LONG)x,(LONG)y};
-					//HELPINFO hi = {sizeof(HELPINFO)};
-					//hi.dwContextId =  GetWindowContextHelpId(hwndCtl);
-					//hi.iContextType = HELPINFO_WINDOW;
-					//SendMessage(hwnd,WM_HELP,0L,MAKELPARAM(0,HELPINFO));
-					//MB(debug);
+				x, y, 0, hWnd, NULL)
+			) {		
+				tips_show(hwndCtl);
 			}
 			return TRUE;
 		}
@@ -253,13 +232,7 @@ void CALLBACK PropSheetCallback(HWND hwndPropSheet, UINT uMsg, LPARAM lParam)
 		case PSCB_PRECREATE:
 			{
 				LPDLGTEMPLATE  lpTemplate = (LPDLGTEMPLATE)lParam;
-				
-				
-			//	lpTemplate->style &= ~DS_CONTEXTHELP;
-        
-
-				
-				if(!(lpTemplate->style & DS_CENTER)){
+				if (!(lpTemplate->style & DS_CENTER)) {
 					lpTemplate->style |= DS_CENTER;
 				}
 			}
@@ -267,8 +240,6 @@ void CALLBACK PropSheetCallback(HWND hwndPropSheet, UINT uMsg, LPARAM lParam)
 		case PSCB_INITIALIZED:
 			SetClassLongPtr(hwndPropSheet,GCLP_HICON,(LONG_PTR)LoadIcon(g_hInst,MAKEINTRESOURCE(IDI_SNAPIT)));
 			break;
-
-
 	}
 }
 
@@ -459,6 +430,8 @@ void ValidatePrefs(HWND hDlg){
 
 	SetWindowLong(hDlg,DWLP_MSGRESULT,FALSE);
 }
+
+
 /*******************************************************************************************
 	INIT functions
 *******************************************************************************************/
@@ -603,14 +576,14 @@ void InitGeneral(HWND hDlg){
 		IDC_WIN_THRESH_SPIN,
 		UDM_SETRANGE,
         (WPARAM)0,
-        (LPARAM) MAKELONG((short) 99, (short) 2));
+        (LPARAM) MAKELONG((short)MAX_THRESH, (short)MIN_THRESH));
 
 	SendDlgItemMessage(
 		hDlg,
 		IDC_SCREEN_THRESH_SPIN,
 		UDM_SETRANGE,
         (WPARAM)0,
-        (LPARAM) MAKELONG((short) 99, (short) 2));
+        (LPARAM) MAKELONG((short)MAX_THRESH, (short)MIN_THRESH));
 
 
 	InitToggleKeys(GetDlgItem(hDlg,IDC_TOGGLEKEYS),
@@ -884,23 +857,12 @@ void ApplyGrid(HWND hDlg){
 	setGridSnap(&new_grid_snap);
 }
 
-void ApplySnapTo(HWND hDlg){
-	
+void ApplySnapTo(HWND hDlg) {
 	UINT new_snap_type = getNewSnapType(hDlg);
 	BOOL is_enabled_checked = Is_Checked(hDlg,IDC_ENABLED);
-	//BOOL new_is_enabled;
-    
 	setSnapType(new_snap_type);
-
-	//if (new_snap_type == SNAPT_NONE){
-	//	Button_SetCheck(GetDlgItem(hDlg,IDC_ENABLED),BST_UNCHECKED);
-	//}
-
-	//new_is_enabled = (is_enabled_checked); // && new_snap_type != SNAPT_NONE);
-	//setEnabled(new_is_enabled);
 	setEnabled(is_enabled_checked);
 	ResetTaskbarIcon();
-	//EnableButtons(hDlg,new_is_enabled);
 }
 
 
@@ -1007,16 +969,7 @@ BOOL BrowseFile(HWND hDlg,enum SNAP_SOUND which_sound){
 		return FALSE;
 	}
 }
-/*
-void EnableButtons(HWND hDlg,BOOL is_enabled){
-	int i=0;
 
-	for (i=0;i<num_snap_type_boxes;i++){
-        EnableWindow(
-			GetDlgItem(hDlg,snap_type_boxes[i].box_id)
-			,is_enabled);
-	}
-}*/
 
 INLINE UINT getSelectedToggleKey(HWND hDlg){
 	HWND hCtl = GetDlgItem(hDlg,IDC_TOGGLEKEYS);

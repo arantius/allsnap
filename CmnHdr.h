@@ -44,9 +44,6 @@ Purpose: Common header file containing handy macros and definitions used
 //////////////////////// Windows Version Build Option /////////////////////////
 
 
-//#define _WIN32_WINNT 0x0400
-
-
 ///////////////////////////// STRICT Build Option /////////////////////////////
 
 
@@ -70,15 +67,6 @@ Purpose: Common header file containing handy macros and definitions used
 
 //////////////////////////// Unicode Build Option /////////////////////////////
 
-
-// If we are not compiling for an x86 CPU, we always compile using Unicode.
-//#ifndef _X86_
-//#define UNICODE
-//#endif
-
-
-// To compile using Unicode on the x86 CPU, uncomment the line below.
-//#define UNICODE
 
 // When using Unicode Win32 functions, use Unicode C-Runtime functions too.
 #ifdef UNICODE
@@ -246,13 +234,4 @@ You can easily jump directly to this line and examine the surrounding code.
 #define FORWARD_WM_HOTKEY(hwnd, idHotKey, fuModifiers, vk, fn) \
     (void)(fn)((hwnd), WM_HOTKEY, (WPARAM)(idHotKey), MAKELPARAM((fuModifiers), (vk)))
 
-
-// WindowsX.H defines HANDLE_WM_NCCALCSIZE incorrectly
-/*
-#undef HANDLE_WM_NCCALCSIZE
-#define HANDLE_WM_NCCALCSIZE(hwnd, wParam, lParam, fn) \
-    (LRESULT)(DWORD)(UINT)(fn)((hwnd), (BOOL)(wParam), (NCCALCSIZE_PARAMS *)(lParam))
-*/
-
 ///////////////////////////////// End of File /////////////////////////////////
-

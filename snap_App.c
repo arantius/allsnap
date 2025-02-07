@@ -30,7 +30,6 @@ HWND		g_hWnd;								//main window
 HANDLE			g_hMutex = NULL;					//ensures only one running
 HCURSOR			g_hcHand;							//pointer cursor
 HANDLE			g_hiPaypal;
-//HANDLE		g_htSnapSounds;
 
 HICON			g_hiPlay;
 
@@ -39,12 +38,8 @@ UINT			g_sounds_thread_id;
 OSVERSIONINFO	g_os;
 BOOL g_isXP;
 HWND			g_hwndAbout = NULL;
-//HPEN g_hBluePen;//blue pen
-
 
 UINT			g_version = 0x013100;
-
-
 
 
 #ifdef JUST_MOVING
@@ -82,7 +77,7 @@ LRESULT CALLBACK WndProc		(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam
 BOOL			 OnCommand		(HWND hWnd, int id, HWND hwndCtl, UINT codeNotify);
 VOID			 OnNotifyIcon	(HWND hWnd, UINT uID, UINT event);
 
-INT_PTR CALLBACK	 AboutProc		(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK AboutProc		(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK MyButtonProc	(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 VOID			 ContextMenu(HWND hWnd);
@@ -126,10 +121,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	InitMyStuff(hInstance);
 
-
-	//if (!LoadSettingsFromRegistry())
-	// show initial help screen
-
 	while(GetMessage(&msg, NULL, 0x00, 0x00))
 	{
 		// If the modeless guy is up and is ready to be destroyed
@@ -139,10 +130,10 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		// button has been pressed and all of the pages have been notified. The 
 		// Apply button doesn't cause this to happen.
 		if(g_hwndPropSheet && (NULL == PropSheet_GetCurrentPageHwnd(g_hwndPropSheet))){
-		//enable the parent first to prevent another window from becoming the foreground window
-		EnableWindow(g_hWnd, TRUE);
-		DestroyWindow(g_hwndPropSheet);
-		g_hwndPropSheet = NULL;
+			//enable the parent first to prevent another window from becoming the foreground window
+			EnableWindow(g_hWnd, TRUE);
+			DestroyWindow(g_hwndPropSheet);
+			g_hwndPropSheet = NULL;
 		}
 
 		//use PropSheet_IsDialogMessage instead of IsDialogMessage
@@ -167,14 +158,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	PostThreadMessage(g_sounds_thread_id,MYWM_CLOSETHREAD,0,0);
 
 	UnloadMyStuff();
-	//SaveSettingsToRegistry();
 	SnapUnHookAll();
-	/*	let OS remove mutex
-	if (g_hMutex != NULL){
-		ReleaseMutex(g_hMutex);
-		CloseHandle(g_hMutex);
-		g_hMutex = NULL;
-	}*/
 
 	return (int)(msg.wParam);
 }
@@ -234,8 +218,8 @@ BOOL OneInstanceOnly(void){
 		return TRUE;
 	}
 }
-/**************************************************************************
 
+/**************************************************************************
    CheckCharSet(void)
    
    does the UNICODE def state match the platform support
@@ -259,8 +243,6 @@ BOOL CheckCharSet(void){
 	#endif  //!UNICODE
 	return TRUE;
 }
-
-
 
 
 /**************************************************************************
@@ -372,12 +354,6 @@ BOOL UnloadMyStuff(void){
 	DeleteObject(g_hcHand);
 	DeleteObject(g_hiPaypal);
 	DestroyIcon(g_hiPlay);
-	//SaveSettingsToRegistry();
-/*
-	if (!SaveSettingsToRegistry()){
-			MY_MB(_T("Didn't Save Settings"));
-			return FALSE;
-	}*/
 	return TRUE;
 }
 
@@ -388,7 +364,6 @@ void OnNotifyIcon(HWND hWnd, UINT uID, UINT event){
 		case WM_LBUTTONDBLCLK:
 			SendMessage(hWnd,WM_COMMAND,MAKEWPARAM(IDM_SETTINGS,0),0);
 			break;
-//		case WM_CONTEXTMENU:
 		case WM_RBUTTONUP:
 			ContextMenu(hWnd);			
 			break;
@@ -422,7 +397,6 @@ BOOL OnCommand (HWND hWnd, int id, HWND hwndCtl, UINT codeNotify){
 			if (!IsWindow(g_hwndDebug)){
 				g_hwndDebug = CreateDialog(g_hInst,MAKEINTRESOURCE(IDD_DEBUG),NULL,DebugProc);
 				ShowWindow(g_hwndDebug,SW_SHOW);
-			//DialogBox(g_hInst, MAKEINTRESOURCE(IDD_Debug), NULL, DebugProc);
 			}
 			else{
 				SetForegroundWindow(g_hwndDebug);
@@ -435,7 +409,6 @@ BOOL OnCommand (HWND hWnd, int id, HWND hwndCtl, UINT codeNotify){
 				InitCmnCtls();
 				g_hwndAbout = CreateDialog(g_hInst,MAKEINTRESOURCE(IDD_ABOUT),NULL,AboutProc);
 				ShowWindow(g_hwndAbout,SW_SHOW);
-			//DialogBox(g_hInst, MAKEINTRESOURCE(IDD_ABOUT), NULL, AboutProc);
 			}
 			else{
 				SetForegroundWindow(g_hwndAbout);
@@ -461,7 +434,7 @@ BOOL OnCommand (HWND hWnd, int id, HWND hwndCtl, UINT codeNotify){
 						return TRUE;	//cancel closing
 					}
 
-				}while(!SnapCanUnHook());// || (msg_ret != IDCANCEL ));
+				} while (!SnapCanUnHook());
 			}
 			DeleteTaskbarIcon();
 			SnapSounds_Play(SOUND_UNSNAP);
@@ -472,18 +445,7 @@ BOOL OnCommand (HWND hWnd, int id, HWND hwndCtl, UINT codeNotify){
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	switch (message) 
-	{	
-
-		/*case MYWM_SNAPSOUND:
-			//ReplyMessage((LRESULT)TRUE);
-			SnapSounds_Play(SOUND_SNAP);
-			return FALSE;
-		break;
-		case MYWM_UNSNAPSOUND:
-			SnapSounds_Play(SOUND_UNSNAP);
-			return FALSE;
-		break;*/
+	switch (message) {
 #ifdef _DEBUG
 		case WM_SETTEXT:
 			if (IsWindow(g_hwndDebug)){
@@ -518,25 +480,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 		case WM_QUERYENDSESSION:
 		case WM_ENDSESSION:
-			//SaveSettingsToRegistry();
 			return 1;
 
 		case WM_CLOSE:
-			//SaveSettingsToRegistry();
 			return 0;
-
-
 
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			return 0;
 
 		default:
-			
-			if(message == g_uTaskbarRestart){
+			if (message == g_uTaskbarRestart){
 				RestartTaskbarIcon();
 			}
-        
+
 			return DefWindowProc(hWnd, message, wParam, lParam);
    }
    return 0;
@@ -555,7 +512,6 @@ void ContextMenu(HWND hWnd){
 	GetCursorPos(&pt);
 	CheckMenuItem(hContextMenu,ID_ENABLEWINDOWSNAPPING, 
 		(isEnabled())?MF_CHECKED:MF_UNCHECKED);
-	
 
 	SetMenuDefaultItem(hContextMenu,IDM_SETTINGS,FALSE);
 
@@ -613,7 +569,6 @@ INT_PTR CALLBACK AboutProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
 		case WM_CTLCOLOREDIT:
 			// process this message to set EDIT control colors
 			// lParam holds hwnd of individual control to be painted
-		//	SetBkColor ((HDC) wParam, BkColor);
 			SetTextColor ((HDC) wParam, FgColor);
 			return (INT_PTR) hBkBrush;
 
@@ -622,12 +577,9 @@ INT_PTR CALLBACK AboutProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
 				return FALSE;
 			}
 		case WM_CLOSE:
-			// destroy brushes
-			DeleteObject (hBkBrush);
-			// closing dialog
+			DeleteObject(hBkBrush);
 			DestroyWindow(g_hwndAbout);
 			g_hwndAbout = NULL;
-			//EndDialog(hDlg,TRUE);
 			return TRUE;
 	}
 	return FALSE;
@@ -669,20 +621,12 @@ LRESULT CALLBACK MyButtonProc(
 			SetCursor(g_hcHand);
 			return FALSE;
 		case WM_LBUTTONUP:
-			
 			if (LoadString(g_hInst,GetDlgCtrlID(hWnd),szLink,MAX_LOADSTRING)!=0){					
-				//if ((int)ShellExecute(NULL, _T("open"), szLink,
-				//	NULL, NULL, SW_SHOWNORMAL)>SHELLEXECUTE_MAXERROR){
-				//		//EndDialog(GetParent(hWnd),TRUE);
-				//	}
 				ShellExecute(NULL, _T("open"), szLink,NULL, NULL, SW_SHOWNORMAL);
 			}
-
 			return TRUE;
 		default:
             pfProc = (WNDPROC)GetWindowLongPtr(hWnd, GWLP_USERDATA );
 			return CallWindowProc( pfProc, hWnd,uMsg, wParam, lParam );
 	}
 } 
-
-

@@ -1,5 +1,4 @@
 //snap_MouseSpeed.h
-//
 #ifndef __SNAP_MOUSE_SPEED_H__
 #define __SNAP_MOUSE_SPEED_H__
 

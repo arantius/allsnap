@@ -4,7 +4,6 @@
 // handles saving/loading settings from the registry.
 #pragma once
  
-
 #include "stdafx.h"
 #include "snap_registry.h"
 #include "snap_lib.h"
@@ -104,7 +103,6 @@ BOOL getStringVal(HKEY myKey,LPCTSTR value_name,TCHAR * string,int * p_ret_len,i
 
 
 BOOL getVal(HKEY myKey,LPCTSTR value_name,LPBYTE p_data,DWORD * pdwSize){
-	
 	int keyResult;
 
 	keyResult = RegQueryValueEx(
@@ -321,9 +319,9 @@ SAVE_DWORD:
 				_RPT0(_CRT_ERROR,"bad regitem");
 				goto SSTR_ERROR;
 
-		}//switch
+		}
 		reg_index++;
-	}//while
+	}
 
 	fOK = TRUE;
 SSTR_ERROR:

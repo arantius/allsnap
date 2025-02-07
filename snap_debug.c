@@ -16,8 +16,6 @@
 #define CLIPBOARD_SIZE	(MAX_DEBUG_HISTORY * 80)
 
 
-
-
 HWND			g_hwndDebug = NULL;
 BOOL OnSize(HWND hDlg,int height, int width);
 void Debug_SaveToFile(void);
@@ -73,12 +71,12 @@ const TCHAR * const DBG_MSG_NAMES[DBGMSG_LAST] =
  _T("ADJUST_HRGN"),
  _T("INITSIZINGCROP"),
  _T("WNDTHREAD"),
-_T("THISTHREAD"),
-_T("PROCESS"),
-_T("IS64"),
-_T("DBGMSG_NCLBDOWN"),
-_T("DBGMSG_NCLBUP"),
-_T("EXITSIZEMOVE"),
+ _T("THISTHREAD"),
+ _T("PROCESS"),
+ _T("IS64"),
+ _T("DBGMSG_NCLBDOWN"),
+ _T("DBGMSG_NCLBUP"),
+ _T("EXITSIZEMOVE"),
 };
 
 BOOL OnGetMinMax(HWND hDlg, LPMINMAXINFO pminmax){
@@ -137,8 +135,6 @@ void DebugCopySelectedToClipboard(HWND hlist){
 			// of allowing Windows to free the memory associated
 			// with any data that is in the Clipboard
 			
-
-
 			HGLOBAL hClipboardData;
 			TCHAR * pchData;
 
@@ -180,38 +176,19 @@ void DebugCopySelectedToClipboard(HWND hlist){
 
 
 BOOL	OnDBGContextMenu(HWND hWnd, HWND hwndCtl, UINT x, UINT y){
-//	TCHAR pszClassName[100];
-	
+	HMENU hContextMenu = GetSubMenu(LoadMenu(g_hInst,  MAKEINTRESOURCE(IDR_COPY)),0);
 
-		HMENU hContextMenu = GetSubMenu(LoadMenu(g_hInst,  MAKEINTRESOURCE(IDR_COPY)),0);
+	// Display the menu
+	// GetCursorPos(&pt);
 
-
-			// Display the menu
-			// GetCursorPos(&pt);
-
-			if (TrackPopupMenu(   hContextMenu,
-				TPM_LEFTALIGN | TPM_TOPALIGN | TPM_RETURNCMD,
-				x,
-				y,
-				0,
-				hWnd,
-				NULL)){
-					
-					 DebugCopySelectedToClipboard(hWnd);;
-
-					//POINT pt = {(LONG)x,(LONG)y};
-					//HELPINFO hi = {sizeof(HELPINFO)};
-					//hi.dwContextId =  GetWindowContextHelpId(hwndCtl);
-					//hi.iContextType = HELPINFO_WINDOW;
-					//SendMessage(hwnd,WM_HELP,0L,MAKELPARAM(0,HELPINFO));
-					//MB(debug);
-			}
-			return TRUE;
+	if (TrackPopupMenu(   hContextMenu,
+		TPM_LEFTALIGN | TPM_TOPALIGN | TPM_RETURNCMD,
+		x, y, 0, hWnd, NULL)
+	) {					
+		DebugCopySelectedToClipboard(hWnd);;
+	}
+	return TRUE;
 }
-
-
-
-
 
 
 void SubclassLB( HWND hLB)
@@ -235,7 +212,6 @@ void SubclassLB( HWND hLB)
 
 
 BOOL CALLBACK DebugProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
-	
 	switch(uMsg){
 		HANDLE_MSG(hDlg,WM_GETMINMAXINFO,OnGetMinMax);
 
@@ -335,12 +311,9 @@ BOOL CALLBACK DebugProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
 			}
 			return TRUE;
 
-		
-
 		case WM_COMMAND:
 			
 			switch(LOWORD(wParam)){
-			
 				case IDOK:
 					goto DEBUG_CLOSE;
 				case IDC_SAVE:
@@ -359,7 +332,6 @@ DEBUG_CLOSE:
 			// closing dialog
 			DestroyWindow(g_hwndDebug);
 			g_hwndDebug = NULL;
-			//EndDialog(hDlg,TRUE);
 			return TRUE;
 	}
 	return FALSE;
@@ -419,21 +391,16 @@ BOOL SelectFile(LPTSTR szFileName){
 
 
 void Debug_printMsg(TCHAR * message){
-
-
 	if (IsWindow(g_hwndDebug)){
 		TCHAR sz4[MAX_LOADSTRING + 12];
 		HWND hwndMsg= GetDlgItem(g_hwndDebug,IDC_MSGLIST);
 		int position;
 		int lbcount;
 
-	//	wsprintf(sz,_T("%d"),position);
-	//	ListBox_AddString(hwndMsg,sz);
 		//Remove some string if there are too many entries
 		while((lbcount = ListBox_GetCount(hwndMsg)) > MAX_DEBUG_HISTORY )
 			ListBox_DeleteString(hwndMsg,lbcount-1);		
 		++count;
-		//LoadString(g_hInst,DBGMSG_IDS_BASE + wParam,sz,MAX_LOADSTRING);
 
 		wsprintf(sz4,_T("%05u:     %s"),count,message);
 		position = ListBox_InsertString(hwndMsg,0,sz4);
@@ -458,7 +425,6 @@ LRESULT CALLBACK MyLBProc(
                 return TRUE;
 			}
 			break;
-		//case WM_RBUTTONDOWN:
 		case WM_COPY:
 			DebugCopySelectedToClipboard(hWnd);
 			return TRUE;

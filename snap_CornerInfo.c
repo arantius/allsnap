@@ -11,8 +11,7 @@ BOOL isCornerOut (P_CORNER_INFO pci, enum SIDES v_side, enum SIDES h_side){
 			return pci->topLeft_out;
 		}
 
-	}
-	else{ // (v_side == SIDE_BOTTOM)
+	} else {
 		
 		if (h_side == SIDE_RIGHT){
 			return pci->bottomRight_out;

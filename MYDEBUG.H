@@ -1,13 +1,9 @@
-
 #ifndef SNAP_MYDEBUG_INCLUDE
 #define SNAP_MYDEBUG_INCLUDE 
 
 #include "snap_mywm_msg.h"
 #include "sides.h"
 
-//#define DBGMSGTYPE_ERROR			1
-//#define DBGMSGTYPE_STARTSTOP		2
-//#define DBGMSGTYPE_EACHTIME			3
 #define DBGMSGTYPE_PLAIN				0
 #define DBGMSGTYPE_SIDE_VAL				1
 #define DBGMSGTYPE_HWND					2

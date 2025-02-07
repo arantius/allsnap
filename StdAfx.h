@@ -12,7 +12,6 @@
 
 #define STRICT
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
-//#define WINVER  0x0500 
 #define _WIN32_WINNT 0x0501
 #define WINVER 0x0501
 
@@ -37,10 +36,6 @@
 #include "mydebug.h"
 
 #define MAX_LOADSTRING 100
-
-// Local Header Files
-
-// TODO: reference additional headers your program requires here
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.

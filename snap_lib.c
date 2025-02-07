@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #pragma comment(lib, "comctl32.lib")
 #include <windowsx.h>
@@ -37,7 +36,7 @@
 							|| ((x) == HTSIZE))
 
 //Instruct compiler to put the g_thresh and g_enabled data 
-// in its own data Section called Shared. We then instruct the
+//in its own data Section called Shared. We then instruct the
 //linker that we want to share the data in this section
 //with all instances of this aplication.?
 
@@ -103,8 +102,6 @@ unsigned int		g_num_msgs_so_far;
 
 //Forward References
 LRESULT WINAPI CallWndProc(int nCode, WPARAM wParam, LPARAM lParam);
-//LRESULT WINAPI CallWndProcNT(int nCode, WPARAM wParam, LPARAM lParam);
-//LRESULT WINAPI CALLBACK MouseProc(int nCode,WPARAM wParam,LPARAM lParam);
 #ifdef _WIN64
 LRESULT APIENTRY SubclassProc64(
 	HWND hwnd,
@@ -128,24 +125,12 @@ LRESULT APIENTRY SubclassProc32(
 
 void UnSubclass(HWND hwnd);
 void Subclass(HWND hwnd);
-//void ForceDebugBreak(){
-//	__try { DebugBreak();}
-//	__except(UnhandledExceptionFilter(GetExceptionInformation())){}
-//}
 
 BOOL is_64wnd(HWND hwnd){
     BOOL is_64 = FALSE;
  	BOOL res = FALSE;
 	DWORD thisthread = GetCurrentThreadId();
-	HANDLE phandle = GetCurrentProcess();//(PROCESS_ALL_ACCESS,FALSE,pid);
-//	res = IsWow64Process(phandle,&is_64);
-//	
-//	DWORD pid = GetWindowThreadProcessId(hwnd,NULL);
-	
-//	DBG_MSG_PTR(g_hWnd_app,DBGMSG_WNDTHREAD,pid);
-//	DBG_MSG_PTR(g_hWnd_app,DBGMSG_THISTHREAD,thisthread);
-//	DBG_MSG_PTR(g_hWnd_app,DBGMSG_PROCESS,phandle);
-//DBG_MSG_PTR(g_hWnd_app,DBGMSG_IS64,is_64);
+	HANDLE phandle = GetCurrentProcess();
 	is_64 = !IsWow64Message();
 	DBG_MSG_PTR(g_hWnd_app,DBGMSG_IS64,is_64);
 	
@@ -157,14 +142,9 @@ BOOL is_matching_platform(HWND hwnd){
 	return TRUE;
 #ifdef _WIN64
 	return TRUE;
-	//	return !IsWow64Message();
-//	return is_64wnd(hwnd);
 #else
 	return TRUE;
-//	return !is_64wnd(hwnd);
 #endif
-	
-
 }
 
 BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD fdwReason, PVOID fImplLoad){
@@ -180,54 +160,32 @@ BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD fdwReason, PVOID fImplLoad){
 			break;
  
 		case DLL_THREAD_DETACH:
-			/*
-			if (GetParent(g_subclassed_window) == g_hWnd_app){
-				break;
-			} 
-			if (g_subclassed_window != NULL){
-				UnSubclass(g_subclassed_window);
-			}*/
 			break;    
-			//MessageBeep(-1);
 
 		case DLL_PROCESS_DETACH:
-			//if (wdjIsSubclassed((WNDPROC)SubclassProc,g_subclassed_window)){
-			//	wdjUnhook((WNDPROC)SubclassProc,g_subclassed_window);
-			//	//g_subclassed_window = NULL;
-			//} 
-
- 
 			UnSubclass(g_subclassed_window);
 			g_subclassing = FALSE;
-			 	
 			break;
- 
 	} 
 	return(TRUE);
 }
 
 BOOL WINAPI SnapHookAll(HWND hwnd,UINT thread_id,OSVERSIONINFO os){
-
     g_hWnd_app = hwnd;
 	g_sounds_thread_id = thread_id;
 	g_os = os;
 
 	if (g_hhook==NULL){
-
-			g_hhook = SetWindowsHookEx(WH_CALLWNDPROC
-				,(HOOKPROC)CallWndProc,g_hinstDll,0);
+		g_hhook = SetWindowsHookEx(WH_CALLWNDPROC,(HOOKPROC)CallWndProc,g_hinstDll,0);
 	}
 
 	return (g_hhook!= NULL);
 }
 
 BOOL WINAPI SnapUnHookAll(){
-	//ASSERT g_hhook!= NULL
 	BOOL fOk = FALSE;
-	//UnSubclass();
 	fOk = UnhookWindowsHookEx(g_hhook);
 	g_hhook = NULL;
-
 	return fOk;
 } 
 
@@ -236,7 +194,6 @@ BOOL WINAPI SnapCanUnHook(){
 }
 
 void UnSubclass(HWND hWnd){
-   //DBG_MSG_PTR(g_hWnd_app,DBGMSG_UNSUBCLASS_OLD,g_subclass_proc);
 	BOOL res = FALSE;
 #ifdef _WIN64
 	res = RemoveWindowSubclass(g_subclassed_window,(SUBCLASSPROC)SubclassProc64,ALLSNAP_SUBCLASS_ID);
@@ -269,7 +226,6 @@ void Subclass(HWND hwnd){
 #ifdef _WIN64
 	g_subclass_proc = (SUBCLASSPROC) SubclassProc64;
 
-//  g_original_proc = SubclassWindow(hwnd,g_subclass_proc);
 	if (SetWindowSubclass(hwnd,(SUBCLASSPROC) SubclassProc64,ALLSNAP_SUBCLASS_ID,0)){
 		snapper_OnEnterSizeMove(g_subclassed_window);
 		DBG_MSG_PTR(g_hWnd_app,DBGMSG_SUBCLASS_NEW,1);
@@ -280,7 +236,6 @@ void Subclass(HWND hwnd){
 #else
 	g_subclass_proc = (SUBCLASSPROC) SubclassProc32;
 
-//  g_original_proc = SubclassWindow(hwnd,g_subclass_proc);
 	if (SetWindowSubclass(hwnd,(SUBCLASSPROC) SubclassProc32,ALLSNAP_SUBCLASS_ID,0)){
 		snapper_OnEnterSizeMove(g_subclassed_window);
 		DBG_MSG_PTR(g_hWnd_app,DBGMSG_SUBCLASS_NEW,1);
@@ -293,7 +248,7 @@ void Subclass(HWND hwnd){
 } 
 
 LRESULT WINAPI CALLBACK CallWndProc(
-  int nCode,       // hook code
+  int nCode,      // hook code
   WPARAM wParam,  // removal option
   LPARAM lParam   // message
   ){ 
@@ -306,15 +261,12 @@ LRESULT WINAPI CALLBACK CallWndProc(
 		switch(lpCHook->message){
 			case WM_ENTERSIZEMOVE: 
 				DBG_MSG(g_hWnd_app,DBGMSG_NCLBDOWN);
-				if(
+				if (
 					(isSnapMdi() || !IS_MDI_CHILD(hwnd))
 					&& isEnabled()
 					&& !IsZoomed(hwnd)
-					//&& ( (GetAsyncKeyState(getToggleKey())!=0) || isDisableToggle())
-					){
-
+				) {
 			 		Subclass(hwnd);
-					//SetCapture(g_subclassed_window);
 				}
 				break; 
 			case WM_EXITSIZEMOVE:
@@ -359,6 +311,8 @@ BOOL avoid_aero_snap(HWND hwnd){
 	}
 	return FALSE;
 }
+
+
 // Subclass procedure 
 #ifdef _WIN64
 LRESULT APIENTRY SubclassProc64(
@@ -371,13 +325,8 @@ LRESULT APIENTRY SubclassProc32(
     LPARAM lParam,
     UINT_PTR uIdSubclass,
     DWORD_PTR dwRefData
-)
-{  
-
+) {  
 	switch(uMsg){
-
-		//case WM_ENTERSIZEMOVE:
-		//	g_moved_or_sized = TRUE;
 #ifndef DBG_NO_MOVING
 		case WM_MOVING:
 			if (!window_size_changed(hwnd)){
@@ -409,9 +358,8 @@ LRESULT APIENTRY SubclassProc32(
 			||  
 				( uMsg == WM_EXITSIZEMOVE)
 			) 
-			
-	//	&&	(g_subclassed_window != NULL)  //should this be an assertion?
-	){	DBG_MSG(g_hWnd_app,DBGMSG_EXITSIZEMOVE);
+	) {
+		DBG_MSG(g_hWnd_app,DBGMSG_EXITSIZEMOVE);
 		UnSubclass(hwnd);
 	}
 
@@ -434,13 +382,6 @@ BOOL WINAPI isEnabled(void){
 
 void WINAPI setEnabled(BOOL enabled){
 	g_enabled = enabled;
-
-	/*if (enabled){
-		SnapHookAll(g_hWnd_app,g_thread_id);
-	}
-	else{
-		UnHookAll();
-	}*/
 }
 
 BOOL WINAPI isNoisy(void){
@@ -473,7 +414,6 @@ BOOL WINAPI isDisableToggle(void){
 void WINAPI setDisableToggle(BOOL is_disable_toggle){
 	g_is_disable_toggled = is_disable_toggle;
 }
-
 
 
 void WINAPI setWinThresh(int thresh){
@@ -576,7 +516,6 @@ void WINAPI setIgnoredClasses(TCHAR * sz,int len){
 	if (len > MAX_CLASSNAME_LIST_LENGTH){
 		return;
 	}
-
 	lstrcpyn(g_ignored_classes,sz,MAX_CLASSNAME_LIST_LENGTH);
 }
 

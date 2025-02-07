@@ -1,6 +1,3 @@
-//snap_ResultStack.c
-//
-
 #include "stdafx.h"
 #include "snap_testers.h"
 #include "snap_ResultStack.h"

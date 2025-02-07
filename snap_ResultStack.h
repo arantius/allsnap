@@ -17,5 +17,4 @@ void ResultStack_Push(const StackEntry * const p_x, ResultStack *s);
 BOOL ResultStack_Pop(StackEntry * p_x, ResultStack *s);
 void ResultStack_Init(ResultStack *s);
 
-
 #endif
