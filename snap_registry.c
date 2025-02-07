@@ -55,8 +55,8 @@ typedef struct REGITEMTAG {
 // Table of all registry entries with type and setter/getter function pointers
 // macro expands to a empty terminated list of structs
 BEGIN_SREG_MAP()
-    SREG_ENTRY(REGT_INT,  setWinThresh,       getWinThresh,      "win_tresh")
-    SREG_ENTRY(REGT_INT,  setScreenThresh,    getScreenThresh,   "screen_tresh")
+    SREG_ENTRY(REGT_INT,  setWinThresh,       getWinThresh,      "win_thresh")
+    SREG_ENTRY(REGT_INT,  setScreenThresh,    getScreenThresh,   "screen_thresh")
     SREG_ENTRY(REGT_UINT, setSnapType,        getSnapType,       "snap_type")
     SREG_ENTRY(REGT_BOOL, setNoisy,           isNoisy,           "play_sounds")
     SREG_ENTRY(REGT_SZ,   setSnapSound,       getSnapSound,      "snap_sound_file")
