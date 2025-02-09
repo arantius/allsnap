@@ -29,7 +29,6 @@ HWND		g_hWnd;								//main window
 
 HANDLE			g_hMutex = NULL;					//ensures only one running
 HCURSOR			g_hcHand;							//pointer cursor
-HANDLE			g_hiPaypal;
 
 HICON			g_hiPlay;
 
@@ -330,12 +329,6 @@ BOOL InitInstance(   HINSTANCE hInstance){
 
 BOOL InitMyStuff(HINSTANCE hInstance){
 	g_hcHand = LoadCursor(hInstance,MAKEINTRESOURCE(IDC_MYHAND));
-	
-	g_hiPaypal = LoadImage(
-		hInstance,
-		MAKEINTRESOURCE(IDB_PAYPAL),
-		IMAGE_BITMAP,110,23,LR_LOADTRANSPARENT|LR_LOADMAP3DCOLORS);
-	
 	g_hiPlay = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_PLAY));
 
 	LoadSettingsFromRegistry();
@@ -348,7 +341,6 @@ BOOL InitMyStuff(HINSTANCE hInstance){
 
 BOOL UnloadMyStuff(void){
 	DeleteObject(g_hcHand);
-	DeleteObject(g_hiPaypal);
 	DestroyIcon(g_hiPlay);
 	return TRUE;
 }
@@ -540,19 +532,14 @@ INT_PTR CALLBACK AboutProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
 			hBkBrush = CreateBrushIndirect (&logbrush);
 			FgColor = RGB (0, 0, 255);
 
-			SendDlgItemMessage(hDlg,IDC_PAYPAL,STM_SETIMAGE,
-				(WPARAM)IMAGE_BITMAP,(LPARAM)g_hiPaypal);
-			SetHandCursor(GetDlgItem(hDlg,IDC_LINK));
 			SetHandCursor(GetDlgItem(hDlg,IDC_EMAIL));
-			SetHandCursor(GetDlgItem(hDlg,IDC_PAYPAL));
 			break;
 
 		
 		case WM_CTLCOLORSTATIC:
 			// process this message to set STATIC and READONLY EDIT control colors
 			// lParam holds hwnd of individual control to be painted
-			if (GetDlgCtrlID((HWND)lParam) == IDC_LINK
-				||GetDlgCtrlID((HWND)lParam) == IDC_EMAIL){
+			if (GetDlgCtrlID((HWND)lParam) == IDC_EMAIL) {
 				SetBkMode ((HDC) wParam, TRANSPARENT);
 				SetTextColor ((HDC) wParam, FgColor);
 				return (INT_PTR) hBkBrush;

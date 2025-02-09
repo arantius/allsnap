@@ -12,7 +12,6 @@ DWORD mapID(DWORD ctrlid);
 static DWORD tiptable[]={
    IDC_STATIC                 ,0
   ,IDC_SOUNDSL                ,IDS_SOUNDS
-  ,IDC_MYHAND                 ,0
   ,IDC_SNAPIT                 ,0
   ,IDC_DESKTOP                ,IDS_DESKTOP
   ,IDC_SELF                   ,IDS_SELF
@@ -24,7 +23,6 @@ static DWORD tiptable[]={
   ,IDC_SNAP_FILE              ,IDS_SNAP_FILE
   ,IDC_BROWSE_SNAP            ,IDS_BROWSE_SNAP
   ,IDC_TOGGLEKEYS             ,IDS_TOGGLEKEYS
-  ,IDC_LINK                   ,0
   ,IDC_WIN_THRESH             ,IDS_WIN_THRESH
   ,IDC_WIN_THRESH_SPIN        ,IDS_WIN_THRESH
   ,IDC_SNAPATL                ,IDS_WIN_THRESH

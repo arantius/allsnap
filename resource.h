@@ -6,7 +6,6 @@
 #define IDC_SAVE                        4
 #define IDS_APP_TITLE                   103
 #define IDM_ABOUT                       104
-#define IDC_MYHAND                      104
 #define IDS_THRESHOLD_ERROR             104
 #define IDM_EXIT                        105
 #define IDS_SELF                        105
@@ -51,7 +50,6 @@
 #define IDI_ENABLED                     170
 #define IDR_WHAT                        200
 #define IDM_WHAT                        201
-#define IDB_PAYPAL                      204
 #define IDI_PLAY                        208
 #define IDD_ADVANCED                    211
 #define IDI_XPDISABLED                  215
@@ -75,7 +73,6 @@
 #define IDC_SNAP_FILE                   1031
 #define IDC_BROWSE_SNAP                 1032
 #define IDC_TOGGLEKEYS                  1039
-#define IDC_LINK                        1041
 #define IDC_WIN_THRESH_SPIN             1047
 #define IDC_SCREEN_THRESH_SPIN          1048
 #define IDC_SNAPATL                     1049
@@ -87,7 +84,6 @@
 #define IDC_UNSNAPFILEL                 1055
 #define IDC_CHOSEL                      1056
 #define IDC_SOUNDSL                     1057
-#define IDC_PAYPAL                      1062
 #define IDC_EMAIL                       1063
 #define IDC_PIXELSL2                    1064
 #define IDC_SNAPMDI                     1069
