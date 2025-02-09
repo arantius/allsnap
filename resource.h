@@ -84,7 +84,6 @@
 #define IDC_UNSNAPFILEL                 1055
 #define IDC_CHOSEL                      1056
 #define IDC_SOUNDSL                     1057
-#define IDC_EMAIL                       1063
 #define IDC_PIXELSL2                    1064
 #define IDC_SNAPMDI                     1069
 #define IDC_QUIETFAST                   1072

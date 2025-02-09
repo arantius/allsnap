@@ -71,16 +71,14 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
 // Dialog
 //
 
-IDD_ABOUT DIALOGEX 0, 0, 247, 64
+IDD_ABOUT DIALOGEX 0, 0, 247, 42
 STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About allSnap"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,184,8,50,14
+    DEFPUSHBUTTON   "OK",IDOK,193,24,50,14
     LTEXT           "allSnap Version 1.5.0 Beta\nIvan Heckman && Anthony Lieuallen\nCopyright (C) 2002 - 2025",IDC_STATIC,47,8,133,27
     ICON            IDI_SNAPIT,IDC_STATIC,12,8,21,20
-    LTEXT           "e-mail:",IDC_STATIC,47,50,21,9
-    LTEXT           "ivanheckman@hotmail.com",IDC_EMAIL,79,50,88,8,SS_NOTIFY
 END
 
 IDD_GENERAL DIALOGEX 0, 0, 212, 188
@@ -400,6 +398,7 @@ GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUT, DIALOG
     BEGIN
+        BOTTOMMARGIN, 41
     END
 
     IDD_GENERAL, DIALOG
@@ -458,11 +457,6 @@ STRINGTABLE
 BEGIN
     IDS_ENABLED_TIP         "allSnap - Enabled"
     IDS_DISABLED_TIP        "allSnap - Disabled"
-END
-
-STRINGTABLE
-BEGIN
-    IDC_EMAIL               "mailto:ivanheckman@hotmail.com"
 END
 
 STRINGTABLE

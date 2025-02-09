@@ -531,23 +531,7 @@ INT_PTR CALLBACK AboutProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
 			logbrush.lbColor = BkColor;
 			hBkBrush = CreateBrushIndirect (&logbrush);
 			FgColor = RGB (0, 0, 255);
-
-			SetHandCursor(GetDlgItem(hDlg,IDC_EMAIL));
 			break;
-
-		
-		case WM_CTLCOLORSTATIC:
-			// process this message to set STATIC and READONLY EDIT control colors
-			// lParam holds hwnd of individual control to be painted
-			if (GetDlgCtrlID((HWND)lParam) == IDC_EMAIL) {
-				SetBkMode ((HDC) wParam, TRANSPARENT);
-				SetTextColor ((HDC) wParam, FgColor);
-				return (INT_PTR) hBkBrush;
-			}
-			else{
-				return FALSE;
-			}
-
 
 		case WM_CTLCOLOREDIT:
 			// process this message to set EDIT control colors
