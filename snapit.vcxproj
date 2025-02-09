@@ -340,7 +340,6 @@
   <ItemGroup>
     <None Include="allSnap.iss" />
     <None Include="allSnapDebug.iss" />
-    <None Include="hand.cur" />
     <None Include="Resource.hm" />
   </ItemGroup>
   <ItemGroup>

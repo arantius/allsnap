@@ -25,10 +25,7 @@
 HINSTANCE	g_hInst;							// current instance
 HWND		g_hWnd;								//main window
 
-
-
 HANDLE			g_hMutex = NULL;					//ensures only one running
-HCURSOR			g_hcHand;							//pointer cursor
 
 HICON			g_hiPlay;
 
@@ -77,10 +74,8 @@ BOOL			 OnCommand		(HWND hWnd, int id, HWND hwndCtl, UINT codeNotify);
 VOID			 OnNotifyIcon	(HWND hWnd, UINT uID, UINT event);
 
 INT_PTR CALLBACK AboutProc		(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
-LRESULT CALLBACK MyButtonProc	(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 VOID			 ContextMenu(HWND hWnd);
-VOID			 SetHandCursor( HWND hButton);
 
 
 /**************************************************************************
@@ -328,7 +323,6 @@ BOOL InitInstance(   HINSTANCE hInstance){
 }
 
 BOOL InitMyStuff(HINSTANCE hInstance){
-	g_hcHand = LoadCursor(hInstance,MAKEINTRESOURCE(IDC_MYHAND));
 	g_hiPlay = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_PLAY));
 
 	LoadSettingsFromRegistry();
@@ -340,7 +334,6 @@ BOOL InitMyStuff(HINSTANCE hInstance){
 }
 
 BOOL UnloadMyStuff(void){
-	DeleteObject(g_hcHand);
 	DestroyIcon(g_hiPlay);
 	return TRUE;
 }
@@ -551,49 +544,3 @@ INT_PTR CALLBACK AboutProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
 	}
 	return FALSE;
 }
-
-
-
-void SetHandCursor( HWND hButton)
-{  
-    LONG_PTR ulOriginalProc;
-
-    // Get the original window procedure address and replace
-    // it by our own
-    ulOriginalProc = SetWindowLongPtr( 
-        hButton, 
-        GWLP_WNDPROC, 
-        (LONG_PTR)MyButtonProc );
-
-    // Store the original window procedure address in
-    // the user data of the button
-    SetWindowLongPtr(
-        hButton,
-        GWLP_USERDATA,
-        ulOriginalProc );
-}
-
-LRESULT CALLBACK MyButtonProc(
-    HWND    hWnd, 
-    UINT    uMsg,
-    WPARAM  wParam,
-    LPARAM  lParam )
-{
-	WNDPROC pfProc;
-	TCHAR   szLink[MAX_LOADSTRING];
-
-
-	switch (uMsg){
-		case WM_SETCURSOR:
-			SetCursor(g_hcHand);
-			return FALSE;
-		case WM_LBUTTONUP:
-			if (LoadString(g_hInst,GetDlgCtrlID(hWnd),szLink,MAX_LOADSTRING)!=0){					
-				ShellExecute(NULL, _T("open"), szLink,NULL, NULL, SW_SHOWNORMAL);
-			}
-			return TRUE;
-		default:
-            pfProc = (WNDPROC)GetWindowLongPtr(hWnd, GWLP_USERDATA );
-			return CallWindowProc( pfProc, hWnd,uMsg, wParam, lParam );
-	}
-} 
