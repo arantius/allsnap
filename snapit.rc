@@ -219,28 +219,6 @@ BEGIN
     END
 END
 
-IDR_SYSMENU_DEBUG MENU
-BEGIN
-    POPUP "notify"
-    BEGIN
-        MENUITEM "&About allSnap",              IDM_ABOUT
-        MENUITEM "&Help",                       9
-        MENUITEM "&Settings...",                IDM_SETTINGS
-        MENUITEM "&Enable Window Snapping",     ID_ENABLEWINDOWSNAPPING, CHECKED
-        MENUITEM SEPARATOR
-        MENUITEM "&Open Debug console",         IDM_DEBUG
-        MENUITEM "E&xit",                       IDM_EXIT
-    END
-END
-
-IDR_WHAT3 MENU
-BEGIN
-    POPUP "notify"
-    BEGIN
-        MENUITEM "What's This?",                IDM_WHAT
-    END
-END
-
 IDR_COPY MENU
 BEGIN
     POPUP "nothin"

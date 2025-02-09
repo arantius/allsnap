@@ -340,13 +340,9 @@ BOOL InitMyStuff(HINSTANCE hInstance){
 
 	LoadSettingsFromRegistry();
 
-	//setEnabled(getSnapType() != SNAPT_NONE);
-
 	RegisterTaskbarCreatedMsg();
 	AddTaskbarIcon();
 
-
-	
 	return TRUE;
 }
 

@@ -207,12 +207,9 @@ BOOL	OnContextMenu(HWND hWnd, HWND hwndCtl, UINT x, UINT y){
 		context_id = GetWindowContextHelpId(hwndCtl);
 
 		if (context_id != 0){
-			HMENU hContextMenu = GetSubMenu(LoadMenu(g_hInst,  MAKEINTRESOURCE(IDR_WHAT)),0);
-
+			HMENU hContextMenu = GetSubMenu(LoadMenu(g_hInst, MAKEINTRESOURCE(IDR_WHAT)),0);
 
 			// Display the menu
-			// GetCursorPos(&pt);
-
 			if (TrackPopupMenu(hContextMenu,
 				TPM_LEFTALIGN | TPM_TOPALIGN | TPM_RETURNCMD,
 				x, y, 0, hWnd, NULL)

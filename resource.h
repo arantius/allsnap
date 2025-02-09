@@ -51,7 +51,6 @@
 #define IDI_ENABLED                     170
 #define IDR_WHAT                        200
 #define IDM_WHAT                        201
-#define IDR_WHAT3                       201
 #define IDB_PAYPAL                      204
 #define IDI_PLAY                        208
 #define IDD_ADVANCED                    211
