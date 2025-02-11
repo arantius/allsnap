@@ -90,15 +90,22 @@ BOOL ResetTaskbarIcon(void)
 	if (g_isHidden){
 		return FALSE;
 	}
-	
 
 	if(isEnabled()){
 		tip_id	= IDS_ENABLED_TIP;
-		icon_id	=  (g_isXP)?IDI_XPENABLED:IDI_ENABLED;
+#ifdef _WIN64
+		icon_id	=  (g_isXP)?IDI_XPENABLED64 : IDI_ENABLED64;
+#else
+		icon_id	=  (g_isXP)?IDI_XPENABLED32 : IDI_ENABLED32;
+#endif
 	}
 	else{
 		tip_id	= IDS_DISABLED_TIP;
-		icon_id	= (g_isXP)?IDI_XPDISABLED:IDI_DISABLED;
+#ifdef _WIN64
+		icon_id = (g_isXP) ? IDI_XPDISABLED64 : IDI_DISABLED64;
+#else
+		icon_id = (g_isXP) ? IDI_XPDISABLED32 : IDI_DISABLED32;
+#endif
 	}
 
 	LoadString(g_hInst, tip_id, szTrayTip, MAX_LOADSTRING);

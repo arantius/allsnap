@@ -99,22 +99,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="disabled_64.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="enabled_move.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="disabled.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="xptray_enabled_nosizing.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="snapit_64.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="enabled_64.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="speaker.ico">
@@ -132,9 +117,6 @@
     <Image Include="x-click-but21.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="xpenable.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="xptray_disabled.ico">
       <Filter>Resource Files</Filter>
     </Image>
@@ -142,6 +124,18 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="snap_tos.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="xptray_enabled_32.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="enabled_32.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="disabled_32.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="xptray_disabled_32.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

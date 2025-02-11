@@ -105,7 +105,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_NOTWIN64</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -183,7 +183,7 @@
     <ClCompile>
       <Optimization>MinSpace</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_NOTWIN64</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -343,21 +343,19 @@
     <None Include="Resource.hm" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="disabled_64.ico" />
-    <Image Include="enabled_move.ico" />
     <Image Include="disabled.ico" />
+    <Image Include="disabled_32.ico" />
+    <Image Include="enabled_32.ico" />
     <Image Include="snap_tos.ico" />
-    <Image Include="xptray_enabled_nosizing.ico" />
-    <Image Include="snapit_64.ico" />
-    <Image Include="enabled_64.ico" />
     <Image Include="speaker.ico" />
     <Image Include="enabled.ico" />
     <Image Include="play.ico" />
     <Image Include="snapit.ico" />
     <Image Include="x-click-but21.bmp" />
-    <Image Include="xpenable.ico" />
     <Image Include="xptray_disabled.ico" />
+    <Image Include="xptray_disabled_32.ico" />
     <Image Include="xptray_enabled.ico" />
+    <Image Include="xptray_enabled_32.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="snapit.rc">

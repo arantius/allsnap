@@ -305,88 +305,30 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-#if defined(APSTUDIO_INVOKED) || !defined(_WIN64)
 IDI_SNAPIT              ICON                    "snapit.ico"
 
-#endif
-#if defined(APSTUDIO_INVOKED) || \
-    !(defined(JUST_MOVING) || defined(_WIN64))
-IDI_ENABLED             ICON                    "enabled.ico"
+IDI_DISABLED32          ICON                    "disabled_32.ico"
 
-#endif
-IDI_SNAP_TOS            ICON                    "snap_tos.ico"
+IDI_DISABLED64          ICON                    "disabled.ico"
 
-#if defined(APSTUDIO_INVOKED) || !defined(_WIN64)
-IDI_DISABLED            ICON                    "disabled.ico"
+IDI_ENABLED32           ICON                    "enabled_32.ico"
 
-#endif
-IDI_SPEAKER             ICON                    "speaker.ico"
+IDI_ENABLED64           ICON                    "enabled.ico"
 
 IDI_PLAY                ICON                    "play.ico"
 
-IDI_XPDISABLED          ICON                    "xptray_disabled.ico"
+IDI_SNAP_TOS            ICON                    "snap_tos.ico"
 
-#if defined(APSTUDIO_INVOKED) || \
-    !(defined(JUST_MOVING) || defined(_WIN64))
-IDI_XPENABLED           ICON                    "xptray_enabled.ico"
+IDI_SPEAKER             ICON                    "speaker.ico"
 
-#endif
-#if defined(APSTUDIO_INVOKED) || defined(JUST_MOVING)
-#if defined(APSTUDIO_INVOKED)
-IDI_XPENABLED$(JUST_MOVING) ICON                    "xpenable.ico"
+IDI_XPDISABLED32        ICON                    "xptray_disabled_32.ico"
 
-#else
-IDI_XPENABLED           ICON                    "xpenable.ico"
+IDI_XPDISABLED64        ICON                    "xptray_disabled.ico"
 
-#endif
-#endif
-#if defined(APSTUDIO_INVOKED) || defined(JUST_MOVING)
-#if defined(APSTUDIO_INVOKED)
-IDI_ENABLED$(JUST_MOVING) ICON                    "enabled_move.ico"
+IDI_XPENABLED32         ICON                    "xptray_enabled_32.ico"
 
-#else
-IDI_ENABLED             ICON                    "enabled.ico"
+IDI_XPENABLED64         ICON                    "xptray_enabled.ico"
 
-#endif
-#endif
-IDI_XPENABLED_NOSIZING  ICON                    "xptray_enabled_nosizing.ico"
-
-#if defined(APSTUDIO_INVOKED) || defined(_WIN64)
-#if defined(APSTUDIO_INVOKED)
-IDI_XPENABLED$(_WIN64)  ICON                    "enabled_64.ico"
-
-#else
-IDI_XPENABLED           ICON                    "enabled.ico"
-
-#endif
-#endif
-#if defined(APSTUDIO_INVOKED) || defined(_WIN64)
-#if defined(APSTUDIO_INVOKED)
-IDI_SNAPIT$(_WIN64)     ICON                    "snapit_64.ico"
-
-#else
-IDI_SNAPIT              ICON                    "snapit.ico"
-
-#endif
-#endif
-#if defined(APSTUDIO_INVOKED) || defined(_WIN64)
-#if defined(APSTUDIO_INVOKED)
-IDI_ENABLED$(_WIN64)    ICON                    "enabled_64.ico"
-
-#else
-IDI_ENABLED             ICON                    "enabled.ico"
-
-#endif
-#endif
-#if defined(APSTUDIO_INVOKED) || defined(_WIN64)
-#if defined(APSTUDIO_INVOKED)
-IDI_DISABLED$(_WIN64)   ICON                    "disabled_64.ico"
-
-#else
-IDI_DISABLED            ICON                    "disabled.ico"
-
-#endif
-#endif
 
 /////////////////////////////////////////////////////////////////////////////
 //
