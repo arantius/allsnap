@@ -1,5 +1,5 @@
 [OPTIONS]
-Auto TOC=9
+Auto TOC=1
 Compatibility=1.1 or later
 Compiled file=allSnap.chm
 Contents file=Table of Contents.hhc
@@ -10,11 +10,13 @@ Title=allSnap Help
 
 
 [FILES]
-settings.html
 introducing.html
-running.html
 about.html
+running.html
+settings.html
 knownproblems.html
+logo.gif
+smallicon.gif
 
 [MAP]
 Compatibility=1.1 or later
