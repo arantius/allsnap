@@ -327,7 +327,6 @@ LRESULT APIENTRY SubclassProc32(
     DWORD_PTR dwRefData
 ) {  
 	switch(uMsg){
-#ifndef DBG_NO_MOVING
 		case WM_MOVING:
 			if (!window_size_changed(hwnd)){
 			
@@ -338,7 +337,6 @@ LRESULT APIENTRY SubclassProc32(
 				break;
 			}
 			break;
-#endif
 		case WM_SIZING:
 			if (wParam !=9){	
 				snapper_OnSizing(hwnd,wParam,(LPRECT)(lParam));
