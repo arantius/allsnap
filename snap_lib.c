@@ -69,7 +69,6 @@ BOOL g_snap_insides = TRUE;
 BOOL g_kept_to_screen = FALSE;
 BOOL g_cropping_rgn = TRUE;
 BOOL g_subclassing = FALSE;
-OSVERSIONINFO g_os;
 
 TCHAR g_skinned_classes[MAX_CLASSNAME_LENGTH * MAX_NUM_CLASS_NAMES] =
   _T("icoCTactTrilly;Winamp v1.x;ConsoleWindowClass;Winamp PE;Winamp EQ;Winamp MB;BaseWindow_RootWnd");	
@@ -171,9 +170,8 @@ BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD fdwReason, PVOID fImplLoad){
 }
 
 BOOL WINAPI SnapHookAll(HWND hwnd,UINT thread_id,OSVERSIONINFO os){
-    g_hWnd_app = hwnd;
+	g_hWnd_app = hwnd;
 	g_sounds_thread_id = thread_id;
-	g_os = os;
 
 	if (g_hhook==NULL){
 		g_hhook = SetWindowsHookEx(WH_CALLWNDPROC,(HOOKPROC)CallWndProc,g_hinstDll,0);

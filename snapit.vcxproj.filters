@@ -117,25 +117,19 @@
     <Image Include="x-click-but21.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="xptray_disabled.ico">
+    <Image Include="tray_disabled.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="xptray_enabled.ico">
+    <Image Include="tray_enabled.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="snap_tos.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="xptray_enabled_32.ico">
+    <Image Include="tray_enabled_32.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="enabled_32.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="disabled_32.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="xptray_disabled_32.ico">
+    <Image Include="tray_disabled_32.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -343,19 +343,15 @@
     <None Include="Resource.hm" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="disabled.ico" />
-    <Image Include="disabled_32.ico" />
-    <Image Include="enabled_32.ico" />
     <Image Include="snap_tos.ico" />
     <Image Include="speaker.ico" />
-    <Image Include="enabled.ico" />
     <Image Include="play.ico" />
     <Image Include="snapit.ico" />
     <Image Include="x-click-but21.bmp" />
-    <Image Include="xptray_disabled.ico" />
-    <Image Include="xptray_disabled_32.ico" />
-    <Image Include="xptray_enabled.ico" />
-    <Image Include="xptray_enabled_32.ico" />
+    <Image Include="tray_disabled.ico" />
+    <Image Include="tray_disabled_32.ico" />
+    <Image Include="tray_enabled.ico" />
+    <Image Include="tray_enabled_32.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="snapit.rc">

@@ -31,8 +31,6 @@ HICON			g_hiPlay;
 
 UINT			g_sounds_thread_id;
 
-OSVERSIONINFO	g_os;
-BOOL g_isXP;
 HWND			g_hwndAbout = NULL;
 
 UINT			g_version = 0x013100;
@@ -104,7 +102,10 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	}
 
 	g_sounds_thread_id = SnapSounds_BeginThread();
-	SnapHookAll(g_hWnd,g_sounds_thread_id,g_os);
+
+	OSVERSIONINFO osv;
+	ZeroMemory(&osv, sizeof(osv));
+	SnapHookAll(g_hWnd,g_sounds_thread_id,osv);
 
 	InitMyStuff(hInstance);
 
@@ -236,52 +237,21 @@ BOOL CheckCharSet(void){
    InitApplication(void)
 **************************************************************************/
 BOOL InitApplication(HINSTANCE hInstance){
+	WNDCLASSEX  wcex;
+	ZeroMemory(&wcex, sizeof(wcex));
 
-	OSVERSIONINFO  os;
+	wcex.cbClsExtra      = 0;
+	wcex.cbSize          = sizeof(wcex);
+	wcex.cbWndExtra      = 0;
+	wcex.hbrBackground   = GetStockObject(WHITE_BRUSH);
+	wcex.hCursor         = LoadCursor(NULL, IDC_ARROW);
+	wcex.hIcon			 = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_SNAPIT));
+	wcex.hInstance       = hInstance;
+	wcex.lpfnWndProc     = (WNDPROC)WndProc;
+	wcex.lpszClassName   = g_szClassName;
+	wcex.style           = CS_HREDRAW | CS_VREDRAW;
 
-	ZeroMemory(&os, sizeof(os));
-	os.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-	GetVersionEx(&os);
-
-	g_os = os;
-	g_isXP = ((g_os.dwMajorVersion>=5) && (g_os.dwMinorVersion>=1));
-
-	if(os.dwMajorVersion >= 4){
-		WNDCLASSEX  wcex;
-
-		ZeroMemory(&wcex, sizeof(wcex));
-		   
-		wcex.cbSize          = sizeof(wcex);
-		wcex.style           = CS_HREDRAW | CS_VREDRAW;
-		wcex.lpfnWndProc     = (WNDPROC)WndProc;
-		wcex.cbClsExtra      = 0;
-		wcex.cbWndExtra      = 0;
-		wcex.hInstance       = hInstance;
-		wcex.hIcon			 = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_SNAPIT));
-		wcex.hCursor         = LoadCursor(NULL, IDC_ARROW);
-		wcex.hbrBackground   = GetStockObject(WHITE_BRUSH);
-		wcex.lpszClassName   = g_szClassName;
-
-		return RegisterClassEx(&wcex);
-	}
-	else{
-		WNDCLASS  wc;
-
-		ZeroMemory(&wc, sizeof(wc));
-		
-		wc.style          = CS_HREDRAW | CS_VREDRAW;
-		wc.lpfnWndProc    = (WNDPROC)WndProc;
-		wc.cbClsExtra     = 0;
-		wc.cbWndExtra     = 0;
-		wc.hInstance      = hInstance;
-		wc.hCursor        = LoadCursor(NULL, IDC_ARROW);
-		wc.hbrBackground  = GetStockObject(WHITE_BRUSH);
-		wc.lpszMenuName   = NULL;
-		wc.lpszClassName  = g_szClassName;
-		wc.hIcon		  = LoadIcon(hInstance,MAKEINTRESOURCE(IDI_SNAPIT));
-
-		return RegisterClass(&wc);
-	}
+	return RegisterClassEx(&wcex);
 }
 
 

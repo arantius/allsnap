@@ -77,13 +77,6 @@ static SNAP_TYPE_BOX snap_type_boxes[]={
 static const int num_snap_type_boxes = sizeof(snap_type_boxes)/sizeof(snap_type_boxes[0]);
 static UINT	thresh_boxes[] = {IDC_WIN_THRESH,IDC_SCREEN_THRESH,0};
 
-//======================================================================
-//stupid windows XP can't draw a BS_ICON button right
-//LRESULT CALLBACK MyIconButtonProc	(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-//void SubclassIconButton( HWND hButton);
-//========================================================================
-
-
 /*====================================================================
  Local Function Prototypes
 =====================================================================*/
@@ -527,36 +520,11 @@ LRESULT Prefs_OnInitDialog(HWND hDlg, HWND hwndFocus, LPARAM lParam){
 }
 
 LRESULT Sounds_OnInitDialog(HWND hDlg, HWND hwndFocus, LPARAM lParam){
-	BOOL new_is_noisy = isNoisy();
-
-	//CenterWindow(GetParent(hDlg));
-
-	//xp doesn't style icon buttons correctly
-	SetFocus(NULL);
-	if (!g_isXP){
-		HWND hBtn_1 = GetDlgItem(hDlg,IDC_PLAY_SNAP);
-		HWND hBtn_2 = GetDlgItem(hDlg,IDC_PLAY_UNSNAP);
-
-        LONG new_shared_style = GetWindowLong(hBtn_1,GWL_STYLE) | BS_ICON;
-        
-		SetWindowLong(hBtn_1,GWL_STYLE,new_shared_style);
-		SetWindowLong(hBtn_2,GWL_STYLE,new_shared_style);
-
-		SendDlgItemMessage(hDlg,IDC_PLAY_SNAP,BM_SETIMAGE,
-				(WPARAM)IMAGE_ICON,(LPARAM)g_hiPlay);
-		SendDlgItemMessage(hDlg,IDC_PLAY_UNSNAP,BM_SETIMAGE,
-				(WPARAM)IMAGE_ICON,(LPARAM)g_hiPlay);
-	}
-
-
-	Set_Checked(hDlg,IDC_PLAYSOUNDS,new_is_noisy);
-
+	Set_Checked(hDlg,IDC_PLAYSOUNDS,isNoisy());
 	SetDlgItemText(hDlg,IDC_SNAP_FILE,SnapSounds_getPath(SOUND_SNAP));
 	SetDlgItemText(hDlg,IDC_UNSNAP_FILE,SnapSounds_getPath(SOUND_UNSNAP));
-	
 	return TRUE;
 }
-
 
 
 void InitGeneral(HWND hDlg){

@@ -1,5 +1,4 @@
 //snap_Crop.c
-//fix for certain XP styles that are taller than they look.
 
 #include "stdafx.h"
 #include "snap_Crop.h"

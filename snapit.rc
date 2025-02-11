@@ -307,27 +307,19 @@ END
 // remains consistent on all systems.
 IDI_SNAPIT              ICON                    "snapit.ico"
 
-IDI_DISABLED32          ICON                    "disabled_32.ico"
-
-IDI_DISABLED64          ICON                    "disabled.ico"
-
-IDI_ENABLED32           ICON                    "enabled_32.ico"
-
-IDI_ENABLED64           ICON                    "enabled.ico"
-
 IDI_PLAY                ICON                    "play.ico"
 
 IDI_SNAP_TOS            ICON                    "snap_tos.ico"
 
 IDI_SPEAKER             ICON                    "speaker.ico"
 
-IDI_XPDISABLED32        ICON                    "xptray_disabled_32.ico"
+IDI_TRAY_DISABLED_32    ICON                    "tray_disabled_32.ico"
 
-IDI_XPDISABLED64        ICON                    "xptray_disabled.ico"
+IDI_TRAY_DISABLED_64    ICON                    "tray_disabled.ico"
 
-IDI_XPENABLED32         ICON                    "xptray_enabled_32.ico"
+IDI_TRAY_ENABLED_32     ICON                    "tray_enabled_32.ico"
 
-IDI_XPENABLED64         ICON                    "xptray_enabled.ico"
+IDI_TRAY_ENABLED_64     ICON                    "tray_enabled.ico"
 
 
 /////////////////////////////////////////////////////////////////////////////

@@ -9,7 +9,6 @@
 
 extern HWND g_hWnd_app;
 extern UINT g_sounds_thread_id;
-extern OSVERSIONINFO g_os;
 
 #define MAX_CLASSNAME_LENGTH 20		//assuming if the first 20 chars are the same that they are related enough to treat the same
 #define MAX_NUM_CLASS_NAMES  20

@@ -17,11 +17,9 @@
 
 extern HWND g_hWnd;
 extern HINSTANCE g_hInst;
-extern OSVERSIONINFO g_os;
-extern BOOL g_isXP;
+extern HICON	g_hiPlay;
+
 
 void InitCmnCtls(void);
-
-extern HICON	g_hiPlay;
 
 #endif // !defined(AFX_SNAPIT_H__70813C66_3FFA_11D6_8738_444553540000__INCLUDED_)
