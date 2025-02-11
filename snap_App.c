@@ -38,12 +38,6 @@ HWND			g_hwndAbout = NULL;
 UINT			g_version = 0x013100;
 
 
-#ifdef JUST_MOVING
-TCHAR g_szClassName[] = TEXT("allSnapClassMoving");	
-TCHAR g_szTitleName[] = TEXT("allSnapMoving");
-TCHAR g_szMutexName[] =_T("IVAN_HECKMAN_ALLSNAP_MUTEX_MOVING");
-TCHAR g_szMutexNameB[] =_T("IVAN_HECKMAN_ALLSNAP_MUTEXB_MOVING");
-#else
 #ifdef _WIN64
 TCHAR g_szClassName[] = TEXT("allSnapClassSizing64");	
 TCHAR g_szTitleName[] = TEXT("allSnapSizing64");
@@ -54,7 +48,6 @@ TCHAR g_szClassName[] = TEXT("allSnapClassSizing");
 TCHAR g_szTitleName[] = TEXT("allSnapSizing");
 TCHAR g_szMutexName[] =_T("IVAN_HECKMAN_ALLSNAP_MUTEX_SIZING");
 TCHAR g_szMutexNameB[] =_T("IVAN_HECKMAN_ALLSNAP_MUTEXB_SIZING");
-#endif
 #endif
 
 /**************************************************************************
