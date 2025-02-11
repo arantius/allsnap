@@ -339,7 +339,6 @@ LRESULT APIENTRY SubclassProc32(
 			}
 			break;
 #endif
-#ifndef DBG_NO_SIZING
 		case WM_SIZING:
 			if (wParam !=9){	
 				snapper_OnSizing(hwnd,wParam,(LPRECT)(lParam));
@@ -348,7 +347,6 @@ LRESULT APIENTRY SubclassProc32(
 				}
 			}
 			break;
-#endif
 	}
 
 	if (	(	
