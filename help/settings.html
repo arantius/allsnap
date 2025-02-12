@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td>Toggle key</td>
-				<td>Selects key to temporarily disable window snapping</td>
+				<td>While held, this key temporarily disables window snapping</td>
 			</tr>
 		</table>
 		<table cols="2" width="300">
@@ -91,20 +91,9 @@
 					Advanced:</th>
 			</tr>
 			<tr>
-				<td>Desktop icons 'Align to Grid'</td>
-				<td>Automatically line up desktop icons after moving them as in XP.&nbsp; (not 
-					needed in XP)</td>
-			</tr>
-			<tr>
 				<td>Snap MDI windows</td>
 				<td>Makes other applications' MDI windows snap.<br>
-					<span class="note">MDI windows are document windows that are contained within an 
-						application's main window.</span></td>
-			</tr>
-			<tr>
-				<td>Don't snap to inside edges</td>
-				<td>Diables windows from snapping to the inside edges of other windows.<br>
-					<span class="note">e.g. snapping the top of one window to the top of another window</span></td>
+					<span class="note">MDI windows are document windows that are contained within an application's main window.</span></td>
 			</tr>
 			<tr>
 				<td>Invert toggle key</td>
@@ -113,17 +102,14 @@
 						key is held down.</span></td>
 			</tr>
 			<tr>
+				<td>Don't snap to inside edges</td>
+				<td>Diables windows from snapping to the inside edges of other windows.<br>
+					<span class="note">e.g. snapping the top of one window to the top of another window</span></td>
+			</tr>
+			<tr>
 				<td>Hide icon</td>
 				<td>Hides the system tray icon. To show the icon again re-run allSnap.exe.</td>
 			</tr>
-			<tr>
-				<td>Crop top of windows by <b>x</b> pixels</td>
-				<td>Using allSnap with certain XP styles (e.g. Watercolor) will leave a thin space 
-					at the top of the windows. This option fixes this by making allSnap think all 
-					windows are <b>x</b> pixels shorter.<br>
-					<span class="note">This fix is not smart enough to detect which windows are using 
-						the problem style, so it is bound to make certain custom-skinned apps snap 
-						incorrectly.</span></td>
 			<tr>
 				<td>Constrain windows to the screen</td>
 				<td>Prevents windows from moving off the sides of the screen.
@@ -132,9 +118,13 @@
 			<TR>
 				<TD>Ignore window clipping regions
 				</TD>
-				<TD>Some applications set a visible clipping region of a window.&nbsp; This option 
-					ignores this setting and snaps to the actual hidden widow size.</TD>
+				<TD>Some applications set a visible clipping region of a window.&nbsp; This option ignores this setting and snaps to the actual hidden widow size.</TD>
 			</TR>
+			<tr>
+				<td>Crop window edges</td>
+				<td>Depending upon window style, visual decorations may be added "outside" the window's edge(s).  Check the "enabled" box to turn this feature on, and set how many pixels are subtracted from each edge by the four settings on each edge of this section.<br>
+					<span class="note">This fix is not smart enough to detect which windows are using the problem style, so it is bound to make certain custom-skinned apps snap incorrectly.</span></td>
+			</tr>
 		</table>
 	</BODY>
 </HTML>
