@@ -98,7 +98,8 @@ DWORD mapID(DWORD ctrlid){
 		hPop.pszText = HelpString;
 	}
 
-
-	HtmlHelp(hwndCtl, NULL, HH_DISPLAY_TEXT_POPUP, (DWORD)&hPop) ;
+	// It seems this type cast is the right thing to do; suppress warning.
+	#pragma warning(suppress : 4311 6387)
+	HtmlHelp(hwndCtl, NULL, HH_DISPLAY_TEXT_POPUP, (DWORD)&hPop);
 #endif
 }

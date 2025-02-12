@@ -72,8 +72,7 @@ DWORD WINAPI MessageLoop(void){
 
 UINT SnapSounds_BeginThread(void){
 	UINT thread_id = 0;
-	HANDLE hThread = chBEGINTHREADEX( NULL, 0, &MessageLoop, NULL, 0,
-        &thread_id );
-	CloseHandle(hThread);
+	HANDLE hThread = chBEGINTHREADEX(NULL, 0, &MessageLoop, NULL, 0, &thread_id);
+	if (hThread) CloseHandle(hThread);
 	return thread_id;
 }

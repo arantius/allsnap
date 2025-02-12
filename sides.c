@@ -82,7 +82,7 @@ void SetSideOfRect(enum SIDE what_side, int new_val, LPRECT pRect)
 //GetSideSign
 //return the direction moving out from side 
 //would move the screen coords
-int GetSideSign(enum SIDE side)
+static int GetSideSign(enum SIDE side)
 {
 	switch(side){
 		case SIDE_LEFT:  //fallthrough
@@ -97,19 +97,17 @@ int GetSideSign(enum SIDE side)
 	}
 }
 
-void ExtendOut(RECT * p_rect,enum SIDE side,int new_width){
+static void ExtendOut(RECT * p_rect,enum SIDE side,int new_width){
 	int new_val = GetSideOfRect(OppositeSide(side),p_rect) + 
 		(GetSideSign(side) * new_width);
 	SetSideOfRect(side,new_val,p_rect);
 }
 
-void AlignToSide
-(
+void AlignToSide (
 	LPRECT	my_rect,
 	enum SIDE	align_side,
 	int		position
-)
-{   //                side_val
+) { //                side_val
 	//                ^   
 	// ----------------     |
 	// -   my_rect    -     |  
@@ -135,15 +133,12 @@ void AlignToSide
 }
 
 //Align a SIDE of the Alignee rect with a SIDE of the Aligner rect
-//
-void AlignToRect 
-(
+void AlignToRect (
 	LPCRECT Aligner, 
 	LPRECT Alignee,
 	enum SIDE AlignerSide,
 	enum SIDE AligneeSide
-)
-{   //                aligneeSideVal
+) { //                aligneeSideVal
 	//                ^   
 	// ++++++++++++++++     ---------------
 	// +   Alignee    +     |   Aligner   |

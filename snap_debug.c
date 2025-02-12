@@ -20,8 +20,7 @@ HWND			g_hwndDebug = NULL;
 BOOL OnSize(HWND hDlg,int height, int width);
 void Debug_SaveToFile(void);
 BOOL SelectFile(LPTSTR szFileName);
-BOOL CALLBACK ListView(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
-BOOL	OnDBGContextMenu(HWND hWnd, HWND hwndCtl, UINT x, UINT y);
+BOOL OnDBGContextMenu(HWND hWnd, HWND hwndCtl, UINT x, UINT y);
 
 BOOL OnGetMinMax(HWND hDlg, LPMINMAXINFO pminmax);
 
@@ -160,9 +159,6 @@ void DebugCopySelectedToClipboard(HWND hlist){
 BOOL	OnDBGContextMenu(HWND hWnd, HWND hwndCtl, UINT x, UINT y){
 	HMENU hContextMenu = GetSubMenu(LoadMenu(g_hInst,  MAKEINTRESOURCE(IDR_COPY)),0);
 
-	// Display the menu
-	// GetCursorPos(&pt);
-
 	if (TrackPopupMenu(   hContextMenu,
 		TPM_LEFTALIGN | TPM_TOPALIGN | TPM_RETURNCMD,
 		x, y, 0, hWnd, NULL)
@@ -222,9 +218,6 @@ BOOL CALLBACK DebugProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam){
 				WORD msg		= HIWORD(wParam);
 				TCHAR buffer[MAX_LOADSTRING+3];
 				const TCHAR * dbg_msg;
-
-				//LoadString(g_hInst,(FIRST_DBG_STRING + msg),dbg_msg,MAX_LOADSTRING);
-
 
 				chASSERT(msg <= DBGMSG_LAST);
 				dbg_msg = DBG_MSG_NAMES[msg];

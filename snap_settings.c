@@ -99,10 +99,6 @@ BOOL	Prefs_OnCommand		(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify);
 BOOL	Sounds_OnCommand	(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify);
 BOOL	Adv_OnCommand		(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify);
 BOOL	Grid_OnCommand		(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify);
-
-void	Prefs_OnParentNotify(HWND hwnd, UINT msg, HWND hwndChild, int idChild);
-void	Sounds_OnParentNotify(HWND hwnd, UINT msg, HWND hwndChild, int idChild);
-
 void	Grid_UpdateEnabledDim(	HWND hDlg,	int check_id,const int radios[],const int edits[]);
 
 void	InitGeneral(HWND hDlg);
@@ -123,7 +119,7 @@ void	ApplySounds(HWND hDlg);
 
 void	ApplyAdv(HWND hDlg);
 
-void	TestSound(HWND hDlg,HWND hwndCtrl, enum SNAP_SOUNDS which_sound);
+void	TestSound(HWND hDlg,HWND hwndCtrl, enum SNAP_SOUND which_sound);
 
 UINT	getSelectedToggleKey	(HWND hDlg);
 BOOL	BrowseFile				(HWND hDlg,enum SNAP_SOUND which_sound);
@@ -425,7 +421,7 @@ void ValidatePrefs(HWND hDlg){
 /*******************************************************************************************
 	INIT functions
 *******************************************************************************************/
-void Adv_SetUpCropValue(
+static void Adv_SetUpCropValue(
 		HWND hDlg, int idc, int idc_spin, int value, int enabled) {
 	SetDlgItemInt(hDlg, idc, value, FALSE);
 	Edit_SetSel(GetDlgItem(hDlg, idc), 0, -1);
@@ -477,7 +473,7 @@ void Grid_UpdateEnabledDim
 	}
 }
 
-void Grid_InitDim
+static void Grid_InitDim
 (
 	HWND hDlg,
 	int check_id,
@@ -561,18 +557,12 @@ void InitGeneral(HWND hDlg){
 void InitSnapTo(HWND hDlg){
 	BOOL new_is_enabled	= isEnabled();
 	UINT new_snap_type  = getSnapType();
-	
-	//g_had_no_snaptos = (new_snap_type == SNAPT_NONE);
-
 	Set_Checked(hDlg,IDC_ENABLED,new_is_enabled);
-
 	InitSnapTypeBoxes(hDlg,new_snap_type);
 }
 
 
-
-
-void	InitToggleKeys(HWND hCbCtl,CB_VK_ITEM toggleKeys[], int num_toggle_keys,UINT selected_key){
+void InitToggleKeys(HWND hCbCtl,CB_VK_ITEM toggleKeys[], int num_toggle_keys,UINT selected_key){
 	int i;
 	int select_index=0;
 	
@@ -619,15 +609,10 @@ BOOL Prefs_OnCommand(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify){
 		case IDC_SELF:
 		case IDC_VCENTER:
 		case IDC_HCENTER:
-            //Set_Checked(hDlg,
-			//	IDC_ENABLED,
-			//	(getNewSnapType(hDlg)!=SNAPT_NONE)
-			//	);
 			changed = TRUE;
 			break;
 
 		case IDC_ENABLED:
-			//EnableButtons(hDlg,Is_Checked(hDlg,IDC_ENABLED));
 			changed = TRUE;
 			break;
 	}
@@ -706,7 +691,7 @@ BOOL Adv_OnCommand(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify){
 	return FALSE;
 }
 
-BOOL in_array(const int array[],int size,int val){
+static BOOL in_array(const int array[],int size,int val){
 	int i=0;
 	for (i=0;i<size;i++){
 		if (array[i] == val)
@@ -715,10 +700,10 @@ BOOL in_array(const int array[],int size,int val){
 	return FALSE;
 }
 
-BOOL Was_Checked(const int radios[],int num_radios,int id,UINT codeNotify){
+static BOOL Was_Checked(const int radios[],int num_radios,int id,UINT codeNotify){
 	return in_array(radios,num_radios,id);
 }
-BOOL Was_Edited(const int edits[],int num_edits,int id,UINT codeNotify){
+static BOOL Was_Edited(const int edits[],int num_edits,int id,UINT codeNotify){
 	return ( (codeNotify == EN_UPDATE)
 		&& in_array(edits,num_edits,id)
 	);
@@ -751,7 +736,7 @@ BOOL Grid_OnCommand(HWND hDlg, int id, HWND hwndCtl, UINT codeNotify){
 	return FALSE;
 }
 
-int find_index(int array[],int val,int size){
+static int find_index(int array[],int val,int size){
 	int i=0;
 	for (i=0;i<size;i++){
 		if(array[i] == val){
@@ -760,7 +745,7 @@ int find_index(int array[],int val,int size){
 	}
 	return -1;
 }
-int find_checked_index(HWND hDlg,int array[],int size){
+static int find_checked_index(HWND hDlg,int array[],int size){
 	int i =0;
 	for (i=0;i<size;i++){
 		if(Is_Checked(hDlg,array[i])){
@@ -770,16 +755,14 @@ int find_checked_index(HWND hDlg,int array[],int size){
 	return -1;
 }
 
-void get_grid_selections
-(
+static void get_grid_selections (
 	HWND hDlg,
 	gridsnap_setting_t * p_setting,
 	int enabled_id,
 	int edits[],
 	int radios[],
 	int num_types
-)
-{
+) {
 	if ( !Is_Checked(hDlg,enabled_id) ){
 		p_setting->enabled = FALSE;
 	
@@ -866,15 +849,12 @@ INLINE void ApplyAdv(HWND hDlg){
 
 INLINE void ApplyToggleKey(HWND hDlg){
 	setToggleKey(getSelectedToggleKey(hDlg));
-
-
 }
 
 INLINE void ApplyPrefs(HWND hDlg){
 	ApplySnapTo(hDlg);
 	ApplyThresh(hDlg);
 	ApplyToggleKey(hDlg);
-	
 }
 
 INLINE void ApplySounds(HWND hDlg){

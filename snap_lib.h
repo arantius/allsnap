@@ -38,7 +38,6 @@ SNAPLIBAPI void WINAPI setToggleKey(UINT toggle_key);
 SNAPLIBAPI void WINAPI setCenterKey(UINT center_key);
 SNAPLIBAPI void WINAPI setEqualKey(UINT equal_key);
 SNAPLIBAPI void WINAPI setSnappingInsides(BOOL snap_insides);
-SNAPLIBAPI void WINAPI setOveridingAppSnap(BOOL overide_app_snap);
 SNAPLIBAPI void WINAPI setKeptToScreen(BOOL kept_to_screen);
 SNAPLIBAPI void WINAPI setSkinnedClasses(TCHAR * sz,int len);
 SNAPLIBAPI void WINAPI setIgnoredClasses(TCHAR * sz,int len);
@@ -65,8 +64,6 @@ SNAPLIBAPI UINT WINAPI getToggleKey(void);
 SNAPLIBAPI UINT WINAPI getCenterKey(void);
 SNAPLIBAPI UINT WINAPI getEqualKey(void);
 SNAPLIBAPI BOOL WINAPI isSnappingInsides(void);
-SNAPLIBAPI BOOL WINAPI isOveridingAppSnap(void);
 SNAPLIBAPI BOOL WINAPI isKeptToScreen(void);
 SNAPLIBAPI BOOL WINAPI isCroppingRgn(void);
-
 SNAPLIBAPI void WINAPI getGridSnap(gridsnap_settings_t  *p_grid_settings);

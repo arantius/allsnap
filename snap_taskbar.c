@@ -114,7 +114,7 @@ BOOL ResetTaskbarIcon(void)
     tnid.cbSize = sizeof(NOTIFYICONDATA); 
     tnid.hWnd = g_hWnd; 
     tnid.uID = IDT_MYTRAY; 
-    tnid.uFlags = NIF_ICON | NIF_TIP; 
+    tnid.uFlags = NIF_ICON | NIF_TIP;
     tnid.hIcon = hIcon; 
     if (szTrayTip) 
         lstrcpyn(tnid.szTip, szTrayTip, sizeof(tnid.szTip)); 

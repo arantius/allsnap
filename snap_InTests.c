@@ -57,7 +57,7 @@ int InTests_GetClosestScreenToSide(enum SIDES side,LPCRECT pRect, LPRECT pScreen
 
 
 
-BOOL isPtInRect(LPCRECT pRect,POINT pt){
+static BOOL isPtInRect(LPCRECT pRect,POINT pt){
 	return (	( (pt.x >= pRect->left) && (pt.x <= pRect->right))
 			&&	( (pt.y >= pRect->top)  && (pt.y <= pRect->bottom)));
 }

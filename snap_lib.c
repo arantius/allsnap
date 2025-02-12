@@ -125,26 +125,6 @@ LRESULT APIENTRY SubclassProc32(
 void UnSubclass(HWND hwnd);
 void Subclass(HWND hwnd);
 
-BOOL is_64wnd(HWND hwnd){
-    BOOL is_64 = FALSE;
- 	BOOL res = FALSE;
-	DWORD thisthread = GetCurrentThreadId();
-	HANDLE phandle = GetCurrentProcess();
-	is_64 = !IsWow64Message();
-	DBG_MSG_PTR(g_hWnd_app,DBGMSG_IS64,is_64);
-	
-	CloseHandle(phandle);
-	return is_64;
-}
-
-BOOL is_matching_platform(HWND hwnd){
-	return TRUE;
-#ifdef _WIN64
-	return TRUE;
-#else
-	return TRUE;
-#endif
-}
 
 BOOL WINAPI DllMain(HINSTANCE hinstDll, DWORD fdwReason, PVOID fImplLoad){
 
@@ -199,7 +179,7 @@ void UnSubclass(HWND hWnd){
 	res = RemoveWindowSubclass(g_subclassed_window,(SUBCLASSPROC)SubclassProc32,ALLSNAP_SUBCLASS_ID);
 #endif
 
-   DBG_MSG_PTR(g_hWnd_app,DBGMSG_UNSUBCLASS_NEW,res);	
+	DBG_MSG_PTR(g_hWnd_app,DBGMSG_UNSUBCLASS_NEW,res);	
 
 	g_original_proc = NULL;
 	g_subclassed_window = NULL;
@@ -207,8 +187,6 @@ void UnSubclass(HWND hWnd){
 	g_subclassing = FALSE;
 	g_moved_or_sized = FALSE;
 	g_num_msgs_so_far = 0;
-
-	
 }
 
 void Subclass(HWND hwnd){
@@ -327,7 +305,6 @@ LRESULT APIENTRY SubclassProc32(
 	switch(uMsg){
 		case WM_MOVING:
 			if (!window_size_changed(hwnd)){
-			
 				snapper_OnMoving(hwnd,(LPRECT)(lParam));
 				if (!g_moved_or_sized){
 					g_moved_or_sized= TRUE;
@@ -345,13 +322,10 @@ LRESULT APIENTRY SubclassProc32(
 			break;
 	}
 
-	if (	(	
-				( (uMsg == WM_ACTIVATE)		&& (wParam == WA_INACTIVE))
-			||	
-				( (uMsg == WM_ACTIVATEAPP)	&& (wParam == FALSE)) //  x == FALSE or just !x?
-			||  
-				( uMsg == WM_EXITSIZEMOVE)
-			) 
+	if ((  ( (uMsg == WM_ACTIVATE) && (wParam == WA_INACTIVE))
+		|| ( (uMsg == WM_ACTIVATEAPP) && (wParam == FALSE))
+		|| ( uMsg == WM_EXITSIZEMOVE)
+		) 
 	) {
 		DBG_MSG(g_hWnd_app,DBGMSG_EXITSIZEMOVE);
 		UnSubclass(hwnd);
@@ -499,7 +473,7 @@ void WINAPI setSkinnedClasses(TCHAR * sz,int len){
 	if (len > MAX_CLASSNAME_LIST_LENGTH){
 		return;
 	}
-	lstrcpyn(g_skinned_classes,sz,MAX_CLASSNAME_LIST_LENGTH);
+	(void)lstrcpyn(g_skinned_classes,sz,MAX_CLASSNAME_LIST_LENGTH);
 }
 
 TCHAR *  getSkinnedClasses(void){
@@ -510,7 +484,7 @@ void WINAPI setIgnoredClasses(TCHAR * sz,int len){
 	if (len > MAX_CLASSNAME_LIST_LENGTH){
 		return;
 	}
-	lstrcpyn(g_ignored_classes,sz,MAX_CLASSNAME_LIST_LENGTH);
+	(void)lstrcpyn(g_ignored_classes,sz,MAX_CLASSNAME_LIST_LENGTH);
 }
 
 TCHAR *  getIgnoredClasses(void){

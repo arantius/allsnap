@@ -21,7 +21,7 @@ BOOL testWholeDimension(enum SIDES first_side,
 void KeepTopLeftOnScreen(SNAP_RESULTS * p_sr, LPCRECT pRect);
 
 
-void OverwriteResult(SNAP_RESULTS * p_snap_results,enum SIDES which_side,LPCRECT pScreen){
+static void OverwriteResult(SNAP_RESULTS * p_snap_results,enum SIDES which_side,LPCRECT pScreen){
 	SIDE_SNAP_RESULTS  * p_side_r = (isVerticalSide(which_side))?
 		&(p_snap_results->v):&(p_snap_results->h);
 
@@ -32,8 +32,7 @@ void OverwriteResult(SNAP_RESULTS * p_snap_results,enum SIDES which_side,LPCRECT
 
 }
 
-BOOL isWholeSideOut_Sizing(enum SIDES side,TEST_INFO * p_test_info, LPRECT pScreen, P_CORNER_INFO pci)
-{
+BOOL isWholeSideOut_Sizing(enum SIDES side,TEST_INFO * p_test_info, LPRECT pScreen, P_CORNER_INFO pci){
 	LPCRECT pRect = p_test_info->mine;
 	if (!isSideIn(pci,side)){
 
@@ -79,7 +78,7 @@ BOOL testWholeDimension(enum SIDES first_side,
 						P_CORNER_INFO pci,
 						enum SIDES * p_kept_side)
 {
-	if		(isWholeSideOut(first_side,p_test_info,pRect,pScreen,pci)){
+	if (isWholeSideOut(first_side,p_test_info,pRect,pScreen,pci)){
 		*p_kept_side = first_side;
 		return TRUE;
 	}
@@ -106,7 +105,6 @@ void KeepToScreen(
 	
 	enum SIDES kept_side = SIDE_NONE;
 
-	//WinRects_getCurrentScreen(&screen_rect);
 	InTests_TestAllCorners(&ci,&keptRect);
    
 	if (testWholeDimension(SIDE_TOP,SIDE_BOTTOM,p_test_info,&keptRect,&screen_rect,&ci,&kept_side))
@@ -125,7 +123,6 @@ void KeepToScreen(
 	}
 
 	if (!p_test_info->sizing){
-		
 		if (isOnlyOneCornerOfSideOut(&ci,SIDE_TOP)){
 			testSingleCorner(
 				p_snap_results,
@@ -150,42 +147,42 @@ void KeepToScreen(
 
 
 void testSingleCorner(SNAP_RESULTS * p_snap_results,enum SIDES h_side,enum SIDES v_side,enum SIDES ignored_side,LPCRECT pRect){
-		RECT h_screen;
-		RECT v_screen;
-		int h_dist = -1;
-		int v_dist = -1;
-		enum SIDES closest_side = SIDE_NONE;
-		BOOL has_h = FALSE;
-		BOOL has_v = FALSE;
-		LPCRECT pScreen;
-		POINT pt;
+	RECT h_screen;
+	RECT v_screen;
+	int h_dist = -1;
+	int v_dist = -1;
+	enum SIDES closest_side = SIDE_NONE;
+	BOOL has_h = FALSE;
+	BOOL has_v = FALSE;
+	LPCRECT pScreen;
+	POINT pt;
 
-		pt.x = GetSideOfRect(h_side,pRect);
-		pt.y = GetSideOfRect(v_side,pRect);
+	pt.x = GetSideOfRect(h_side,pRect);
+	pt.y = GetSideOfRect(v_side,pRect);
 
-		if (h_side != ignored_side){
-            has_h = InTests_GetClosestScreenToPt(pt,h_side,&h_dist,&h_screen);
-		}
+	if (h_side != ignored_side){
+        has_h = InTests_GetClosestScreenToPt(pt,h_side,&h_dist,&h_screen);
+	}
 
-		if (v_side != ignored_side){
-            has_v = InTests_GetClosestScreenToPt(pt,v_side,&v_dist,&v_screen);
-		}
+	if (v_side != ignored_side){
+        has_v = InTests_GetClosestScreenToPt(pt,v_side,&v_dist,&v_screen);
+	}
 
-		if (has_h && (!has_v || (h_dist <= v_dist))){
-			closest_side = h_side;
-			pScreen = &h_screen;
-			DBG_MSG_SIDE_VAL(g_hWnd_app,DBGMSG_KEPTSINGLECORNER,h_side,GetSideOfRect(h_side,&h_screen));
-		}
-		else if (has_v && (!has_h || (v_dist < h_dist))){
-			closest_side = v_side;
-			pScreen = &v_screen;
-			DBG_MSG_SIDE_VAL(g_hWnd_app,DBGMSG_KEPTSINGLECORNER,v_side,GetSideOfRect(v_side,&v_screen));
-		}
-		else{
-			return;
-		}
+	if (has_h && (!has_v || (h_dist <= v_dist))){
+		closest_side = h_side;
+		pScreen = &h_screen;
+		DBG_MSG_SIDE_VAL(g_hWnd_app,DBGMSG_KEPTSINGLECORNER,h_side,GetSideOfRect(h_side,&h_screen));
+	}
+	else if (has_v && (!has_h || (v_dist < h_dist))){
+		closest_side = v_side;
+		pScreen = &v_screen;
+		DBG_MSG_SIDE_VAL(g_hWnd_app,DBGMSG_KEPTSINGLECORNER,v_side,GetSideOfRect(v_side,&v_screen));
+	}
+	else{
+		return;
+	}
 		
-		OverwriteResult(p_snap_results,closest_side,pScreen);
+	OverwriteResult(p_snap_results,closest_side,pScreen);
 }
 
 void KeepTopLeftOnScreen(SNAP_RESULTS * p_sr, LPCRECT pRect){

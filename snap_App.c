@@ -51,7 +51,11 @@ TCHAR g_szMutexNameB[] =_T("IVAN_HECKMAN_ALLSNAP_MUTEXB_SIZING");
 /**************************************************************************
    Local Function Prototypes
 **************************************************************************/
-int APIENTRY	 _tWinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPWSTR lpCmdLine,int nCmdShow);
+int APIENTRY _tWinMain(
+	_In_ HINSTANCE hInstance,
+	_In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPWSTR    lpCmdLine,
+	_In_ int       nCmdShow);
 BOOL			 CheckCharSet(void);
 BOOL			 OneInstanceOnly(void);
 
@@ -74,22 +78,18 @@ VOID			 ContextMenu(HWND hWnd);
    WinMain(void)
 
 **************************************************************************/
-int APIENTRY _tWinMain(HINSTANCE hInstance,
-                     HINSTANCE hPrevInstance,
-                     LPTSTR     lpCmdLine,
-                     int       nCmdShow){
+int APIENTRY _tWinMain(
+		_In_ HINSTANCE hInstance,
+		_In_opt_ HINSTANCE hPrevInstance,
+		_In_ LPWSTR    lpCmdLine,
+		_In_ int       nCmdShow) {
 	MSG msg;
 
 	g_hInst = hInstance;
 
-	if (
-			!CheckCharSet()
-			||
-			!OneInstanceOnly()){
+	if (!CheckCharSet() || !OneInstanceOnly()){
 		return FALSE;
 	}
-
-	
 
 	if(!hPrevInstance){
 		if(!InitApplication(hInstance)){

@@ -28,7 +28,5 @@ void Crop_CropSizingRect(
 	RECT * p_cropped_rect
 );
 
-void Crop_UnCropResults(PCROP_INFO p_crp,SNAP_RESULTS * psnap_results);
-
 LPCRECT Crop_GetPCroppedRect(PCROP_INFO p_crop);
 LPCRECT Crop_GetPUncroppedRect(PCROP_INFO p_crop);

@@ -59,7 +59,6 @@ void EqualSize_Adjust(RECT * p_init_rect,enum SIDE v_side,enum SIDE h_side){
 				int new_width = (int)( (double)rectHeight(*p_init_rect) * g_aspect_ratio);
 				p_init_rect->left = p_init_rect->right - new_width;
 			}
-
 		}
 	}
 }

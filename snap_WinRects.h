@@ -9,7 +9,6 @@
 
 void WinRects_Refresh(DWORD get_which, HWND hwnd);
 void WinRects_getRects(PTEST_RECTS);
-void WinRects_RefreshStartScreen(void);
 
 int		WinRects_GetNumScreens(void);
 RECT *	WinRects_GetScreens(void);

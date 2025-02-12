@@ -112,7 +112,7 @@ void Crop_LoadMovingCropInfo(PCROP_INFO p_crop,HWND hWnd,LPCRECT pRect){
 	p_crop->cropped_rect = temp_rect;
 }
 
-void Crop_offset_sizing_side(enum SIDE the_side,RECT * p_temp_rect){
+static void Crop_offset_sizing_side(enum SIDE the_side,RECT * p_temp_rect){
 	if (the_side != SIDE_NONE){
 		SetSideOfRect(
 			the_side,
@@ -128,8 +128,7 @@ void Crop_CropSizingRect(
 	enum SIDE v_side,
 	enum SIDE h_side,
 	RECT * p_cropped_rect
-)
-{
+) {
 	RECT temp_rect = * prect;
 
 	if (g_sizing_crop_info.has_rgn){
@@ -175,7 +174,7 @@ void Crop_LoadSizingInfo(HWND hwnd){
 	}
 }
 
-void UnCropSizingSideResults(SIDE_SNAP_RESULTS * p_ssnap){
+static void UnCropSizingSideResults(SIDE_SNAP_RESULTS * p_ssnap){
 	enum SIDES side = p_ssnap->side;
 
 	if (side != SIDE_NONE){

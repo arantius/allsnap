@@ -26,7 +26,6 @@ void CenterSize_Adjust(RECT * p_init_rect,enum SIDE v_side,enum SIDE h_side){
 			int drag_x = p_init_rect->right;
 			if(drag_x > g_x_center_at_start){
 				p_init_rect->left = g_x_center_at_start - (drag_x - g_x_center_at_start);
-			
 			}
 			
 		}
