@@ -43,10 +43,10 @@ static DWORD tiptable[]={
   ,IDC_ADVL                   ,IDS_ADVL
   ,IDC_PLAY_UNSNAP            ,IDS_PLAY
   ,IDC_PLAY_SNAP              ,IDS_PLAY
-  ,IDC_CROP_TOP               ,IDS_CROP_HINT
-  ,IDC_CROP_BOT               ,IDS_CROP_HINT
-  ,IDC_CROP_LEFT              ,IDS_CROP_HINT
-  ,IDC_CROP_RIGHT             ,IDS_CROP_HINT
+  ,IDC_CROP_TOP               ,IDS_CROP_TOP_HINT
+  ,IDC_CROP_BOT               ,IDS_CROP_BOT_HINT
+  ,IDC_CROP_LEFT              ,IDS_CROP_LEFT_HINT
+  ,IDC_CROP_RIGHT             ,IDS_CROP_RIGHT_HINT
   ,IDC_CROP_ENABLED           ,IDS_CROP_HINT
   ,IDC_GROUP_CROP             ,IDS_CROP_HINT
   ,IDC_HIDEICON               ,IDS_HIDEICON

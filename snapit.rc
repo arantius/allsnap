@@ -381,9 +381,13 @@ BEGIN
     IDC_SNAPIT              "allSnap"
     IDS_HIDEICON            "Hides the system tray icon.\nRun allSnap.exe again to un-hide the icon."
     IDS_KEPT                "Prevents windows from moving off the sides of the screen."
+    IDS_CROP_TOP_HINT       "Number of pixels to remove from the top edge of windows."
     IDS_CROP_RGN            "Crops a window to its visible region before performing snapping"
+    IDS_CROP_BOT_HINT       "Number of pixels to remove from the bottom edge of windows."
     IDS_CHECK_HORIZONTAL    "snap to horizontal grid lines"
     IDS_CHECK_VERTICAL      "snap to vertical grid lines"
+    IDS_CROP_LEFT_HINT      "Number of pixels to remove from the left edge of windows."
+    IDS_CROP_RIGHT_HINT     "Number of pixels to remove from the right edge of windows."
 END
 
 STRINGTABLE

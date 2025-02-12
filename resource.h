@@ -37,12 +37,16 @@
 #define IDC_SNAPIT                      129
 #define IDS_HIDEICON                    130
 #define IDS_KEPT                        131
+#define IDS_CROP_TOP_HINT               132
 #define IDR_SYSMENU                     133
 #define IDS_CROP_RGN                    133
+#define IDS_CROP_BOT_HINT               134
 #define IDS_CHECK_HORIZONTAL            135
 #define IDI_DISABLED                    136
 #define IDS_CHECK_VERTICAL              136
 #define IDD_ABOUT                       137
+#define IDS_CROP_LEFT_HINT              137
+#define IDS_CROP_RIGHT_HINT             138
 #define IDI_SPEAKER                     143
 #define IDI_SNAP_TOS                    144
 #define IDD_GENERAL                     168
