@@ -382,7 +382,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MYDEBUG.H" />
+    <ClInclude Include="mydebug.h" />
     <ClInclude Include="sides.h" />
     <ClInclude Include="snapper.h" />
     <ClInclude Include="snap_CenterSize.h" />
