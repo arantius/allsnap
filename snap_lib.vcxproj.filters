@@ -65,9 +65,6 @@
     <ClInclude Include="MYDEBUG.H">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sides.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -133,7 +130,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="snap_lib1.rc">
+    <ResourceCompile Include="snap_lib.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

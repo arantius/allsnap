@@ -383,7 +383,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MYDEBUG.H" />
-    <ClInclude Include="resource2.h" />
     <ClInclude Include="sides.h" />
     <ClInclude Include="snapper.h" />
     <ClInclude Include="snap_CenterSize.h" />
@@ -407,7 +406,7 @@
     <ClInclude Include="snap_WinRects.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="snap_lib1.rc" />
+    <ResourceCompile Include="snap_lib.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
