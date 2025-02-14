@@ -1,5 +1,6 @@
 //snap_Crop.c
 
+#include <dwmapi.h>
 #include "stdafx.h"
 #include "snap_Crop.h"
 #include "snap_lib_internal.h"
@@ -153,7 +154,7 @@ void Crop_LoadSizingInfo(HWND hwnd){
 		RECT rcRgn = {0};
 		int height,width;
 
-		GetWindowRect(hwnd,&plain_rect);	
+		DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &plain_rect, sizeof(RECT));
 		g_sizing_crop_info.has_rgn = WinRects_GetRgnBox(hwnd,&rcRgn);
 		
 		height = plain_rect.bottom - plain_rect.top;

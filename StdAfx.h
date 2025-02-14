@@ -10,11 +10,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#define STRICT
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
-#define _WIN32_WINNT 0x0501
-#define WINVER 0x0501
-
 
 #if defined( _MSC_VER ) && !defined( __STDC__ )
 #define INLINE __inline

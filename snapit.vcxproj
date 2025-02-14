@@ -125,7 +125,7 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>htmlhelp.lib;winmm.lib;$(Platform)\$(Configuration)\snap_lib32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>htmlhelp.lib;winmm.lib;dwmapi.lib;$(Platform)\$(Configuration)\snap_lib32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -165,7 +165,7 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>htmlhelp.lib;winmm.lib;$(Platform)\$(Configuration)\snap_lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>htmlhelp.lib;winmm.lib;dwmapi.lib;$(Platform)\$(Configuration)\snap_lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -205,7 +205,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>htmlhelp.lib;winmm.lib;$(Platform)\$(Configuration)\snap_lib32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>htmlhelp.lib;winmm.lib;dwmapi.lib;$(Platform)\$(Configuration)\snap_lib32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -247,7 +247,7 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>htmlhelp.lib;winmm.lib;$(Platform)\$(Configuration)\snap_lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>htmlhelp.lib;winmm.lib;dwmapi.lib;$(Platform)\$(Configuration)\snap_lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>

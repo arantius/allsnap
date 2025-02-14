@@ -5,6 +5,7 @@
 #include "snap_InTests.h"
 #include "snap_lib_internal.h"
 #include <crtdbg.h>
+#include <dwmapi.h>
 
 #define MY_MIN_WIN_HEIGHT (16)
 #define MY_MIN_WIN_WIDTH  (8)
@@ -59,7 +60,7 @@ void CenterSize_Init(HWND hWnd){
 	RECT start_rect;
 	int win_height,win_width;
 
-	GetWindowRect(hWnd,&start_rect);
+	DwmGetWindowAttribute(hWnd, DWMWA_EXTENDED_FRAME_BOUNDS, &start_rect, sizeof(RECT));
 
 	win_height = start_rect.bottom - start_rect.top +1;
 	win_width  = start_rect.right - start_rect.left +1;

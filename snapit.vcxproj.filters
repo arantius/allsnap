@@ -99,13 +99,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="disabled.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="speaker.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="enabled.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="play.ico">

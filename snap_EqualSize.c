@@ -5,6 +5,7 @@
 #include "snap_InTests.h"
 #include "snap_lib_internal.h"
 #include <crtdbg.h>
+#include <dwmapi.h>
 
 RECT g_initial_rect;
 double g_aspect_ratio;
@@ -19,7 +20,8 @@ BOOL isEqualing(void){
 }
 
 void EqualSize_Init(HWND hwnd){
-	GetWindowRect(hwnd,&g_initial_rect);
+	DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &g_initial_rect, sizeof(RECT));
+
 	g_aspect_ratio = (double)(rectWidth(g_initial_rect)) /
 		(double)(rectHeight(g_initial_rect));
 	g_inv_ratio =  (double)(rectHeight(g_initial_rect))/

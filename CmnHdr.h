@@ -47,10 +47,6 @@ Purpose: Common header file containing handy macros and definitions used
 ///////////////////////////// STRICT Build Option /////////////////////////////
 
 
-// Force all EXEs/DLLs to use STRICT type checking.
-#define STRICT
-
-
 /////////////////////////// CPU Portability Macros ////////////////////////////
 
 

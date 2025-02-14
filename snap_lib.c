@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #pragma comment(lib, "comctl32.lib")
+#include <dwmapi.h>
 #include <windowsx.h>
 #include <Commctrl.h>
 #define SNAPLIBAPI __declspec(dllexport)
@@ -56,10 +57,10 @@ UINT g_toggle_key = VK_MENU;
 UINT g_center_key = VK_CONTROL;
 UINT g_equal_key = VK_SHIFT;
 UINT g_crop_top = 0;
-UINT g_crop_bottom = 7;
-UINT g_crop_left = 7;
-UINT g_crop_right = 7;
-BOOL g_is_cropping_enabled = TRUE;
+UINT g_crop_bottom = 0;
+UINT g_crop_left = 0;
+UINT g_crop_right = 0;
+BOOL g_is_cropping_enabled = FALSE;
 BOOL g_enabled = TRUE;
 UINT g_snap_type = SNAPT_OTHERS | SNAPT_DESKTOP;
 BOOL g_is_noisy = FALSE;
@@ -191,7 +192,8 @@ void UnSubclass(HWND hWnd){
 
 void Subclass(HWND hwnd){
 	RECT winrect;
-	GetWindowRect(hwnd,&winrect);
+	DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &winrect, sizeof(RECT));
+
 	g_last_height = rectHeight(winrect);
 	g_last_width = rectWidth(winrect);
 	
@@ -259,7 +261,7 @@ BOOL window_size_changed(HWND hwnd){
 	int new_width,new_height;
 	BOOL res = FALSE;
 
-	GetWindowRect(hwnd,&win_rect);
+	DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &win_rect, sizeof(RECT));
 	new_width = rectWidth(win_rect);
 	new_height = rectHeight(win_rect);
 

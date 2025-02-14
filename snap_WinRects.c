@@ -1,3 +1,4 @@
+#include <dwmapi.h>
 #include "stdafx.h"
 #include "snap_WinRects.h"
 #include "snap_lib_internal.h"
@@ -333,23 +334,26 @@ BOOL CALLBACK EnumMonitorsProc(
 
 
 BOOL CALLBACK EnumChildProc(
-  HWND hWnd,      // handle to child window
-  LPARAM lParam   // application-defined value
-  )
-{
-	if (g_num_rects < MAX_RECTS && hWnd != NULL){
-		if (   (hWnd != (HWND)lParam)
-			&&  IsWindowVisible(hWnd)
-			){
-				RECT new_rect;
-				if ((hWnd != (HWND)lParam)
-					&& IS_MDI_CHILD(hWnd)
-					&& GetWindowRect(hWnd,&new_rect) != 0 ){
-					g_window_rects[g_num_rects++] = new_rect;	
-				}
-			}
+	HWND hWnd,      // handle to child window
+	LPARAM lParam   // application-defined value
+) {
+	if (hWnd == NULL) return FALSE;
+	if ((hWnd == (HWND)lParam) || !IsWindowVisible(hWnd)) return FALSE;
+
+	RECT new_rect;
+	if ((hWnd != (HWND)lParam)
+		&& IS_MDI_CHILD(hWnd)
+		&& DwmGetWindowAttribute(
+				hWnd, DWMWA_EXTENDED_FRAME_BOUNDS, &new_rect,
+				sizeof(RECT)
+			) != S_OK
+	) {
+		if (g_num_rects < MAX_RECTS) {
+			g_window_rects[g_num_rects++] = new_rect;
+		}
 		return TRUE;
 	}
+
 	return FALSE;
 }
 
@@ -438,7 +442,10 @@ BOOL WinRects_GetRgnBox(HWND hWnd, LPRECT pRgnBox){
 BOOL GetValidWinRect(HWND hWnd, LPRECT pRect){
 	RECT rc;
 	
-	if (!GetWindowRect(hWnd,&rc)){
+	if (DwmGetWindowAttribute(
+			hWnd, DWMWA_EXTENDED_FRAME_BOUNDS, &rc, sizeof(RECT)
+		) != S_OK
+	) {
 		return FALSE;
 	}
 	else{

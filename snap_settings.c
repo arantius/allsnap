@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <dwmapi.h>
 #include <windowsx.h>
 #include <tchar.h>
 
@@ -929,7 +930,7 @@ void CenterWindow(HWND hwnd){
 
 	RECT rcCenter,rcArea,rcDlg;
 
-	GetWindowRect(hwnd,&rcDlg);
+	DwmGetWindowAttribute(hwnd, DWMWA_EXTENDED_FRAME_BOUNDS, &rcDlg, sizeof(RECT));
 	Dlg_height=(rcDlg.bottom - rcDlg.top);
 	Dlg_width=(rcDlg.right - rcDlg.left);
 

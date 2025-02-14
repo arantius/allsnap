@@ -1,3 +1,4 @@
+#include <dwmapi.h>
 #include "stdafx.h"
 #include "sides.h"
 #include "snapper.h"
@@ -32,10 +33,33 @@ void capture_state_at_snap (LPCRECT p_unsnapped);
 void calc_unsnapped_pos(LPCRECT pcurrent_rect, LPRECT pRect);
 void DoMovingOrSizing(HWND hWnd, WPARAM which_edge,LPRECT pRect,BOOL is_sizing);
 BOOL isToggled(void);
-void reposition(LPCRECT p_unsnapped, SNAP_RESULTS * p_snap, LPRECT pRect);
-void resize(SNAP_RESULTS * p_snap, LPRECT pRect);
+void reposition(LPCRECT p_unsnapped, SNAP_RESULTS* p_snap, LPRECT pRect, HWND hWnd);
+void AutoCropDecorations(HWND hWnd, SNAP_RESULTS* p_snap);
+void resize(SNAP_RESULTS* p_snap, LPRECT pRect, HWND hWnd);
 BOOL isMovingSnapped(void);
 void setMovingSnapped(BOOL snapped);
+
+
+void AutoCropDecorations(HWND hWnd, SNAP_RESULTS* p_snap) {
+	// Adjust the `p_snap` values by the difference between these two APIs;
+	// one includes decorations (e.g. drop shadows) and the other does not.
+	RECT rect_a, rect_b;
+	GetWindowRect(hWnd, &rect_a);
+	DwmGetWindowAttribute(
+		hWnd, DWMWA_EXTENDED_FRAME_BOUNDS, &rect_b, sizeof(RECT));
+	if (p_snap->h.side == SIDE_LEFT) {
+		p_snap->h.value += rect_a.left - rect_b.left;
+	}
+	else if (p_snap->h.side == SIDE_RIGHT) {
+		p_snap->h.value += rect_a.right - rect_b.right;
+	}
+	if (p_snap->v.side == SIDE_TOP) {
+		p_snap->v.value += rect_a.top - rect_b.top;
+	}
+	else if (p_snap->v.side == SIDE_BOTTOM) {
+		p_snap->v.value += rect_a.bottom - rect_b.bottom;
+	}
+}
 
 
 void capture_state_at_snap (LPCRECT p_unsnapped)
@@ -47,7 +71,6 @@ void capture_state_at_snap (LPCRECT p_unsnapped)
 	g_x_offset_at_snap	= p_unsnapped->left - cursor_at_snap.x;
 	g_y_offset_at_snap	= p_unsnapped->top  - cursor_at_snap.y;
 }
-
 
 
 void calc_unsnapped_pos(LPCRECT pcurrent_rect,LPRECT pRect){
@@ -108,12 +131,12 @@ void snapper_OnMoving(HWND hWnd, LPRECT pRect)
 		
 		Crop_UnCropMovingResults(&crop_info,&snap_results);
 
-		reposition(&unsnapped_position,&snap_results,pRect);
+		reposition(&unsnapped_position, &snap_results, pRect, hWnd);
 	}
 	else{
 		DBG_MSG(g_hWnd_app,DBGMSG_MOVING_TOGGLEDOFF);
 		clear_snap_results (&snap_results);
-		reposition(&unsnapped_position,&snap_results,pRect);
+		reposition(&unsnapped_position, &snap_results, pRect, hWnd);
 	}
 	
 	MouseSpeed_Track();
@@ -166,7 +189,7 @@ void snapper_OnSizing(HWND hWnd, WPARAM which_edge,LPRECT pRect){
 		Crop_UnCropSizingResults(&snap_results);
 		DBG_MSG_SR(g_hWnd_app,DBGMSG_AFTER_CROP,snap_results);
 	
-		resize(&snap_results,pRect);
+		resize(&snap_results, pRect, hWnd);
 
 		if (was_center_sizing || was_equal_sizing){
 			if(snap_results.h.side != SIDE_NONE){
@@ -217,10 +240,10 @@ void reposition_side(LPCRECT p_unsnapped, SIDE_SNAP_RESULTS * p_ssnap,
 
 
 
-void reposition(LPCRECT p_unsnapped, SNAP_RESULTS * p_snap, LPRECT pRect){
+void reposition(LPCRECT p_unsnapped, SNAP_RESULTS* p_snap, LPRECT pRect, HWND hWnd) {
 	PSNAP_RESULTS p_last_snap = TrackRslts_GetLast();
 
-	if (NO_SNAP(*p_snap)){
+	if (NO_SNAP(*p_snap)) {
 				
 		if (isMovingSnapped()){ //if just unsnapped reset to unsnapped position
 			setMovingSnapped(FALSE);
@@ -229,30 +252,30 @@ void reposition(LPCRECT p_unsnapped, SNAP_RESULTS * p_snap, LPRECT pRect){
 			DBG_MSG(g_hWnd_app,DBGMSG_UNSNAP);
 		}
 	}
-	else{ // at least one side got snapped
-		
-		if(!isMovingSnapped())
-		{
+	else { // at least one side got snapped
+		if (!isMovingSnapped()) {
 			capture_state_at_snap(p_unsnapped);
 			setMovingSnapped(TRUE);	
 		}
 
+		AutoCropDecorations(hWnd, p_snap);
 		reposition_side(p_unsnapped,&(p_snap->h),&(p_last_snap->h),pRect);
 		reposition_side(p_unsnapped,&(p_snap->v),&(p_last_snap->v),pRect);
 	}
 }
 
 
-void resize(SNAP_RESULTS * p_snap, LPRECT pRect){
+void resize(SNAP_RESULTS* p_snap, LPRECT pRect, HWND hWnd) {
+	AutoCropDecorations(hWnd, p_snap);
 
-	if (p_snap->v.side != SIDE_NONE){
-		DBG_MSG_SIDE_VAL(g_hWnd_app,DBGMSG_RESIZE,p_snap->v.side,p_snap->v.value);
-		SetSideOfRect((p_snap->v.side),(p_snap->v.value),pRect);
+	if (p_snap->v.side != SIDE_NONE) {
+		DBG_MSG_SIDE_VAL(g_hWnd_app, DBGMSG_RESIZE, p_snap->v.side, p_snap->v.value);
+		SetSideOfRect((p_snap->v.side), (p_snap->v.value), pRect);
 	}
 
-	if (p_snap->h.side != SIDE_NONE){
-		DBG_MSG_SIDE_VAL(g_hWnd_app,DBGMSG_RESIZE,p_snap->h.side,p_snap->h.value);
-		SetSideOfRect((p_snap->h.side),(p_snap->h.value),pRect);
+	if (p_snap->h.side != SIDE_NONE) {
+		DBG_MSG_SIDE_VAL(g_hWnd_app, DBGMSG_RESIZE, p_snap->h.side, p_snap->h.value);
+		SetSideOfRect((p_snap->h.side), (p_snap->h.value), pRect);
 	}
 }
 
