@@ -130,6 +130,9 @@
       <TargetMachine>MachineX86</TargetMachine>
       <TypeLibraryFile>$(IntDir)$(TargetName).tlb</TypeLibraryFile>
     </Link>
+    <Manifest>
+      <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release UNICODE|x64'">
     <Midl>
@@ -166,6 +169,9 @@
       <TargetMachine>MachineX64</TargetMachine>
       <TypeLibraryFile>$(IntDir)$(TargetName).tlb</TypeLibraryFile>
     </Link>
+    <Manifest>
+      <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug UNICODE|Win32'">
     <Midl>
@@ -201,6 +207,9 @@
       <TargetMachine>MachineX86</TargetMachine>
       <TypeLibraryFile>$(IntDir)$(TargetName).tlb</TypeLibraryFile>
     </Link>
+    <Manifest>
+      <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug UNICODE|x64'">
     <Midl>
@@ -238,6 +247,9 @@
       <TargetMachine>MachineX64</TargetMachine>
       <TypeLibraryFile>$(IntDir)$(TargetName).tlb</TypeLibraryFile>
     </Link>
+    <Manifest>
+      <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="sides.c">
