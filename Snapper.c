@@ -41,12 +41,38 @@ void setMovingSnapped(BOOL snapped);
 
 
 void AutoCropDecorations(HWND hWnd, SNAP_RESULTS* p_snap) {
-	// Adjust the `p_snap` values by the difference between these two APIs;
-	// one includes decorations (e.g. drop shadows) and the other does not.
 	RECT rect_a, rect_b;
-	GetWindowRect(hWnd, &rect_a);
-	DwmGetWindowAttribute(
+	if (!GetWindowRect(hWnd, &rect_a)) {
+		return;
+	}
+	HRESULT result = DwmGetWindowAttribute(
 		hWnd, DWMWA_EXTENDED_FRAME_BOUNDS, &rect_b, sizeof(RECT));
+	if (result != S_OK) {
+		return;
+	}
+
+	// DIRTY HACK!
+	// In common/expected scenarios: both rects are comparable, the difference
+	// is only the "extended frame" bounds.  In this case, `rect_a` is strictly
+	// larger than `rect_b`.  (Actually, `rect_a` contains the entire window
+	// including decorations.  It's `rect_b` which does _not_ -- apparently
+	// that smaller region is the "extended bounds"‽)
+	// For a non-DPI aware app however, `rect_a` (the result of
+	// `GetWindowRect()`) is in fake/simulated "legacy" (?) pixels, while
+	// `rect_b` (the result of `DwmGetWindowAttribute()`) is in larger native
+	// pixels.
+	// If `rect_a` is smaller than `rect_b`: it's because `rect_a` has been
+	// adjusted into legacy non-scaled pixels.  We can't safely calculate
+	// decoration sizes, so give up.
+	int height_a = rect_a.bottom - rect_a.top;
+	int height_b = rect_b.bottom - rect_b.top;
+	if (height_a < height_b) {
+		return;
+	}
+
+	// Adjust the `p_snap` values by the difference between these two APIs;
+	// one (`rect_a` from GetWindowRect) includes decorations (e.g. drop
+	// shadows) while the other (`rect_b` from DwmGetWindowAttribute) does not.
 	if (p_snap->h.side == SIDE_LEFT) {
 		p_snap->h.value += rect_a.left - rect_b.left;
 	}
