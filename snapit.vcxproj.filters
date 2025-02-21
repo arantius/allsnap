@@ -94,9 +94,6 @@
     <None Include="allSnap.iss">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="allSnapDebug.iss">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="speaker.ico">

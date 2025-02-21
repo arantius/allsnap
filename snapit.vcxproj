@@ -357,7 +357,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="allSnap.iss" />
-    <None Include="allSnapDebug.iss" />
     <None Include="Resource.hm" />
   </ItemGroup>
   <ItemGroup>
