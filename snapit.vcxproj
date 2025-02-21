@@ -360,6 +360,7 @@
     <None Include="Resource.hm" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="snapit_32.ico" />
     <Image Include="snap_tos.ico" />
     <Image Include="speaker.ico" />
     <Image Include="play.ico" />

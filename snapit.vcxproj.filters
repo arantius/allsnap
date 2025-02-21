@@ -123,6 +123,9 @@
     <Image Include="tray_disabled_32.ico">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="snapit_32.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="snapit.rc">
