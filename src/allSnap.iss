@@ -15,7 +15,7 @@ ArchitecturesInstallIn64BitMode=x64compatible
 DefaultDirName={commonpf}\allSnap
 DefaultGroupName=allSnap
 UninstallDisplayIcon={app}\allSnap.exe
-LicenseFile=LICENSE
+LicenseFile=..\LICENSE
 MinVersion=10.0
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
@@ -27,7 +27,7 @@ Source: "x64\Release UNICODE\allSnap.exe"; DestDir: "{app}"
 Source: "x64\Release UNICODE\snap_lib.dll"; DestDir: "{app}"
 Source: "snap.wav"; DestDir: "{app}"
 Source: "unsnap.wav"; DestDir: "{app}"
-Source: "help\allSnap.chm"; DestDir: "{app}"
+Source: "..\help\allSnap.chm"; DestDir: "{app}"
 
 
 [Tasks]
