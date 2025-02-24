@@ -1,16 +1,16 @@
 ;--allSnap Install
 
 [Setup]
-OutputBaseFilename=allSnap Setup 1.6B1
+OutputBaseFilename=allSnap Setup 1.60
 AllowNoIcons=yes
 AppName=allSnap
-AppVerName=allSnap version 1.6 Beta 1
+AppVerName=allSnap version 1.60
 AppMutex=IVAN_HECKMAN_ALLSNAP_MUTEX,IVAN_HECKMAN_ALLSNAP_MUTEXB
 AppCopyright=Copyright © 2002 Ivan Heckman; 2025 Anthony Lieuallen
 AppPublisher=
 AppPublisherURL=
 AppUpdatesURL=
-AppVersion=1.6 Beta 1
+AppVersion=1.60
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 DefaultDirName={commonpf}\allSnap
